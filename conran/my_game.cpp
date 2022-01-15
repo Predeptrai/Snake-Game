@@ -9,6 +9,7 @@ using namespace std;
 void draw(int x, int y, int w, int h, int color)
 {
 	textcolor(color);
+	cout << w << " ";
 	for (int ix = x; ix <= x + w; ix++)
 	{
 		gotoxy(ix, y);
@@ -35,22 +36,22 @@ void draw(int x, int y, int w, int h, int color)
 	cout << char(217);
 }
 
-void draw_snake(int pointX[], int pointY[], int& size)
+void draw_snake(int pointX[], int pointY[], int& size,char duoi[])
 {
 	//size = 4;
-
+	//cout << size << endl;
 	for (int i = 0; i < size; i++)
 	{
 		if (i == 0)
 		{
 			gotoxy(pointX[i], pointY[i]);
-			cout << char(2);
+			cout << duoi[i];
 		}
-		else 
+		else
 		{
 			gotoxy(pointX[i], pointY[i]);
-			cout << "o";
-		}	
+			cout << duoi[i];
+		}
 	}
 }
 

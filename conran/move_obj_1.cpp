@@ -10,23 +10,25 @@ using namespace std;
 
 void main()
 {
-	
+	char duoi[MAX];
+	init_duoi(duoi);
 	int x_snake = 50, y_snake = 13;
 	int x = 10, y = 1, w = 100, h = 27;
 	int pointX[MAX], pointY[MAX];
 	int size = 4;
+	int order_food = 4;
 	draw(x, y, w, h, 11);
 	snake_position(pointX, pointY, size);
-	draw_snake(pointX, pointY, size);
+	draw_snake(pointX, pointY, size, duoi);
 	srand(time(NULL));
 	int x_food, y_food;
 	create_food(x_food, y_food, pointX, pointY, size);
 	bool gameover = false;
 	int check = 2;
-	//hehehe
+	
 	while (gameover == false)
 	{
-		delete_position(pointX, pointY, size);	
+		delete_position(pointX, pointY, size);
 
 		if (_kbhit())
 		{
@@ -80,9 +82,9 @@ void main()
 			x_snake--;
 			break;
 		}
-		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food);
+		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi);
 		gameover = check_gameover(pointX, pointY, size);
-		Sleep(150);
+		Sleep(70);
 	}
 
 	_getch();
