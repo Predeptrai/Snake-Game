@@ -8,7 +8,8 @@ using namespace std;
 
 void draw(int x, int y, int w, int h, int color)
 {
-	textcolor(color);
+// Hello World
+	//textcolor(color);
 	cout << w << " ";
 	for (int ix = x; ix <= x + w; ix++)
 	{
