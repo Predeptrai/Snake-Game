@@ -23,7 +23,7 @@ void main()
 	create_food(x_food, y_food, pointX, pointY, size);
 	bool gameover = false;
 	int check = 2;
-
+	//hehehe
 	while (gameover == false)
 	{
 		delete_position(pointX, pointY, size);	
