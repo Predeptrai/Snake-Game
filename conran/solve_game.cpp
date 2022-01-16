@@ -170,6 +170,7 @@ bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[], int size_nguoi_tuyet, int po
 		{
 			if (pointX[j] == nguoi_tuyet[i].x && pointY[j] == nguoi_tuyet[i].y)
 			{
+				
 				return true;
 			}
 		}

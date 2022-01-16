@@ -7,6 +7,12 @@
 
 using namespace std;
 
+
+
+
+
+
+
 void chuong_ngai_vat_nguoi_tuyet(int x, int y, int w, int h, toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size_nguoi_tuyet)
 {
 	y += h / 2-1;

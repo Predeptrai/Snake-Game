@@ -44,7 +44,9 @@ void main()
 
 	while (gameover == false)
 	{
-		
+		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet);
+		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
+		if (gameover) break;
 		delete_position(pointX, pointY, size);
 
 		if (_kbhit())
@@ -100,10 +102,10 @@ void main()
 			break;
 		}
 		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi,order_food);
-		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet);
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
+
 		gameover = max(gameover,check_gameover(pointX, pointY, size));
-		Sleep(30);
+		Sleep(50);
 	}
 
 	_getch();
