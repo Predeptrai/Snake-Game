@@ -8,12 +8,25 @@
 using  namespace std;
 
 // Hàm thay đổi kích cỡ của khung cmd với tham số truyền vào là chiều cao, chiều rộng.
+void SetWindowSize(SHORT width, SHORT height)
+{
+	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	SMALL_RECT WindowSize;
+	WindowSize.Top = 0;
+	WindowSize.Left = 0;
+	WindowSize.Right = width;
+	WindowSize.Bottom = height;
+
+	SetConsoleWindowInfo(hStdout, 1, &WindowSize);
+}
 void resizeConsole(int width, int height)
 {
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r);
 	MoveWindow(console, r.left, r.top, width, height, TRUE);
+	
 }
 
 // Hàm tô màu.

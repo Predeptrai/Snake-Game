@@ -7,6 +7,52 @@
 
 using namespace std;
 
+void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check)
+{
+	if (check == true)// Qua phai
+	{
+		//Xoa nhan vat
+		for (int i = 0; i < size; i++)
+		{
+			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
+			cout << " ";
+			nguoi_tuyet[i].x++;
+			if (nguoi_tuyet[i].x == x + w - 1)
+			{
+				check = false;
+			}
+		}
+		// Tao lai nhan vat
+		for (int i = 0; i < size; i++)
+		{
+			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
+			cout << ve_nguoi_tuyet[i];
+		}
+	}
+	else//Qua trai
+	{
+		//Xoa nhan vat
+		for (int i = 0; i < size; i++)
+		{
+			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
+			cout << " ";
+			nguoi_tuyet[i].x--;
+			if (nguoi_tuyet[i].x == x + 1)
+			{
+				check = true;
+			}
+		}
+		// Tao lai nhan vat
+		for (int i = 0; i < size; i++)
+		{
+			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
+			cout << ve_nguoi_tuyet[i];
+		}
+	}
+	return;
+}
+
+
 void add_Val_to_1D(int a[], int x, int& n)
 {
 	for (int i = n; i > 0; i--)
@@ -116,7 +162,20 @@ bool snake_eat_food(int x, int y, int x_food, int y_food)
 	}
 	return false;
 }
-
+bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[], int size_nguoi_tuyet, int pointX[], int pointY[], int size)
+{
+	for (int i = 0; i < size_nguoi_tuyet; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (pointX[j] == nguoi_tuyet[i].x && pointY[j] == nguoi_tuyet[i].y)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
 void init_duoi(char duoi[])
 {
 

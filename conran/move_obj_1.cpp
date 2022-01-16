@@ -14,13 +14,24 @@ using namespace std;
 
 void main()
 {
+	//cout << char(180) << endl;
 	char duoi[MAX];
+	char cnv[5];
 	init_duoi(duoi);
 	int x_snake = 50, y_snake = 13;
 	int x = 10, y = 1, w = 100, h = 27;
 	int pointX[MAX], pointY[MAX];
 	int size = 4;
 	int order_food = 4;
+	// Nguoi tuyet
+	int size_nguoi_tuyet = 7;
+	toa_do nguoi_tuyet[MAX];
+	char ve_nguoi_tuyet[MAX];
+	bool check_nguoi_tuyet = true;
+	//SetWindowSize(w, h);
+	//cout << w << " " << h << endl;
+
+	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
 	draw(x, y, w, h, 11);
 	snake_position(pointX, pointY, size);
 	draw_snake(pointX, pointY, size, duoi);
@@ -33,6 +44,7 @@ void main()
 
 	while (gameover == false)
 	{
+		
 		delete_position(pointX, pointY, size);
 
 		if (_kbhit())
@@ -88,8 +100,10 @@ void main()
 			break;
 		}
 		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi,order_food);
-		gameover = check_gameover(pointX, pointY, size);
-		Sleep(70);
+		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet);
+		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
+		gameover = max(gameover,check_gameover(pointX, pointY, size));
+		Sleep(30);
 	}
 
 	_getch();
