@@ -90,6 +90,7 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 		//cout << size << endl;
 		create_food(x_food, y_food, pointX, pointY, size,order_food,duoi);
 		//size--;
+		PlaySound(TEXT("sound_eating"), NULL, SND_SYNC);
 	}
 
 	draw_snake(pointX, pointY, size,duoi);
@@ -133,7 +134,7 @@ void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order
 	do {
 		x = rand() % (99 - 11 + 1) + 11;
 		y = rand() % (26 - 2 + 1) + 2;
-	} while (snake_coincide(pointX, pointY, size, x, y) == true);
+	} while (snake_coincide(pointX, pointY, size, x, y));
 
 	int i = rand() % (15 - 1 + 1) + 1;
 	SetColor(i);
@@ -157,7 +158,7 @@ bool snake_eat_food(int x, int y, int x_food, int y_food)
 {
 	if (x == x_food && y == y_food)
 	{
-		Beep(400, 50);
+		//Beep(400, 50);
 		return true;
 	}
 	return false;
@@ -201,27 +202,27 @@ void init_duoi(char duoi[])
 	duoi[18] = '1';
 	duoi[19] = '1';
 	duoi[20] = '2';
-	duoi[21] = 'X';
+	duoi[21] = '7';
 
-	duoi[22] = 'X';
-	duoi[23] = 'X';
-	duoi[24] = 'X';
+	duoi[22] = '4';
+	duoi[23] = '3';
+	duoi[24] = '0';
 	duoi[25] = '2';
 	duoi[26] = '1';
 	duoi[27] = '1';
 	duoi[28] = '2';
-	duoi[29] = 'X';
-	duoi[30] = 'X';
-	duoi[31] = 'X';
+	duoi[29] = '7';
+	duoi[30] = '6';
+	duoi[31] = '7';
 
-	duoi[32] = 'X';
+	duoi[32] = '6';
 	duoi[33] = '2';
 	duoi[34] = '1';
 	duoi[35] = '1';
 	duoi[36] = '2';
-	duoi[37] = 'X';
-	duoi[38] = 'X';
-	duoi[39] = 'X';
-	duoi[40] = 'X';
+	duoi[37] = '7';
+	duoi[38] = '0';
+	duoi[39] = '1';
+	duoi[40] = '4';
 	return;
 }

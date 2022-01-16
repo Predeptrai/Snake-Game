@@ -21,7 +21,7 @@ void main()
 	int x_snake = 50, y_snake = 13;
 	int x = 10, y = 1, w = 100, h = 27;
 	int pointX[MAX], pointY[MAX];
-	int size = 4;
+	int size = 6;
 	int order_food = 4;
 	// Nguoi tuyet
 	int size_nguoi_tuyet = 7;
@@ -40,7 +40,7 @@ void main()
 	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi);
 	bool gameover = false;
 	int check = 2;
-	Beep(400, 50);
+	//Beep(400, 50);
 
 	while (gameover == false)
 	{
@@ -105,7 +105,7 @@ void main()
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
 		gameover = max(gameover,check_gameover(pointX, pointY, size));
-		Sleep(50);
+		Sleep(150);
 	}
 
 	_getch();

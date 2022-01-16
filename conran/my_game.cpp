@@ -8,11 +8,6 @@
 using namespace std;
 
 
-
-
-
-
-
 void chuong_ngai_vat_nguoi_tuyet(int x, int y, int w, int h, toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size_nguoi_tuyet)
 {
 	y += h / 2-1;
@@ -111,7 +106,7 @@ void draw(int x, int y, int w, int h, int color)
 	cout << char(217);
 }
 
-void draw_snake(int pointX[], int pointY[], int& size,char duoi[])
+void draw_snake(int pointX[], int pointY[], int& size, char duoi[])
 {
 	//size = 4;
 	//cout << size << endl;
@@ -132,7 +127,6 @@ void draw_snake(int pointX[], int pointY[], int& size,char duoi[])
 
 void snake_position(int pointX[], int pointY[], int& size)
 {
-	size = 4;
 	int x = 50, y = 13;
 	for (int i = 0; i < size; i++)
 	{
