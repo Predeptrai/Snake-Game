@@ -1,5 +1,9 @@
+
+
+
 #include <iostream>
 #include <conio.h>
+#include <Windows.h>
 #include <stdio.h>
 #include "graphic_console.h"
 #include "Lib_game.h"
@@ -22,10 +26,11 @@ void main()
 	draw_snake(pointX, pointY, size, duoi);
 	srand(time(NULL));
 	int x_food, y_food;
-	create_food(x_food, y_food, pointX, pointY, size);
+	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi);
 	bool gameover = false;
 	int check = 2;
-	
+	Beep(400, 50);
+
 	while (gameover == false)
 	{
 		delete_position(pointX, pointY, size);
@@ -82,7 +87,7 @@ void main()
 			x_snake--;
 			break;
 		}
-		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi);
+		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi,order_food);
 		gameover = check_gameover(pointX, pointY, size);
 		Sleep(70);
 	}

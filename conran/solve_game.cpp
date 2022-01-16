@@ -4,6 +4,7 @@
 #include "Lib_game.h"
 #include <stdio.h>
 
+
 using namespace std;
 
 void add_Val_to_1D(int a[], int x, int& n)
@@ -25,7 +26,7 @@ void remove_Val_from_1D(int a[], int x, int& n)
 	n--;
 }
 
-void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food, int &y_food,char duoi[])
+void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food)
 {
 	int tam = size;
 	add_Val_to_1D(pointX, x, tam);
@@ -41,7 +42,7 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 	else
 	{
 		//cout << size << endl;
-		create_food(x_food, y_food, pointX, pointY, size);
+		create_food(x_food, y_food, pointX, pointY, size,order_food,duoi);
 		//size--;
 	}
 
@@ -80,7 +81,7 @@ bool check_gameover(int pointX[], int pointY[], int size)
 	return false;
 }
 
-void create_food(int& x, int& y, int pointX[], int pointY[], int size)
+void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order_food,char duoi[])
 {
 	//cout << "d";
 	do {
@@ -91,7 +92,8 @@ void create_food(int& x, int& y, int pointX[], int pointY[], int size)
 	int i = rand() % (15 - 1 + 1) + 1;
 	SetColor(i);
 	gotoxy(x, y);
-	cout << "$";
+	cout << duoi[order_food];
+	order_food++;
 	SetColor(7);
 }
 
@@ -108,13 +110,16 @@ bool snake_coincide(int pointX[], int pointY[], int size, int x, int y)
 bool snake_eat_food(int x, int y, int x_food, int y_food)
 {
 	if (x == x_food && y == y_food)
+	{
+		Beep(400, 50);
 		return true;
-
+	}
 	return false;
 }
 
 void init_duoi(char duoi[])
 {
+
 	duoi[0] = '2';
 	duoi[1] = '1';
 	duoi[2] = 'C';

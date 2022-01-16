@@ -4,12 +4,12 @@
 #include "graphic_console.h"
 #include "Lib_game.h"
 
+
 using namespace std;
 
 void draw(int x, int y, int w, int h, int color)
 {
-// Hello World
-	//textcolor(color);
+	textcolor(color);
 	cout << w << " ";
 	for (int ix = x; ix <= x + w; ix++)
 	{
