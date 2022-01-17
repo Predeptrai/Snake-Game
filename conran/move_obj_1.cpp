@@ -22,10 +22,11 @@ void main()
 	int x = 10, y = 1, w = 100, h = 27;
 	int pointX[MAX], pointY[MAX];
 	int size = 6;
-	int order_food = 4;
+	int order_food = 5;
 	// Nguoi tuyet
 	int size_nguoi_tuyet = 7;
 	toa_do nguoi_tuyet[MAX];
+	toa_do food;
 	char ve_nguoi_tuyet[MAX];
 	bool check_nguoi_tuyet = true;
 	//SetWindowSize(w, h);
@@ -37,14 +38,14 @@ void main()
 	draw_snake(pointX, pointY, size, duoi);
 	srand(time(NULL));
 	int x_food, y_food;
-	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi);
+	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi,food);
 	bool gameover = false;
 	int check = 2;
 	//Beep(400, 50);
 
 	while (gameover == false)
 	{
-		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet);
+		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet,food, order_food,duoi);
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 		if (gameover) break;
 		delete_position(pointX, pointY, size);
@@ -101,11 +102,11 @@ void main()
 			x_snake--;
 			break;
 		}
-		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi,order_food);
+		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food);
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
 		gameover = max(gameover,check_gameover(pointX, pointY, size));
-		Sleep(150);
+		Sleep(50);
 	}
 
 	_getch();

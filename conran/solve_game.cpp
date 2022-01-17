@@ -7,15 +7,28 @@
 
 using namespace std;
 
-void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check)
+void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check, toa_do& food, int order_food, char duoi[])
 {
 	if (check == true)// Qua phai
 	{
 		//Xoa nhan vat
+		bool ok = false;
 		for (int i = 0; i < size; i++)
 		{
 			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
-			cout << " ";
+			
+			if (nguoi_tuyet[i].x == food.x && nguoi_tuyet[i].y == food.y)
+			{
+				int K = rand() % (15 - 1 + 1) + 1;
+				SetColor(K);
+				cout << duoi[order_food];
+				SetColor(7);
+
+			}
+			else
+			{
+				cout << " ";
+			}
 			nguoi_tuyet[i].x++;
 			if (nguoi_tuyet[i].x == x + w - 1)
 			{
@@ -35,7 +48,18 @@ void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x
 		for (int i = 0; i < size; i++)
 		{
 			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
-			cout << " ";
+			if (nguoi_tuyet[i].x == food.x && nguoi_tuyet[i].y == food.y)
+			{
+				int K = rand() % (15 - 1 + 1) + 1;
+				SetColor(K);
+				cout << duoi[order_food];
+				SetColor(7);
+
+			}
+			else
+			{
+				cout << " ";
+			}
 			nguoi_tuyet[i].x--;
 			if (nguoi_tuyet[i].x == x + 1)
 			{
@@ -72,13 +96,13 @@ void remove_Val_from_1D(int a[], int x, int& n)
 	n--;
 }
 
-void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food)
+void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food)
 {
 	int tam = size;
 	add_Val_to_1D(pointX, x, tam);
 	add_Val_to_1D(pointY, y, size);
 
-	if (snake_eat_food(pointX[0], pointY[0], x_food, y_food) == false)
+	if (snake_eat_food(pointX[0], pointY[0], food.x, food.y) == false)
 	{
 		tam = size;
 		remove_Val_from_1D(pointX, tam - 1, tam);
@@ -88,7 +112,7 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 	else
 	{
 		//cout << size << endl;
-		create_food(x_food, y_food, pointX, pointY, size,order_food,duoi);
+		create_food(x_food, y_food, pointX, pointY, size,order_food, duoi, food);
 		//size--;
 		PlaySound(TEXT("sound_eating"), NULL, SND_SYNC);
 	}
@@ -128,19 +152,20 @@ bool check_gameover(int pointX[], int pointY[], int size)
 	return false;
 }
 
-void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order_food,char duoi[])
+void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order_food,char duoi[], toa_do& food)
 {
 	//cout << "d";
+	order_food++;
 	do {
 		x = rand() % (99 - 11 + 1) + 11;
 		y = rand() % (26 - 2 + 1) + 2;
 	} while (snake_coincide(pointX, pointY, size, x, y));
-
+	food.x = x;
+	food.y = y;
 	int i = rand() % (15 - 1 + 1) + 1;
 	SetColor(i);
 	gotoxy(x, y);
 	cout << duoi[order_food];
-	order_food++;
 	SetColor(7);
 }
 
