@@ -120,18 +120,21 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 	draw_snake(pointX, pointY, size,duoi);
 }
 
-bool snake_wall(int x, int y)
+bool snake_wall(int a, int b, int x, int y, int w, int h)
 {
-	if ((x >= 10 && x <= 100) && y == 1)
-		return true;
-	else if ((x >= 10 && x <= 100) && y == 27)
-		return true;
-	else if ((y >= 1 && y <= 27) && x == 10)
-		return true;
-	else if ((y >= 1 && y <= 27) && x == 100)
-		return true;
+	if (a > x && a < x + w && b>y && b < y + h)
+		return false;
+	return true;
+	//if ((x >= 10 && x <= 100+10) && y == 1)
+	//	return true;
+	//else if ((x >= 10 && x <= 100) && y == 27)
+	//	return true;
+	//else if ((y >= 1 && y <= 27) && x == 10)
+	//	return true;
+	//else if ((y >= 1 && y <= 27) && x == 100)
+	//	return true;
 
-	return false;
+	//return false;
 }
 
 bool snake_bite_itsTail(int pointX[], int pointY[], int size)
@@ -144,9 +147,9 @@ bool snake_bite_itsTail(int pointX[], int pointY[], int size)
 	return false;
 }
 
-bool check_gameover(int pointX[], int pointY[], int size)
+bool check_gameover(int pointX[], int pointY[], int size, int x, int y, int w, int h)
 {
-	if (snake_wall(pointX[0], pointY[0]) || snake_bite_itsTail(pointX, pointY, size))
+	if (snake_wall(pointX[0], pointY[0], x, y, w, h) || snake_bite_itsTail(pointX, pointY, size))
 		return true;
 
 	return false;

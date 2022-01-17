@@ -14,6 +14,9 @@ using namespace std;
 
 void main()
 {
+
+	FixConsoleWindow();
+	//
 	//cout << char(180) << endl;
 	char duoi[MAX];
 	char cnv[5];
@@ -105,7 +108,7 @@ void main()
 		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food);
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
-		gameover = max(gameover,check_gameover(pointX, pointY, size));
+		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
 		Sleep(50);
 	}
 

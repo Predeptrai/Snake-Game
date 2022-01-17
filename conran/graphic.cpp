@@ -8,6 +8,13 @@
 using  namespace std;
 
 // Hàm thay đổi kích cỡ của khung cmd với tham số truyền vào là chiều cao, chiều rộng.
+void FixConsoleWindow()
+{
+	HWND consoleWindow = GetConsoleWindow();
+	LONG style = GetWindowLong(consoleWindow, GWL_STYLE);
+	style = style & ~(WS_MAXIMIZEBOX) & ~(WS_THICKFRAME);
+	SetWindowLong(consoleWindow, GWL_STYLE, style);
+}
 void SetWindowSize(SHORT width, SHORT height)
 {
 	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
