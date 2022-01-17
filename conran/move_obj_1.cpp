@@ -7,17 +7,28 @@
 #include <stdio.h>
 #include "graphic_console.h"
 #include "Lib_game.h"
-
+#include <thread>
 #define MAX 100
 
 using namespace std;
+bool check_eating = false;
+
+void sound_phat()
+{
+	while(true)
+	{
+		if (check_eating)
+		{
+			PlaySound(TEXT("sound_eating"), NULL, SND_SYNC);
+		}
+	}
+	return;
+}
 
 void main()
 {
 
 	FixConsoleWindow();
-	//
-	//cout << char(180) << endl;
 	char duoi[MAX];
 	char cnv[5];
 	init_duoi(duoi);
@@ -45,6 +56,7 @@ void main()
 	bool gameover = false;
 	int check = 2;
 	//Beep(400, 50);
+	thread first(sound_phat);
 
 	while (gameover == false)
 	{
@@ -105,13 +117,15 @@ void main()
 			x_snake--;
 			break;
 		}
-		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food);
+		check_eating = false;
+		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food,check_eating);
+		//sound_phat(check_eating);
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
 		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
 		Sleep(50);
 	}
-
+	first.join();
 	_getch();
 	return;
 }

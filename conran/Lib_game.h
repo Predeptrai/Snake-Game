@@ -24,7 +24,7 @@ void init_duoi(char duoi[]);
 void draw(int x, int y, int w, int h, int color);
 void draw_snake(int pointX[], int pointY[], int& size, char duoi[]);
 void snake_position(int pointX[], int pointY[], int& size);
-void set_snake(int pointX[], int pointY[], int& size, int x, int y, int& x_food, int& y_food, char duoi[], int& order_food, toa_do& food);
+void set_snake(int pointX[], int pointY[], int& size, int x, int y, int& x_food, int& y_food, char duoi[], int& order_food, toa_do& food, bool& check_eating);
 void delete_position(int pointX[], int pointY[], int size);
 bool snake_wall(int x, int y);
 bool snake_bite_itsTail(int pointX[], int pointY[], int size);
