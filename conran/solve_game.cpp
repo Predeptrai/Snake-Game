@@ -216,5 +216,6 @@ void init_duoi(char duoi[])
 		in >> duoi[i];
 		i++;
 	} while (duoi[i] != ' ');
+	in.close();
 	return;
 }
