@@ -4,7 +4,6 @@
 #include <Windows.h>
 
 using namespace std;
-
 void SetWindowSize(SHORT width, SHORT height);
 void FixConsoleWindow();
 void resizeConsole(int width, int height);

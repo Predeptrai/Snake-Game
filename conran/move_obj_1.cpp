@@ -37,6 +37,7 @@ void main()
 	int pointX[MAX], pointY[MAX];
 	int size = 6;
 	int order_food = 5;
+	int speed = 80;
 	// Nguoi tuyet
 	int size_nguoi_tuyet = 7;
 	toa_do nguoi_tuyet[MAX];
@@ -45,7 +46,6 @@ void main()
 	bool check_nguoi_tuyet = true;
 	//SetWindowSize(w, h);
 	//cout << w << " " << h << endl;
-
 	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
 	draw(x, y, w, h, 11);
 	snake_position(pointX, pointY, size);
@@ -57,7 +57,6 @@ void main()
 	int check = 2;
 	//Beep(400, 50);
 	thread first(sound_phat);
-
 	while (gameover == false)
 	{
 		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet,food, order_food,duoi);
@@ -123,7 +122,7 @@ void main()
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
 		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
-		Sleep(50);
+		Sleep(speed);
 	}
 	first.join();
 	_getch();
