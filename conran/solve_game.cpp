@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <fstream>
 #include "graphic_console.h"
 #include "Lib_game.h"
 #include <stdio.h>
@@ -208,49 +209,12 @@ bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[], int size_nguoi_tuyet, int po
 }
 void init_duoi(char duoi[])
 {
-
-	duoi[0] = '2';
-	duoi[1] = '1';
-	duoi[2] = 'C';
-	duoi[3] = 'L';
-	duoi[4] = 'C';
-	duoi[5] = '0';
-	duoi[6] = '7';
-	duoi[7] = '_';
-	duoi[8] = '2';
-	duoi[9] = '1';
-	duoi[10] = '1';
-	duoi[11] = '2';
-	duoi[12] = '7';
-	duoi[13] = '1';
-	duoi[14] = '6';
-	duoi[15] = '2';
-	duoi[16] = '-';
-	duoi[17] = '2';
-	duoi[18] = '1';
-	duoi[19] = '1';
-	duoi[20] = '2';
-	duoi[21] = '7';
-
-	duoi[22] = '4';
-	duoi[23] = '3';
-	duoi[24] = '0';
-	duoi[25] = '2';
-	duoi[26] = '1';
-	duoi[27] = '1';
-	duoi[28] = '2';
-	duoi[29] = '7';
-	duoi[30] = '6';
-	duoi[31] = '7';
-
-	duoi[32] = '6';
-	duoi[33] = '2';
-	duoi[34] = '1';
-	duoi[35] = '1';
-	duoi[36] = '2';
-	duoi[37] = '7';
-	duoi[38] = '0';
-	duoi[39] = '1';
-	duoi[40] = '4';
+	ifstream in("data.txt");
+	int i = 0;
+	do
+	{
+		in >> duoi[i];
+		i++;
+	} while (duoi[i] != ' ');
 	return;
 }
