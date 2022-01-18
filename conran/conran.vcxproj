@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="game_level1.cpp" />
     <ClCompile Include="move_obj_1.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="my_game.cpp" />

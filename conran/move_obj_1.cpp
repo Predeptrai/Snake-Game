@@ -8,11 +8,28 @@
 #define MAX 100
 
 using namespace std;
+
 bool check_eating = false;
+bool check_first = true;
+char duoi[MAX];
+int x_snake = 50, y_snake = 13;
+int x = 10, y = 1, w = 100, h = 27;
+int pointX[MAX], pointY[MAX];
+int order_food = 5;
+int speed = 80;
+// Nguoi tuyet
+int size_nguoi_tuyet = 7;
+toa_do nguoi_tuyet[MAX];
+toa_do food;
+char ve_nguoi_tuyet[MAX];
+bool check_nguoi_tuyet = true;
+int x_food, y_food;
+bool gameover = false;
+int check = 2;
 
 void sound_phat()
 {
-	while(true)
+	while(check_first)
 	{
 		if (check_eating)
 		{
@@ -22,42 +39,38 @@ void sound_phat()
 	return;
 }
 
-void main()
+void game()
 {
-	resizeConsole(1200, 700);
-	FixConsoleWindow();
-	char duoi[MAX];
-
-
-	init_duoi(duoi);
-	int x_snake = 50, y_snake = 13;
-	int x = 10, y = 1, w = 100, h = 27;
-	int pointX[MAX], pointY[MAX];
+	//char duoi[MAX];
 	int size = 6;
-	int order_food = 5;
-	int speed = 80;
-	// Nguoi tuyet
-	int size_nguoi_tuyet = 7;
-	toa_do nguoi_tuyet[MAX];
-	toa_do food;
-	char ve_nguoi_tuyet[MAX];
-	bool check_nguoi_tuyet = true;
-	//SetWindowSize(w, h);
-	//cout << w << " " << h << endl;
+	init_duoi(duoi);
+	//int x_snake = 50, y_snake = 13;
+	//int x = 10, y = 1, w = 100, h = 27;
+	//int pointX[MAX], pointY[MAX];
+	//int size = 6;
+	//int order_food = 5;
+	//int speed = 80;
+	//// Nguoi tuyet
+	//int size_nguoi_tuyet = 7;
+	//toa_do nguoi_tuyet[MAX];
+	//toa_do food;
+	//char ve_nguoi_tuyet[MAX];
+	//bool check_nguoi_tuyet = true;
+	////SetWindowSize(w, h);
+	////cout << w << " " << h << endl;
 	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
 	draw(x, y, w, h, 11);
 	snake_position(pointX, pointY, size);
 	draw_snake(pointX, pointY, size, duoi);
 	srand(time(NULL));
-	int x_food, y_food;
-	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi,food);
-	bool gameover = false;
-	int check = 2;
-	
-	thread first(sound_phat);
+	//int x_food, y_food;
+	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
+	/*bool gameover = false;
+	int check = 2;*/
+
 	while (gameover == false)
 	{
-		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet,food, order_food,duoi);
+		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 		if (gameover) break;
 		delete_position(pointX, pointY, size);
@@ -115,13 +128,26 @@ void main()
 			break;
 		}
 		check_eating = false;
-		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food,check_eating);
-	
+		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating);
+
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
 		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
 		Sleep(speed);
 	}
+
+	check_first = false;
+}
+
+void main()
+{
+	resizeConsole(1200, 700);
+	FixConsoleWindow();
+	
+	thread first(sound_phat);
+	game();
+	
+	check_first = false;
 	first.join();
 	_getch();
 	return;

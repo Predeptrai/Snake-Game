@@ -4,6 +4,7 @@
 #include "graphic_console.h"
 #include "Lib_game.h"
 
+#define MAX 100
 
 using namespace std;
 
