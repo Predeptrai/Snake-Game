@@ -1,6 +1,3 @@
-
-
-
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
@@ -27,24 +24,25 @@ void sound_phat()
 
 void main()
 {
-
+	resizeConsole(1200, 700);
 	FixConsoleWindow();
 	char duoi[MAX];
-	char cnv[5];
+
+
 	init_duoi(duoi);
 	int x_snake = 50, y_snake = 13;
 	int x = 10, y = 1, w = 100, h = 27;
 	int pointX[MAX], pointY[MAX];
 	int size = 6;
 	int order_food = 5;
+
 	// Nguoi tuyet
 	int size_nguoi_tuyet = 7;
 	toa_do nguoi_tuyet[MAX];
 	toa_do food;
 	char ve_nguoi_tuyet[MAX];
 	bool check_nguoi_tuyet = true;
-	//SetWindowSize(w, h);
-	//cout << w << " " << h << endl;
+	
 
 	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
 	draw(x, y, w, h, 11);
@@ -55,7 +53,7 @@ void main()
 	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi,food);
 	bool gameover = false;
 	int check = 2;
-	//Beep(400, 50);
+	
 	thread first(sound_phat);
 
 	while (gameover == false)
@@ -119,11 +117,11 @@ void main()
 		}
 		check_eating = false;
 		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food,check_eating);
-		//sound_phat(check_eating);
+	
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
 		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
-		Sleep(50);
+		Sleep(100);
 	}
 	first.join();
 	_getch();
