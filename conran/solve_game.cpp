@@ -1,6 +1,5 @@
 #include <iostream>
 #include <conio.h>
-#include <fstream>
 #include "graphic_console.h"
 #include "Lib_game.h"
 #include <stdio.h>
@@ -42,7 +41,7 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 	else
 	{
 		//cout << size << endl;
-		create_food(x_food, y_food, pointX, pointY, size,duoi);
+		create_food(x_food, y_food, pointX, pointY, size);
 		//size--;
 	}
 
@@ -81,7 +80,7 @@ bool check_gameover(int pointX[], int pointY[], int size)
 	return false;
 }
 
-void create_food(int& x, int& y, int pointX[], int pointY[], int size, char* duoi)
+void create_food(int& x, int& y, int pointX[], int pointY[], int size)
 {
 	//cout << "d";
 	do {
@@ -92,7 +91,7 @@ void create_food(int& x, int& y, int pointX[], int pointY[], int size, char* duo
 	int i = rand() % (15 - 1 + 1) + 1;
 	SetColor(i);
 	gotoxy(x, y);
-	cout << duoi[size];
+	cout << "$";
 	SetColor(7);
 }
 
@@ -116,12 +115,48 @@ bool snake_eat_food(int x, int y, int x_food, int y_food)
 
 void init_duoi(char duoi[])
 {
-	ifstream in("data.txt");
-	int i = 0;
-	do
-	{
-		in >> duoi[i];
-		i++;
-	} while (duoi[i] != ' ');
+	duoi[0] = '2';
+	duoi[1] = '1';
+	duoi[2] = 'C';
+	duoi[3] = 'L';
+	duoi[4] = 'C';
+	duoi[5] = '0';
+	duoi[6] = '7';
+	duoi[7] = '_';
+	duoi[8] = '2';
+	duoi[9] = '1';
+	duoi[10] = '1';
+	duoi[11] = '2';
+	duoi[12] = '7';
+	duoi[13] = '1';
+	duoi[14] = '6';
+	duoi[15] = '2';
+	duoi[16] = '-';
+	duoi[17] = '2';
+	duoi[18] = '1';
+	duoi[19] = '1';
+	duoi[20] = '2';
+	duoi[21] = 'X';
+
+	duoi[22] = 'X';
+	duoi[23] = 'X';
+	duoi[24] = 'X';
+	duoi[25] = '2';
+	duoi[26] = '1';
+	duoi[27] = '1';
+	duoi[28] = '2';
+	duoi[29] = 'X';
+	duoi[30] = 'X';
+	duoi[31] = 'X';
+
+	duoi[32] = 'X';
+	duoi[33] = '2';
+	duoi[34] = '1';
+	duoi[35] = '1';
+	duoi[36] = '2';
+	duoi[37] = 'X';
+	duoi[38] = 'X';
+	duoi[39] = 'X';
+	duoi[40] = 'X';
 	return;
 }

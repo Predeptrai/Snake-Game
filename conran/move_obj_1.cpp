@@ -22,7 +22,7 @@ void main()
 	draw_snake(pointX, pointY, size, duoi);
 	srand(time(NULL));
 	int x_food, y_food;
-	create_food(x_food, y_food, pointX, pointY, size, duoi);
+	create_food(x_food, y_food, pointX, pointY, size);
 	bool gameover = false;
 	int check = 2;
 	

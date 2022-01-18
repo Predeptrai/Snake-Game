@@ -148,9 +148,6 @@
     <ClInclude Include="graphic_console.h" />
     <ClInclude Include="Lib_game.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="data.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
