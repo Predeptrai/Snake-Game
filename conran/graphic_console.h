@@ -1,6 +1,7 @@
 #pragma once
 #include <string.h>
 #include <iostream>
+#include "Lib_game.h"
 #include <Windows.h>
 
 using namespace std;

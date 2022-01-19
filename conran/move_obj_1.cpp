@@ -1,13 +1,17 @@
+#pragma once
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
 #include <stdio.h>
+#include <thread>
 #include "graphic_console.h"
 #include "Lib_game.h"
-#include <thread>
+#include "Global_variable.h"
+
 #define MAX 100
 
 using namespace std;
+
 
 bool check_eating = false;
 bool check_first = true;
@@ -39,90 +43,6 @@ void sound_phat()
 	return;
 }
 
-void game()
-{
-
-	int size = 6;
-	init_duoi(duoi);
-	
-	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
-	draw(x, y, w, h, 11);
-	snake_position(pointX, pointY, size);
-	draw_snake(pointX, pointY, size, duoi);
-	srand(time(NULL));
-	
-	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
-	
-	while (gameover == false)
-	{
-		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);
-		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
-		if (gameover) break;
-		delete_position(pointX, pointY, size);
-
-		if (_kbhit())
-		{
-			char c = _getch();
-			if (c == -32)
-			{
-				c = _getch();
-				if (c == 72 && check != 0)
-					check = 1;
-
-				else if (c == 80 && check != 1)
-					check = 0;
-
-				else if (c == 75 && check != 2)
-					check = 3;
-
-				else if (c == 77 && check != 3)
-					check = 2;
-			}
-			else
-			{
-				if (c == 'w' && check != 0)
-					check = 1;
-
-				else if (c == 's' && check != 1)
-					check = 0;
-
-				else if (c == 'a' && check != 2)
-					check = 3;
-
-				else if (c == 'd' && check != 3)
-					check = 2;
-			}
-		}
-
-		switch (check)
-		{
-		case 0:
-			y_snake++;
-			break;
-
-		case 1:
-			y_snake--;
-			break;
-
-		case 2:
-			x_snake++;
-			break;
-
-		case 3:
-			x_snake--;
-			break;
-		}
-		check_eating = false;
-		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating);
-
-		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
-
-		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
-		Sleep(speed);
-	}
-
-	check_first = false;
-}
 
 void main()
 {
@@ -172,7 +92,20 @@ void main()
 				option = 5;
 		}
 
-		switch (option)
+		if (option != 0)
+		{
+			if (option == 1)
+			{
+				system("cls");
+				game();
+				break;
+			}
+			else
+			{
+				break;
+			}
+		}
+	/*	switch (option)
 		{
 		case 1:
 			system("cls");
@@ -184,7 +117,7 @@ void main()
 			break;
 		case 4:
 			break;
-		}
+		}*/
 
 	} while (option != 5);
 

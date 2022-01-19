@@ -1,17 +1,14 @@
 #pragma once
 #include <iostream>
 #include <stdio.h>
-#include <conio.h>
+#include "Global_variable.h"
 
+#include <conio.h>
+#define MAX 100
 
 using namespace std;
 
-struct toa_do
-{
-	int x, y;
-};
-
-
+void game();
 bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[],int size_nguoi_tuyet,int pointX[],int pointY[],int size);
 
 

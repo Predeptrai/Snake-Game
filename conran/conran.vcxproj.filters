@@ -41,6 +41,9 @@
     <ClInclude Include="Lib_game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Global_variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt">

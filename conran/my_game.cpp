@@ -1,8 +1,9 @@
 #include <iostream>
 #include <conio.h>
 #include <stdio.h>
-#include "graphic_console.h"
 #include "Lib_game.h"
+
+#include "graphic_console.h"
 
 #define MAX 100
 

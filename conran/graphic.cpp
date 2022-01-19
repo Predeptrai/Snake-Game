@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include "Lib_game.h"
 #include <Windows.h>
 #include <string.h>
 #include <ctime>
