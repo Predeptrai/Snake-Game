@@ -5,7 +5,6 @@
 #include "graphic_console.h"
 #include <stdio.h>
 
-
 using namespace std;
 
 void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check, toa_do& food, int order_food, char duoi[])
@@ -148,15 +147,14 @@ bool check_gameover(int pointX[], int pointY[], int size, int x, int y, int w, i
 
 void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order_food,char duoi[], toa_do& food)
 {
-
 	order_food++;
 	do {
 		x = rand() % (99 - 11 + 1) + 11;
 		y = rand() % (26 - 2 + 1) + 2;
-	} while (snake_coincide(pointX, pointY, size, x, y));
+	} while (snake_coincide(pointX, pointY, size, x, y) || food_touch_obs());
 	food.x = x;
 	food.y = y;
-	int i = rand() % (15 - 1 + 1) + 1;
+	int i = rand() % (20 - 1 + 1) + 1;
 	SetColor(i);
 	gotoxy(x, y);
 	cout << duoi[order_food];
@@ -213,16 +211,21 @@ bool snake_touch_obstacle(int size, int pointX[], int pointY[])
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (pointX[i] == 30 && pointY[i] >= 2 && pointY[i] <= 9)
-			return true;
-		else if (pointX[i] == 60 && pointY[i] >= 2 && pointY[i] <= 9)
-			return true;
-		else if (pointX[i] == 90 && pointY[i] >= 2 && pointY[i] <= 9)
-			return true;
-		else if (pointX[i] == 45 && pointY[i] >= 20 && pointY[i] <= 27)
-			return true;
-		else if (pointX[i] == 75 && pointY[i] >= 20 && pointY[i] <= 27)
-			return true;
+		for (int j = 0; j < cnt_obstacle; j++)
+		{
+			if (pointX[i] == obstacle[j].x && pointY[i] == obstacle[j].y)
+				return true;
+		}
 	}	
+	return false;
+}
+
+bool food_touch_obs()
+{
+	for (int i = 0; i < cnt_obstacle; i++)
+	{
+		if (food.x == obstacle[i].x && food.y == obstacle[i].y)
+			return true;
+	}
 	return false;
 }

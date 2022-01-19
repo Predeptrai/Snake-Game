@@ -5,7 +5,6 @@
 #include "graphic_console.h"
 #include "Lib_game.h"
 
-
 void draw_obstacle()
 {
 	textcolor(14);
@@ -19,6 +18,16 @@ void draw_obstacle()
 			cout << char(219);
 			gotoxy(ix + 2, iy);
 			cout << char(219);
+
+			obstacle[cnt_obstacle].x = ix;
+			obstacle[cnt_obstacle].y = iy;
+			cnt_obstacle++;
+			obstacle[cnt_obstacle].x = ix + 1;
+			obstacle[cnt_obstacle].y = iy;
+			cnt_obstacle++;
+			obstacle[cnt_obstacle].x = ix + 2;
+			obstacle[cnt_obstacle].y = iy;
+			cnt_obstacle++;
 		}
 	}
 
@@ -32,6 +41,16 @@ void draw_obstacle()
 			cout << char(219);
 			gotoxy(ix + 2, iy);
 			cout << char(219);
+
+			obstacle[cnt_obstacle].x = ix;
+			obstacle[cnt_obstacle].y = iy;
+			cnt_obstacle++;
+			obstacle[cnt_obstacle].x = ix + 1;
+			obstacle[cnt_obstacle].y = iy;
+			cnt_obstacle++;
+			obstacle[cnt_obstacle].x = ix + 2;
+			obstacle[cnt_obstacle].y = iy;
+			cnt_obstacle++;
 		}
 	}
 }

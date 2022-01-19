@@ -2,7 +2,6 @@
 #include <iostream>
 #include <stdio.h>
 #include "Global_variable.h"
-
 #include <conio.h>
 #define MAX 100
 
@@ -26,4 +25,7 @@ bool snake_coincide(int pointX[], int pointY[], int size, int x, int y);
 bool snake_eat_food(int x, int y, int x_food, int y_food);
 void game_level_1();
 void game_level_2();
+void game_level_3();
 bool snake_touch_obstacle(int size, int pointX[], int pointY[]);
+void draw_obstacle();
+bool food_touch_obs();

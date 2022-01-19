@@ -11,6 +11,9 @@ struct toa_do
 	int x, y;
 };
 
+extern toa_do obstacle[MAX * MAX];
+extern int cnt_obstacle;
+
 extern bool check_eating;
 extern bool check_first;
 extern char duoi[MAX];

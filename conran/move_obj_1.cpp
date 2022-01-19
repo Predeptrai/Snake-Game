@@ -12,7 +12,8 @@
 
 using namespace std;
 
-
+toa_do obstacle[MAX * MAX];
+int cnt_obstacle = 0;
 bool check_eating = false;
 bool check_first = true;
 char duoi[MAX];
@@ -49,65 +50,72 @@ void main()
 	resizeConsole(1200, 700);
 	FixConsoleWindow();
 	
+
 	thread first(sound_phat);
-
-	gotoxy(75, 10);
-	textcolor(13);
-	cout << "Menu game" << endl;
-	gotoxy(65, 12);
-	textcolor(7);
-	cout << " New game" << endl;
-	gotoxy(65, 15);
-	textcolor(11);
-	cout << " Continue game" << endl;
-	gotoxy(65, 18);
-	textcolor(14);
-	cout << " Highscore" << endl;
-	gotoxy(65, 21);
-	textcolor(4);
-	cout << " Option" << endl;
-	gotoxy(65, 24);
-	textcolor(9);
-	cout << " Quit" << endl;
-	SetColor(7);
-
-	gotoxy(0, 28);
-	cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";
-
-	int option = 0;
-	do
+	while (true)
 	{
-		if (_kbhit())
+		gotoxy(75, 10);
+		textcolor(13);
+		cout << "Menu game" << endl;
+		gotoxy(65, 12);
+		textcolor(7);
+		cout << " New game" << endl;
+		gotoxy(65, 15);
+		textcolor(11);
+		cout << " Continue game" << endl;
+		gotoxy(65, 18);
+		textcolor(14);
+		cout << " Highscore" << endl;
+		gotoxy(65, 21);
+		textcolor(4);
+		cout << " Option" << endl;
+		gotoxy(65, 24);
+		textcolor(9);
+		cout << " Quit" << endl;
+		SetColor(7);
+
+		gotoxy(0, 28);
+		cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";
+
+		int option = 0;
+		do
 		{
-			char c = _getch();
-			if (c == 'n')
-				option = 1;
-			else if (c == 'c')
-				option = 2;
-			else if (c == 'h')
-				option = 3;
-			else if (c == 'o')
-				option = 4;
-			else if (c == 'q')
-				option = 5;
-		}
 
-		if (option != 0)
-		{
-			if (option == 1)
+			if (_kbhit())
 			{
-				system("cls");
-				game_level_2();
-				break;
+				char c = _getch();
+				if (c == 'n')
+					option = 1;
+				else if (c == 'c')
+					option = 2;
+				else if (c == 'h')
+					option = 3;
+				else if (c == 'o')
+					option = 4;
+				else if (c == 'q')
+					option = 5;
 			}
-			else
+
+			if (option != 0)
 			{
-				break;
+				if (option == 1)
+				{
+					gameover = false;
+					system("cls");
+					game_level_3();
+					break;
+				}
+				else
+				{
+					break;
+				}
 			}
-		}
 
-	} while (option != 5);
+		} while (option != 5);
 
+		if (option == 5)
+			break;
+	}
 	gotoxy(60, 30);
 	textcolor(13);
 	cout << "Thanks for playing this game <3.\n";
