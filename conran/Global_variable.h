@@ -5,12 +5,11 @@
 #define MAX 100
 
 using namespace std;
+
 struct toa_do
 {
 	int x, y;
 };
-
-
 
 extern bool check_eating;
 extern bool check_first;
@@ -20,6 +19,7 @@ extern int x, y, w, h;
 extern int pointX[MAX], pointY[MAX];
 extern int order_food;
 extern int speed;
+
 // Nguoi tuyet
 extern int size_nguoi_tuyet;
 extern toa_do nguoi_tuyet[MAX];

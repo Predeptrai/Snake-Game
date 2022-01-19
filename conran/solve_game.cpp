@@ -113,9 +113,9 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 	else
 	{
 		check_eating = true;
-		//cout << size << endl;
+	
 		create_food(x_food, y_food, pointX, pointY, size,order_food, duoi, food);
-		//size--;
+	
 	}
 
 	draw_snake(pointX, pointY, size,duoi);
@@ -126,16 +126,6 @@ bool snake_wall(int a, int b, int x, int y, int w, int h)
 	if (a > x && a < x + w && b>y && b < y + h)
 		return false;
 	return true;
-	//if ((x >= 10 && x <= 100+10) && y == 1)
-	//	return true;
-	//else if ((x >= 10 && x <= 100) && y == 27)
-	//	return true;
-	//else if ((y >= 1 && y <= 27) && x == 10)
-	//	return true;
-	//else if ((y >= 1 && y <= 27) && x == 100)
-	//	return true;
-
-	//return false;
 }
 
 bool snake_bite_itsTail(int pointX[], int pointY[], int size)
@@ -158,7 +148,7 @@ bool check_gameover(int pointX[], int pointY[], int size, int x, int y, int w, i
 
 void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order_food,char duoi[], toa_do& food)
 {
-	//cout << "d";
+
 	order_food++;
 	do {
 		x = rand() % (99 - 11 + 1) + 11;
@@ -187,7 +177,6 @@ bool snake_eat_food(int x, int y, int x_food, int y_food)
 {
 	if (x == x_food && y == y_food)
 	{
-		//Beep(400, 50);
 		return true;
 	}
 	return false;
@@ -219,87 +208,21 @@ void init_duoi(char duoi[])
 	in.close();
 	return;
 }
-void game()
+
+bool snake_touch_obstacle(int size, int pointX[], int pointY[])
 {
-
-	int size = 6;
-	init_duoi(duoi);
-
-	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
-	draw(x, y, w, h, 11);
-	snake_position(pointX, pointY, size);
-	draw_snake(pointX, pointY, size, duoi);
-	srand(time(NULL));
-
-	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
-
-	while (gameover == false && check_first)
+	for (int i = 0; i < size; i++)
 	{
-		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);
-		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
-		if (gameover) break;
-		delete_position(pointX, pointY, size);
-
-		if (_kbhit())
-		{
-			char c = _getch();
-			if (c == -32)
-			{
-				c = _getch();
-				if (c == 72 && check != 0)
-					check = 1;
-
-				else if (c == 80 && check != 1)
-					check = 0;
-
-				else if (c == 75 && check != 2)
-					check = 3;
-
-				else if (c == 77 && check != 3)
-					check = 2;
-			}
-			else
-			{
-				if (c == 'w' && check != 0)
-					check = 1;
-
-				else if (c == 's' && check != 1)
-					check = 0;
-
-				else if (c == 'a' && check != 2)
-					check = 3;
-
-				else if (c == 'd' && check != 3)
-					check = 2;
-			}
-		}
-
-		switch (check)
-		{
-		case 0:
-			y_snake++;
-			break;
-
-		case 1:
-			y_snake--;
-			break;
-
-		case 2:
-			x_snake++;
-			break;
-
-		case 3:
-			x_snake--;
-			break;
-		}
-		check_eating = false;
-		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating);
-
-		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
-
-		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
-		Sleep(speed);
-	}
-
-	check_first = false;
+		if (pointX[i] == 30 && pointY[i] >= 2 && pointY[i] <= 9)
+			return true;
+		else if (pointX[i] == 60 && pointY[i] >= 2 && pointY[i] <= 9)
+			return true;
+		else if (pointX[i] == 90 && pointY[i] >= 2 && pointY[i] <= 9)
+			return true;
+		else if (pointX[i] == 45 && pointY[i] >= 20 && pointY[i] <= 27)
+			return true;
+		else if (pointX[i] == 75 && pointY[i] >= 20 && pointY[i] <= 27)
+			return true;
+	}	
+	return false;
 }

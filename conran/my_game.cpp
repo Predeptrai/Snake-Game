@@ -81,37 +81,27 @@ void chuong_ngai_vat_nguoi(int x, int y, int w, int h)
 void draw(int x, int y, int w, int h, int color)
 {
 	textcolor(color);
-//	cout << w << " ";
+
 	for (int ix = x; ix <= x + w; ix++)
 	{
 		gotoxy(ix, y);
-		cout << char(196);
+		cout << char(219);
 		gotoxy(ix, y + h);
-		cout << char(196);
+		cout << char(219);
 	}
 
 	for (int iy = y; iy <= y + h; iy++)
 	{
 		gotoxy(x, iy);
-		cout << char(179);
+		cout << char(219);
 		gotoxy(x + w, iy);
-		cout << char(179);
+		cout << char(219);
 	}
 
-	gotoxy(x, y);
-	cout << char(218);
-	gotoxy(x + w, y);
-	cout << char(191);
-	gotoxy(x, y + h);
-	cout << char(192);
-	gotoxy(x + w, y + h);
-	cout << char(217);
 }
 
 void draw_snake(int pointX[], int pointY[], int& size, char duoi[])
 {
-	//size = 4;
-	//cout << size << endl;
 	for (int i = 0; i < size; i++)
 	{
 		if (i == 0)

@@ -33,6 +33,9 @@
     <ClCompile Include="game_level1.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="game_level2.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphic_console.h">

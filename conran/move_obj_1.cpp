@@ -97,7 +97,7 @@ void main()
 			if (option == 1)
 			{
 				system("cls");
-				game();
+				game_level_2();
 				break;
 			}
 			else
@@ -105,27 +105,14 @@ void main()
 				break;
 			}
 		}
-	/*	switch (option)
-		{
-		case 1:
-			system("cls");
-			game();
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		}*/
 
 	} while (option != 5);
 
+	gotoxy(60, 30);
 	textcolor(13);
 	cout << "Thanks for playing this game <3.\n";
 	textcolor(7);
-	
-	
+		
 	check_first = false;
 	first.join();
 	_getch();
