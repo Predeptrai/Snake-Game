@@ -41,33 +41,18 @@ void sound_phat()
 
 void game()
 {
-	//char duoi[MAX];
+
 	int size = 6;
 	init_duoi(duoi);
-	//int x_snake = 50, y_snake = 13;
-	//int x = 10, y = 1, w = 100, h = 27;
-	//int pointX[MAX], pointY[MAX];
-	//int size = 6;
-	//int order_food = 5;
-	//int speed = 80;
-	//// Nguoi tuyet
-	//int size_nguoi_tuyet = 7;
-	//toa_do nguoi_tuyet[MAX];
-	//toa_do food;
-	//char ve_nguoi_tuyet[MAX];
-	//bool check_nguoi_tuyet = true;
-	////SetWindowSize(w, h);
-	////cout << w << " " << h << endl;
+	
 	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
 	draw(x, y, w, h, 11);
 	snake_position(pointX, pointY, size);
 	draw_snake(pointX, pointY, size, duoi);
 	srand(time(NULL));
-	//int x_food, y_food;
+	
 	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
-	/*bool gameover = false;
-	int check = 2;*/
-
+	
 	while (gameover == false)
 	{
 		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);
@@ -145,7 +130,68 @@ void main()
 	FixConsoleWindow();
 	
 	thread first(sound_phat);
-	game();
+
+	gotoxy(75, 10);
+	textcolor(13);
+	cout << "Menu game" << endl;
+	gotoxy(65, 12);
+	textcolor(7);
+	cout << " New game" << endl;
+	gotoxy(65, 15);
+	textcolor(11);
+	cout << " Continue game" << endl;
+	gotoxy(65, 18);
+	textcolor(14);
+	cout << " Highscore" << endl;
+	gotoxy(65, 21);
+	textcolor(4);
+	cout << " Option" << endl;
+	gotoxy(65, 24);
+	textcolor(9);
+	cout << " Quit" << endl;
+	SetColor(7);
+
+	gotoxy(0, 28);
+	cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";
+
+	int option = 0;
+	do
+	{
+		if (_kbhit())
+		{
+			char c = _getch();
+			if (c == 'n')
+				option = 1;
+			else if (c == 'c')
+				option = 2;
+			else if (c == 'h')
+				option = 3;
+			else if (c == 'o')
+				option = 4;
+			else if (c == 'q')
+				option = 5;
+		}
+
+		switch (option)
+		{
+		case 1:
+			system("cls");
+			game();
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		}
+
+	} while (option != 5);
+
+	textcolor(13);
+	cout << "Thanks for playing this game <3.\n";
+	textcolor(7);
+	
 	
 	check_first = false;
 	first.join();
