@@ -28,4 +28,4 @@ void game_level_2();
 void game_level_3();
 bool snake_touch_obstacle(int size, int pointX[], int pointY[]);
 void draw_obstacle();
-bool food_touch_obs();
+bool food_touch_obs(int x,int  y);

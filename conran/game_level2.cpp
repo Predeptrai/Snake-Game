@@ -130,7 +130,6 @@ void game_level_2()
 		check_eating = false;
 		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating);
 
-		//gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 		gameover = snake_touch_obstacle(size, pointX, pointY);
 		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
 		Sleep(speed);

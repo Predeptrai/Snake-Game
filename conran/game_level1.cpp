@@ -12,7 +12,7 @@ void game_level_1()
 	int size = 6;
 	init_duoi(duoi);
 
-	//chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
+	
 	draw(x, y, w, h, 11);
 	snake_position(pointX, pointY, size);
 	draw_snake(pointX, pointY, size, duoi);

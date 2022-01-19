@@ -102,7 +102,7 @@ void main()
 				{
 					gameover = false;
 					system("cls");
-					game_level_3();
+					game_level_1();
 					break;
 				}
 				else

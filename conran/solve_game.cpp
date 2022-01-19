@@ -151,12 +151,14 @@ void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order
 	do {
 		x = rand() % (99 - 11 + 1) + 11;
 		y = rand() % (26 - 2 + 1) + 2;
-	} while (snake_coincide(pointX, pointY, size, x, y) || food_touch_obs());
+	} while (snake_coincide(pointX, pointY, size, x, y) || food_touch_obs(x,y));
 	food.x = x;
 	food.y = y;
-	int i = rand() % (20 - 1 + 1) + 1;
+
+	int i = rand() % (15 - 1 + 1) + 1;
 	SetColor(i);
-	gotoxy(x, y);
+	gotoxy(food.x, food.y);
+
 	cout << duoi[order_food];
 	SetColor(7);
 }
@@ -220,11 +222,11 @@ bool snake_touch_obstacle(int size, int pointX[], int pointY[])
 	return false;
 }
 
-bool food_touch_obs()
+bool food_touch_obs(int x,int y)
 {
 	for (int i = 0; i < cnt_obstacle; i++)
 	{
-		if (food.x == obstacle[i].x && food.y == obstacle[i].y)
+		if (x == obstacle[i].x && y == obstacle[i].y)
 			return true;
 	}
 	return false;
