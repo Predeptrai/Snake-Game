@@ -123,6 +123,6 @@ void main()
 		
 	check_first = false;
 	first.join();
-	_getch();
+
 	return;
 }

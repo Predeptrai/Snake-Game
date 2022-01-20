@@ -108,7 +108,6 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 		remove_Val_from_1D(pointX, tam - 1, tam);
 		remove_Val_from_1D(pointY, size - 1, size);
 	}
-
 	else
 	{
 		check_eating = true;
@@ -122,6 +121,7 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 
 bool snake_wall(int a, int b, int x, int y, int w, int h)
 {
+
 	if (a > x && a < x + w && b>y && b < y + h)
 		return false;
 	return true;

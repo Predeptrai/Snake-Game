@@ -3,23 +3,24 @@
 #include <Windows.h>
 #include "Global_variable.h"
 #include "Lib_game.h"
+#include "graphic_console.h"
 
 using namespace std;
 
 void game_level_1()
 {
-
+	//10 1 100 27
 	int size = 6;
 	init_duoi(duoi);
-
-	
+	order_food = 5;
+	x_snake = 50, y_snake = 13;
 	draw(x, y, w, h, 11);
 	snake_position(pointX, pointY, size);
 	draw_snake(pointX, pointY, size, duoi);
 	srand(time(NULL));
 
 	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
-	
+	check_first = true;
 
 	while (gameover == false)
 	{
@@ -87,8 +88,15 @@ void game_level_1()
 		gameover = check_gameover(pointX, pointY, size, x, y, w, h);
 		Sleep(speed);
 		if (gameover)
+		{
+			char tam;
+			gotoxy((x + w) / 2-9, (y + h) / 2);
+			cout << "Press Enter to return Menu" << endl;
+			cin.get();
 			system("cls");
+		}
 	}
 
 	check_first = false;
+	return;
 }
