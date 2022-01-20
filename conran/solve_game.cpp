@@ -111,7 +111,7 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 	else
 	{
 		check_eating = true;
-	
+
 		create_food(x_food, y_food, pointX, pointY, size,order_food, duoi, food);
 	
 	}

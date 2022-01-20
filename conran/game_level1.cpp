@@ -21,7 +21,7 @@ void game_level_1()
 
 	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
 	check_first = true;
-
+	bool dieu_huong = false;
 	while (gameover == false)
 	{
 		
@@ -31,6 +31,7 @@ void game_level_1()
 		if (_kbhit())
 		{
 			char c = _getch();
+
 			if (c == -32)
 			{
 				c = _getch();
@@ -94,9 +95,10 @@ void game_level_1()
 			cout << "Press Enter to return Menu" << endl;
 			cin.get();
 			system("cls");
+			break;
 		}
 	}
-
+	check_eating = false;
 	check_first = false;
 	return;
 }

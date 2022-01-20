@@ -34,7 +34,7 @@ int check = 2;
 
 void sound_phat()
 {
-	while(check_first)
+	while(true)
 	{
 		if (check_eating)
 		{
