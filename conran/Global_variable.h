@@ -32,3 +32,4 @@ extern bool check_nguoi_tuyet;
 extern int x_food, y_food;
 extern bool gameover;
 extern int check;
+extern int do_dai;

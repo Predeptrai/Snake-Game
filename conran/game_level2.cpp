@@ -5,6 +5,7 @@
 #include "graphic_console.h"
 #include "Lib_game.h"
 
+using namespace std;
 void draw_obstacle()
 {
 	textcolor(14);
@@ -57,23 +58,23 @@ void draw_obstacle()
 
 void game_level_2()
 {
-	int size = 6;
+	 do_dai = 6;
 	init_duoi(duoi);
 
 	draw(x, y, w, h, 11);
 	draw_obstacle();
 
-	snake_position(pointX, pointY, size);
-	draw_snake(pointX, pointY, size, duoi);
+	snake_position(pointX, pointY, do_dai);
+	draw_snake(pointX, pointY, do_dai, duoi);
 	srand(time(NULL));
 
-	create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
+	create_food(x_food, y_food, pointX, pointY, do_dai, order_food, duoi, food);
 
 	while (gameover == false && check_first)
 	{
 	
 		if (gameover) break;
-		delete_position(pointX, pointY, size);
+		delete_position(pointX, pointY, do_dai);
 
 		if (_kbhit())
 		{
@@ -128,11 +129,19 @@ void game_level_2()
 			break;
 		}
 		check_eating = false;
-		set_snake(pointX, pointY, size, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating);
+		set_snake(pointX, pointY, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating);
 
-		gameover = snake_touch_obstacle(size, pointX, pointY);
-		gameover = max(gameover, check_gameover(pointX, pointY, size, x, y, w, h));
+		gameover = snake_touch_obstacle(do_dai, pointX, pointY);
+		gameover = max(gameover, check_gameover(pointX, pointY, do_dai, x, y, w, h));
 		Sleep(speed);
+		if (gameover)
+		{
+			gotoxy((x + w) / 2 - 9, (y + h) / 2);
+			cout << "Press Enter to return Menu" << endl;
+			cin.get();
+			system("cls");
+			break;
+		}
 	}
 
 	check_first = false;

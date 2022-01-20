@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
@@ -21,7 +20,7 @@ int x_snake = 50, y_snake = 13;
 int x = 10, y = 1, w = 100, h = 27;
 int pointX[MAX], pointY[MAX];
 int order_food = 5;
-int speed = 80;
+int speed = 50;
 // Nguoi tuyet
 int size_nguoi_tuyet = 7;
 toa_do nguoi_tuyet[MAX];
@@ -31,7 +30,7 @@ bool check_nguoi_tuyet = true;
 int x_food, y_food;
 bool gameover = false;
 int check = 2;
-
+int do_dai = 6;
 void sound_phat()
 {
 	while(true)
@@ -49,7 +48,6 @@ void main()
 {
 	resizeConsole(1200, 700);
 	FixConsoleWindow();
-	
 
 	thread first(sound_phat);
 	while (true)
@@ -95,14 +93,13 @@ void main()
 				else if (c == 'q')
 					option = 5;
 			}
-
 			if (option != 0)
 			{
 				if (option == 1)
 				{
 					gameover = false;
 					system("cls");
-					game_level_1();
+					game_level_2();
 					break;
 				}
 				else
