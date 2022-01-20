@@ -129,7 +129,7 @@ void game_level_2()
 			break;
 		}
 		check_eating = false;
-		set_snake(pointX, pointY, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating);
+		set_snake(pointX, pointY, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating,2);
 
 		gameover = snake_touch_obstacle(do_dai, pointX, pointY);
 		gameover = max(gameover, check_gameover(pointX, pointY, do_dai, x, y, w, h));
@@ -140,7 +140,7 @@ void game_level_2()
 			cout << "Press Enter to return Menu" << endl;
 			cin.get();
 			system("cls");
-			break;
+			break;;
 		}
 	}
 

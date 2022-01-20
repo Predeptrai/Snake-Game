@@ -109,7 +109,7 @@ int whereY()
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi))
 		return csbi.dwCursorPosition.Y;
-	return -1;
+	return -1;;
 }
 
 //============== làm ẩn trỏ chuột ===========

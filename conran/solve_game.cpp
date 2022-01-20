@@ -96,7 +96,7 @@ void remove_Val_from_1D(int a[], int x, int& n)
 	n--;
 }
 
-void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food,bool &check_eating)
+void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food,bool &check_eating, int level)
 {
 	int tam = size;
 	add_Val_to_1D(pointX, x, tam);
@@ -107,16 +107,38 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 		tam = size;
 		remove_Val_from_1D(pointX, tam - 1, tam);
 		remove_Val_from_1D(pointY, size - 1, size);
+		if (pointX[0] == xfinish && pointY[0] == yfinish && finish)
+		{
+			if (level == 1)
+			{
+				gameover = false;
+				system("cls");
+				game_level_2();
+			}
+			else if (level == 2)
+			{
+				gameover = false;
+				system("cls");
+				game_level_3();
+			}
+			else
+				gameover = true;
+		}
 	}
-	else
+
+	else if (order_food <= 7)
 	{
 		check_eating = true;
 
-		create_food(x_food, y_food, pointX, pointY, size,order_food, duoi, food);
-	
+		create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
+
+	}
+	else
+	{
+		draw_finish_gate(level);
 	}
 
-	draw_snake(pointX, pointY, size,duoi);
+	draw_snake(pointX, pointY, size, duoi);
 }
 
 bool snake_wall(int a, int b, int x, int y, int w, int h)

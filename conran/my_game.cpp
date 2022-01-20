@@ -136,3 +136,26 @@ void delete_position(int pointX[], int pointY[], int size)
 		cout << " ";
 	}
 }
+void draw_finish_gate(int level)
+{
+	finish = 1;
+	for (int i = 0; i <= 2; i++)
+	{
+		gotoxy(xfinish - 1 + i, yfinish - 1);
+		cout << char(219);
+		obstacle[cnt_obstacle].x = xfinish - 1 + i;
+		obstacle[cnt_obstacle].y = yfinish - 1;
+		cnt_obstacle++;
+	}
+	gotoxy(xfinish - 1, yfinish);
+	cout << char(219);
+	obstacle[cnt_obstacle].x = xfinish - 1;
+	obstacle[cnt_obstacle].y = yfinish;
+	cnt_obstacle++;
+	gotoxy(xfinish + 1, yfinish);
+	cout << char(219);
+	obstacle[cnt_obstacle].x = xfinish + 1;
+	obstacle[cnt_obstacle].y = yfinish;
+	cnt_obstacle++;;
+}
+
