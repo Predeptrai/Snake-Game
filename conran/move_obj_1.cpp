@@ -17,6 +17,8 @@ bool check_eating = false;
 bool check_first = true;
 char duoi[MAX];
 int x_snake = 50, y_snake = 13;
+int xfinish = 20, yfinish = 4;
+bool finish = 0;
 int x = 10, y = 1, w = 100, h = 27;
 int pointX[MAX], pointY[MAX];
 int order_food = 5;
@@ -99,7 +101,7 @@ void main()
 				{
 					gameover = false;
 					system("cls");
-					game_level_2();
+					game_level_1();
 					break;
 				}
 				else
