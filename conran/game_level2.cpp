@@ -8,6 +8,7 @@
 using namespace std;
 void draw_obstacle()
 {
+	cnt_obstacle = 0;
 	textcolor(14);
 	for (int ix = 30; ix <= 100; ix += 30)
 	{
@@ -60,10 +61,10 @@ void game_level_2()
 {
 	draw_obstacle();
 	init();
-	while (gameover == false && check_first)
+	check2to3 = false;
+	while (gameover == false)
 	{
 	
-		if (gameover) break;
 		delete_position(pointX, pointY, do_dai);
 
 		if (_kbhit())
@@ -122,17 +123,24 @@ void game_level_2()
 		set_snake(pointX, pointY, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating,2);
 
 		gameover = snake_touch_obstacle(do_dai, pointX, pointY);
+		bool check_1 = touch_gate();
+		gameover = max(gameover, check_1);
 		gameover = max(gameover, check_gameover(pointX, pointY, do_dai, x, y, w, h));
 		Sleep(speed);
+
+		if (check2to3)
+		{
+			break;
+		}
+
 		if (gameover)
 		{
 			gotoxy((x + w) / 2 - 9, (y + h) / 2);
 			cout << "Press Enter to return Menu" << endl;
 			cin.get();
 			system("cls");
-			break;;
+			break;
 		}
 	}
-
-	check_first = false;
+	return;
 }

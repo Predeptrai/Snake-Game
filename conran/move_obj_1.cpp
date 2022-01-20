@@ -35,9 +35,12 @@ int check = 2;
 int do_dai = 6;
 toa_do gate[MAX];
 int cnt_gate = 0;
+bool check1to2 = false;
+bool check2to3 = false;
+
 void sound_phat()
 {
-	while(true)
+	while(check_first)
 	{
 		if (check_eating)
 		{
@@ -103,7 +106,7 @@ void main()
 				{
 					gameover = false;
 					system("cls");
-					game_level_1();
+					game_level_3();
 					break;
 				}
 				else
@@ -121,9 +124,9 @@ void main()
 	textcolor(13);
 	cout << "Thanks for playing this game <3.\n";
 	textcolor(7);
-		
+	
 	check_first = false;
 	first.join();
-
+	_getch();
 	return;
 }

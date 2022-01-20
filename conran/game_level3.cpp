@@ -12,12 +12,12 @@ void game_level_3()
 	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
 	init();
 
-	while (gameover == false && check_first)
+	while (gameover == false )
 	{
 		set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, do_dai);
 	
-		if (gameover) break;
+		//if (gameover) break;
 		delete_position(pointX, pointY, do_dai);
 
 		if (_kbhit())
@@ -76,19 +76,23 @@ void game_level_3()
 		set_snake(pointX, pointY, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating,3);
 
 		gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, do_dai);
-		bool check = snake_touch_obstacle(do_dai, pointX, pointY);
-		gameover = max(check, gameover);
+		bool check_2 = snake_touch_obstacle(do_dai, pointX, pointY);
+		gameover = max(check_2, gameover);
+		bool check_1 = touch_gate();
+		gameover = max(gameover, check_1);
+
 		gameover = max(gameover, check_gameover(pointX, pointY, do_dai, x, y, w, h));
 		Sleep(speed);
 		if (gameover)
 		{
+			system("cls");
 			gotoxy((x + w) / 2 - 9, (y + h) / 2);
 			cout << "Press Enter to return Menu" << endl;
 			cin.get();
 			system("cls");
-			break;;
+			break;
 		}
 	}
-
-	check_first = false;
+	check_eating = false;
+	return;
 }

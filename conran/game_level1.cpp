@@ -10,11 +10,10 @@ void game_level_1()
 {
 	//10 1 100 27
 	init();
-	check_first = true;
+	check1to2 = false;
 	bool dieu_huong = false;
 	while (gameover == false)
 	{
-		if (gameover) break;
 		delete_position(pointX, pointY, do_dai);
 
 		if (_kbhit())
@@ -76,21 +75,26 @@ void game_level_1()
 		//gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
 		gameover = check_gameover(pointX, pointY, do_dai, x, y, w, h);
-		bool check = touch_gate();
+		bool check_1 = touch_gate();
 		gotoxy(1, 1);
 		cout << gameover << endl;
-		gameover = max(check, gameover);;
+		gameover = max(check_1, gameover);;
 		Sleep(speed);
+
+		if (check1to2 == true)
+		{
+			break;
+		}
+
 		if (gameover)
 		{
 			gotoxy((x + w) / 2-9, (y + h) / 2);
 			cout << "Press Enter to return Menu" << endl;
 			cin.get();
 			system("cls");
-			break;;
+			break;
 		}
 	}
 	check_eating = false;
-	check_first = false;
 	return;
 }

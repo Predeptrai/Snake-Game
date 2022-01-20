@@ -37,3 +37,6 @@ extern int check;
 extern int do_dai;
 extern toa_do gate[MAX];
 extern int cnt_gate;
+extern bool check1to2;
+extern bool check2to3 ;
+

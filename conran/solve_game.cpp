@@ -9,6 +9,8 @@ using namespace std;
 
 void init()
 {
+	cnt_gate = 0;
+	check = 2;
 	finish = 0;
 	do_dai = 6;
 	init_duoi(duoi);
@@ -43,7 +45,7 @@ void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x
 				cout << " ";
 			}
 			nguoi_tuyet[i].x++;
-			if (nguoi_tuyet[i].x == x + w - 1)
+			if (nguoi_tuyet[i].x == x + w - 2)
 			{
 				check = false;
 			}
@@ -74,7 +76,7 @@ void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x
 				cout << " ";
 			}
 			nguoi_tuyet[i].x--;
-			if (nguoi_tuyet[i].x == x + 1)
+			if (nguoi_tuyet[i].x == x + 2)
 			{
 				check = true;
 			}
@@ -127,16 +129,26 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 			{
 				gameover = false;
 				system("cls");
+				
 				game_level_2();
+				check1to2 = true;
+				gameover = true;
+				return;
 			}
 			else if (level == 2)
 			{
 				gameover = false;
 				system("cls");
 				game_level_3();
+				check2to3 = true;
+				gameover = true;
+				return;
 			}
 			else
+			{
 				gameover = true;
+				return;
+			}
 		}
 	}
 
@@ -149,6 +161,8 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 	}
 	else
 	{
+		check_eating = true;
+
 		draw_finish_gate(level);
 	}
 
@@ -183,6 +197,21 @@ bool check_gameover(int pointX[], int pointY[], int size, int x, int y, int w, i
 
 	return false;
 }
+bool final_food(int x, int y)
+{
+	if (order_food < 8)
+	{
+		return false;
+	}
+	if (order_food == 8)
+	{
+		if (x >= 10 && x <= 30 && y >= 1 && y <= 9)
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order_food,char duoi[], toa_do& food)
 {
@@ -190,7 +219,7 @@ void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order
 	do {
 		x = rand() % (99 - 11 + 1) + 11;
 		y = rand() % (26 - 2 + 1) + 2;
-	} while (snake_coincide(pointX, pointY, size, x, y) || food_touch_obs(x,y));
+	} while (snake_coincide(pointX, pointY, size, x, y) || food_touch_obs(x,y)||final_food(x,y));
 	food.x = x;
 	food.y = y;
 
