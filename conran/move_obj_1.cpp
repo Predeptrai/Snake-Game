@@ -33,6 +33,8 @@ int x_food, y_food;
 bool gameover = false;
 int check = 2;
 int do_dai = 6;
+toa_do gate[MAX];
+int cnt_gate = 0;
 void sound_phat()
 {
 	while(true)

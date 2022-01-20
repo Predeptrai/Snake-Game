@@ -58,18 +58,8 @@ void draw_obstacle()
 
 void game_level_2()
 {
-	 do_dai = 6;
-	init_duoi(duoi);
-
-	draw(x, y, w, h, 11);
 	draw_obstacle();
-
-	snake_position(pointX, pointY, do_dai);
-	draw_snake(pointX, pointY, do_dai, duoi);
-	srand(time(NULL));
-
-	create_food(x_food, y_food, pointX, pointY, do_dai, order_food, duoi, food);
-
+	init();
 	while (gameover == false && check_first)
 	{
 	

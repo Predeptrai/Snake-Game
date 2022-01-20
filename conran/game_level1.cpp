@@ -9,16 +9,7 @@ using namespace std;
 void game_level_1()
 {
 	//10 1 100 27
-	do_dai = 6;
-	init_duoi(duoi);
-	order_food = 5;
-	x_snake = 50, y_snake = 13;
-	draw(x, y, w, h, 11);
-	snake_position(pointX, pointY, do_dai);
-	draw_snake(pointX, pointY, do_dai, duoi);
-	srand(time(NULL));
-
-	create_food(x_food, y_food, pointX, pointY, do_dai, order_food, duoi, food);
+	init();
 	check_first = true;
 	bool dieu_huong = false;
 	while (gameover == false)
@@ -85,7 +76,9 @@ void game_level_1()
 		//gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
 
 		gameover = check_gameover(pointX, pointY, do_dai, x, y, w, h);
-		bool check = snake_touch_obstacle(do_dai, pointX, pointY);
+		bool check = touch_gate();
+		gotoxy(1, 1);
+		cout << gameover << endl;
 		gameover = max(check, gameover);;
 		Sleep(speed);
 		if (gameover)

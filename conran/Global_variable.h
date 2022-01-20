@@ -15,7 +15,7 @@ extern toa_do obstacle[MAX * MAX];
 extern int cnt_obstacle;
 
 extern int xfinish, yfinish;
-extern int finish;;
+extern bool finish;;
 extern bool check_eating;
 extern bool check_first;
 extern char duoi[MAX];
@@ -35,3 +35,5 @@ extern int x_food, y_food;
 extern bool gameover;
 extern int check;
 extern int do_dai;
+extern toa_do gate[MAX];
+extern int cnt_gate;

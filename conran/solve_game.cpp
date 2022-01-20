@@ -7,6 +7,19 @@
 
 using namespace std;
 
+void init()
+{
+	finish = 0;
+	do_dai = 6;
+	init_duoi(duoi);
+	order_food = 5;
+	x_snake = 50, y_snake = 13;
+	draw(x, y, w, h, 11);
+	snake_position(pointX, pointY, do_dai);
+	draw_snake(pointX, pointY, do_dai, duoi);
+	srand(time(NULL));
+	create_food(x_food, y_food, pointX, pointY, do_dai, order_food, duoi, food);
+}
 void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check, toa_do& food, int order_food, char duoi[])
 {
 	if (check == true)// Qua phai
@@ -96,6 +109,7 @@ void remove_Val_from_1D(int a[], int x, int& n)
 	n--;
 }
 
+
 void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food,bool &check_eating, int level)
 {
 	int tam = size;
@@ -161,6 +175,9 @@ bool snake_bite_itsTail(int pointX[], int pointY[], int size)
 
 bool check_gameover(int pointX[], int pointY[], int size, int x, int y, int w, int h)
 {
+
+	//gotoxy(1, 2);
+	//cout<< snake_bite_itsTail(pointX, pointY, size) << endl;
 	if (snake_wall(pointX[0], pointY[0], x, y, w, h) || snake_bite_itsTail(pointX, pointY, size))
 		return true;
 

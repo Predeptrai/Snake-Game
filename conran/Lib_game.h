@@ -7,6 +7,8 @@
 
 using namespace std;
 
+bool touch_gate();
+void init();
 bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[],int size_nguoi_tuyet,int pointX[],int pointY[],int size);
 void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size, int x, int w,bool &check, toa_do& food, int order_food,char duoi[]);
 void chuong_ngai_vat_nguoi_tuyet(int x, int y, int w, int h, toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size_nguoi_tuyet);

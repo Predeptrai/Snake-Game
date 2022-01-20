@@ -143,19 +143,33 @@ void draw_finish_gate(int level)
 	{
 		gotoxy(xfinish - 1 + i, yfinish - 1);
 		cout << char(219);
-		obstacle[cnt_obstacle].x = xfinish - 1 + i;
-		obstacle[cnt_obstacle].y = yfinish - 1;
-		cnt_obstacle++;
+		gate[cnt_gate].x = xfinish - 1 + i;
+		gate[cnt_gate].y = yfinish - 1;
+		cnt_gate++;
 	}
 	gotoxy(xfinish - 1, yfinish);
 	cout << char(219);
-	obstacle[cnt_obstacle].x = xfinish - 1;
-	obstacle[cnt_obstacle].y = yfinish;
-	cnt_obstacle++;
+	gate[cnt_gate].x = xfinish - 1;
+	gate[cnt_gate].y = yfinish;
+	cnt_gate++;
 	gotoxy(xfinish + 1, yfinish);
 	cout << char(219);
-	obstacle[cnt_obstacle].x = xfinish + 1;
-	obstacle[cnt_obstacle].y = yfinish;
-	cnt_obstacle++;;
+	gate[cnt_gate].x = xfinish + 1;
+	gate[cnt_gate].y = yfinish;
+	cnt_gate++;
+	return;
 }
-
+bool touch_gate()
+{
+	for (int i = 0; i < do_dai; i++)
+	{
+		for (int j = 0; j < cnt_gate; j++)
+		{
+			if (pointX[i] == gate[j].x && pointY[i] == gate[j].y)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
