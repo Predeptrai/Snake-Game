@@ -85,7 +85,11 @@ void game_level_3()
 		Sleep(speed);
 		if (gameover)
 		{
-			check_second = false;
+			check_die = true;
+			Sleep(1);
+			check_die = false;
+
+			//check_second = false;
 			system("cls");
 			gotoxy((x + w) / 2 - 9, (y + h) / 2);
 			cout << "Press Enter to return Menu" << endl;

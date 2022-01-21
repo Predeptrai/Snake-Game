@@ -38,7 +38,7 @@ toa_do gate[MAX];
 int cnt_gate = 0;
 bool check1to2 = false;
 bool check2to3 = false;
-
+bool check_die = false;
 void sound_phat()
 {
 	while(check_first)
@@ -55,9 +55,11 @@ void sound_die()
 {
 	while (check_second)
 	{
-		if(gameover)
+		if (check_die)
+		{
 			PlaySound(TEXT("deadth.wav"), NULL, SND_SYNC);
-		//gameover = false;
+		}
+			//gameover = false;
 	}
 }
 

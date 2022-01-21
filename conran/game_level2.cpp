@@ -135,7 +135,11 @@ void game_level_2()
 
 		if (gameover)
 		{
-			check_second = false;
+			check_die = true;
+			Sleep(1);
+			check_die = false;
+
+			//check_second = false;
 			gotoxy((x + w) / 2 - 9, (y + h) / 2);
 			cout << "Press Enter to return Menu" << endl;
 			cin.get();
