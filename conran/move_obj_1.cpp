@@ -15,6 +15,7 @@ toa_do obstacle[MAX * MAX];
 int cnt_obstacle = 0;
 bool check_eating = false;
 bool check_first = true;
+bool check_second = true;
 char duoi[MAX];
 int x_snake = 50, y_snake = 13;
 int xfinish = 20, yfinish = 4;
@@ -50,6 +51,15 @@ void sound_phat()
 	return;
 }
 
+void sound_die()
+{
+	while (check_second)
+	{
+		if(gameover)
+			PlaySound(TEXT("deadth.wav"), NULL, SND_SYNC);
+		//gameover = false;
+	}
+}
 
 void main()
 {
@@ -57,6 +67,7 @@ void main()
 	FixConsoleWindow();
 
 	thread first(sound_phat);
+	thread second(sound_die);
 	while (true)
 	{
 		gotoxy(75, 10);
@@ -106,7 +117,7 @@ void main()
 				{
 					gameover = false;
 					system("cls");
-					game_level_3();
+					game_level_1();
 					break;
 				}
 				else
@@ -126,7 +137,10 @@ void main()
 	textcolor(7);
 	
 	check_first = false;
+	check_second = false;
 	first.join();
+	second.join();
+
 	_getch();
 	return;
 }

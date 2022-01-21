@@ -18,6 +18,7 @@ extern int xfinish, yfinish;
 extern bool finish;;
 extern bool check_eating;
 extern bool check_first;
+extern bool check_second;
 extern char duoi[MAX];
 extern int x_snake, y_snake;
 extern int x, y, w, h;

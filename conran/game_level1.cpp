@@ -72,8 +72,6 @@ void game_level_1()
 		check_eating = false;
 		set_snake(pointX, pointY, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating,1);
 
-		//gameover = check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, pointX, pointY, size);
-
 		gameover = check_gameover(pointX, pointY, do_dai, x, y, w, h);
 		bool check_1 = touch_gate();
 		gotoxy(1, 1);
@@ -88,6 +86,7 @@ void game_level_1()
 
 		if (gameover)
 		{
+			check_second = false;
 			gotoxy((x + w) / 2-9, (y + h) / 2);
 			cout << "Press Enter to return Menu" << endl;
 			cin.get();
