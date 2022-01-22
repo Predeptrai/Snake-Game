@@ -50,10 +50,21 @@
     <ClInclude Include="Global_variable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="save_load.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="save_result.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="save._load.cpp">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

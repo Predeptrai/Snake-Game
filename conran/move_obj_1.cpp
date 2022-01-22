@@ -74,26 +74,26 @@ void main()
 	{
 		gotoxy(75, 10);
 		textcolor(13);
-		cout << "Menu game" << endl;
+		cout << "MENU GAME" << endl;
 		gotoxy(65, 12);
 		textcolor(7);
-		cout << " New game" << endl;
+		cout << "\t   New game" << endl;
 		gotoxy(65, 15);
 		textcolor(11);
-		cout << " Continue game" << endl;
+		cout << "\t Continue game" << endl;
 		gotoxy(65, 18);
 		textcolor(14);
-		cout << " Highscore" << endl;
+		cout << "\t   Highscore" << endl;
 		gotoxy(65, 21);
 		textcolor(4);
-		cout << " Option" << endl;
+		cout << "\t    Option" << endl;
 		gotoxy(65, 24);
 		textcolor(9);
-		cout << " Quit" << endl;
+		cout << "\t     Quit" << endl;
 		SetColor(7);
 
 		gotoxy(0, 28);
-		cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";
+		cout << " Press 'N' to Start new game \n Press 'C' to Continue playing \n Press 'H' to see the Highest score \n Press 'O' to set game 'Q' to Escape the game.\n";
 
 		int option = 0;
 		do
