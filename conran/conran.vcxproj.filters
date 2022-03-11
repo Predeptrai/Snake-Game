@@ -55,5 +55,14 @@
     <Text Include="data.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="Snake_shape.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Snake_shape2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="SnakeText.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

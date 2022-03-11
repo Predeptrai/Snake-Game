@@ -17,3 +17,8 @@ int whereX();
 int whereY();
 void ShowCur(bool CursorVisibility);
 int inputKey();
+void drawSnakeShape();
+void setConsole();
+void graphicConsole();
+void menuBoard();
+void draw_SnakeTxt();

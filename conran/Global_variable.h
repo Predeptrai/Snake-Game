@@ -3,6 +3,18 @@
 #include <stdio.h>
 #include <conio.h>
 #define MAX 100
+#define WIDTH 1320
+#define HEIGHT 700
+#define X_CENTER WIDTH / 20
+#define Y_CENTER HEIGHT / 32
+// Board game
+#define SPACE 32
+#define ENTER 13
+#define ESC 27
+#define ARROW_UP 72
+#define ARROW_DOWN 80
+#define ARROW_LEFT 75
+#define ARROW_RIGHT 77
 
 using namespace std;
 

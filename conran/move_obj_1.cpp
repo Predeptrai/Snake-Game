@@ -65,35 +65,37 @@ void sound_die()
 
 void main()
 {
-	resizeConsole(1200, 700);
-	FixConsoleWindow();
 
 	thread first(sound_phat);
 	thread second(sound_die);
 	while (true)
 	{
-		gotoxy(75, 10);
+		graphicConsole();
+		/*gotoxy(75, 10);
 		textcolor(13);
-		cout << "Menu game" << endl;
-		gotoxy(65, 12);
+		cout << "Menu game" << endl;*/ // fix after
+		gotoxy(75, 24);
 		textcolor(7);
 		cout << " New game" << endl;
-		gotoxy(65, 15);
+		gotoxy(75, 26);
 		textcolor(11);
 		cout << " Continue game" << endl;
-		gotoxy(65, 18);
+		gotoxy(75, 28);
 		textcolor(14);
 		cout << " Highscore" << endl;
-		gotoxy(65, 21);
+		gotoxy(75, 30);
+		textcolor(14);
+		cout << " Instruction" << endl;
+		gotoxy(75, 32);
 		textcolor(4);
 		cout << " Option" << endl;
-		gotoxy(65, 24);
+		gotoxy(75, 34);
 		textcolor(9);
 		cout << " Quit" << endl;
 		SetColor(7);
 
-		gotoxy(0, 28);
-		cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";
+		/*gotoxy(0, 28);
+		cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";*/
 
 		int option = 0;
 		do
@@ -133,16 +135,20 @@ void main()
 		if (option == 5)
 			break;
 	}
-	gotoxy(60, 30);
+
+	
+
+	/*gotoxy(60, 30);
 	textcolor(13);
 	cout << "Thanks for playing this game <3.\n";
+	*/
 	textcolor(7);
-	
+	gotoxy(0, 37);
 	check_first = false;
 	check_second = false;
 	first.join();
 	second.join();
 
-	_getch();
+	/*_getch();*/
 	return;
 }
