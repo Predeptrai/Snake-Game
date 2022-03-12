@@ -7,6 +7,62 @@
 
 using namespace std;
 
+void move_snake()
+{
+	if (_kbhit())
+	{
+		char c = _getch();
+		if (c == -32)
+		{
+			c = _getch();
+			if (c == 72 && check != 0)
+				check = 1;
+
+			else if (c == 80 && check != 1)
+				check = 0;
+
+			else if (c == 75 && check != 2)
+				check = 3;
+
+			else if (c == 77 && check != 3)
+				check = 2;
+		}
+		else
+		{
+			if (c == 'w' && check != 0)
+				check = 1;
+
+			else if (c == 's' && check != 1)
+				check = 0;
+
+			else if (c == 'a' && check != 2)
+				check = 3;
+
+			else if (c == 'd' && check != 3)
+				check = 2;
+		}
+	}
+
+	switch (check)
+	{
+	case 0:
+		y_snake++;
+		break;
+
+	case 1:
+		y_snake--;
+		break;
+
+	case 2:
+		x_snake++;
+		break;
+
+	case 3:
+		x_snake--;
+		break;
+	}
+	return;
+}
 void init()
 {
 	cnt_gate = 0;
@@ -17,10 +73,10 @@ void init()
 	order_food = 5;
 	x_snake = 50, y_snake = 13;
 	draw(x, y, w, h, 11);
-	snake_position(pointX, pointY, do_dai);
-	draw_snake(pointX, pointY, do_dai, duoi);
+	snake_position(snake, do_dai);
+	draw_snake(snake, do_dai, duoi);
 	srand(time(NULL));
-	create_food(x_food, y_food, pointX, pointY, do_dai, order_food, duoi, food);
+	create_food(x_food, y_food, snake, do_dai, order_food, duoi, food);
 }
 void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check, toa_do& food, int order_food, char duoi[])
 {
@@ -92,38 +148,61 @@ void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x
 }
 
 
-void add_Val_to_1D(int a[], int x, int& n)
+void add_Val_to_1D(toa_do a[], int x, int& n,bool check)
 {
-	for (int i = n; i > 0; i--)
+	if (check == 0)
 	{
-		a[i] = a[i - 1];
+		for (int i = n; i > 0; i--)
+		{
+			a[i].x = a[i - 1].x;
+		}
+		a[0].x = x;
+		n++;
 	}
-	a[0] = x;
-	n++;
+	else
+	{
+		for (int i = n; i > 0; i--)
+		{
+			a[i].y = a[i - 1].y;
+		}
+		a[0].y = x;
+		n++;
+	}
 }
 
-void remove_Val_from_1D(int a[], int x, int& n)
+void remove_Val_from_1D(toa_do a[], int x, int& n, bool check)
 {
-	for (int i = x; i < n; i++)
+	if (check == 0)
 	{
-		a[i] = a[i + 1];
+		for (int i = x; i < n; i++)
+		{
+			a[i].x = a[i + 1].x;
+		}
+		n--;
 	}
-	n--;
+	else
+	{
+		for (int i = x; i < n; i++)
+		{
+			a[i].y = a[i + 1].y;
+		}
+		n--;
+	}
 }
 
 
-void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food,bool &check_eating, int level)
+void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food,bool &check_eating, int level)
 {
 	int tam = size;
-	add_Val_to_1D(pointX, x, tam);
-	add_Val_to_1D(pointY, y, size);
+	add_Val_to_1D(snake, x, tam,0);
+	add_Val_to_1D(snake, y, size,1);
 
-	if (snake_eat_food(pointX[0], pointY[0], food.x, food.y) == false)
+	if (snake_eat_food(snake[0].x, snake[0].y, food.x, food.y) == false)
 	{
 		tam = size;
-		remove_Val_from_1D(pointX, tam - 1, tam);
-		remove_Val_from_1D(pointY, size - 1, size);
-		if (pointX[0] == xfinish && pointY[0] == yfinish && finish)
+		remove_Val_from_1D(snake, tam - 1, tam,0);
+		remove_Val_from_1D(snake, size - 1, size,1);
+		if (snake[0].x == xfinish && snake[0].y == yfinish && finish)
 		{
 			if (level == 1)
 			{
@@ -156,7 +235,7 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 	{
 		check_eating = true;
 
-		create_food(x_food, y_food, pointX, pointY, size, order_food, duoi, food);
+		create_food(x_food, y_food, snake, size, order_food, duoi, food);
 
 	}
 	else
@@ -166,7 +245,7 @@ void set_snake(int pointX[], int pointY[], int& size, int x, int y, int &x_food,
 		draw_finish_gate(level);
 	}
 
-	draw_snake(pointX, pointY, size, duoi);
+	draw_snake(snake, size, duoi);
 }
 
 bool snake_wall(int a, int b, int x, int y, int w, int h)
@@ -177,22 +256,22 @@ bool snake_wall(int a, int b, int x, int y, int w, int h)
 	return true;
 }
 
-bool snake_bite_itsTail(int pointX[], int pointY[], int size)
+bool snake_bite_itsTail(toa_do snake[], int size)
 {
 	for (int i = 1; i < size; i++)
 	{
-		if ((pointX[0] == pointX[i]) && (pointY[0] == pointY[i]))
+		if ((snake[0].x == snake[i].x) && (snake[0].y == snake[i].y))
 			return true;
 	}
 	return false;
 }
 
-bool check_gameover(int pointX[], int pointY[], int size, int x, int y, int w, int h)
+bool check_gameover(toa_do snake[], int size, int x, int y, int w, int h)
 {
 
 	//gotoxy(1, 2);
 	//cout<< snake_bite_itsTail(pointX, pointY, size) << endl;
-	if (snake_wall(pointX[0], pointY[0], x, y, w, h) || snake_bite_itsTail(pointX, pointY, size))
+	if (snake_wall(snake[0].x, snake[0].y, x, y, w, h) || snake_bite_itsTail(snake, size))
 		return true;
 
 	return false;
@@ -213,13 +292,13 @@ bool final_food(int x, int y)
 	return false;
 }
 
-void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order_food,char duoi[], toa_do& food)
+void create_food(int& x, int& y, toa_do snake[], int size,int &order_food,char duoi[], toa_do& food)
 {
 	order_food++;
 	do {
 		x = rand() % (99 - 11 + 1) + 11;
 		y = rand() % (26 - 2 + 1) + 2;
-	} while (snake_coincide(pointX, pointY, size, x, y) || food_touch_obs(x,y)||final_food(x,y));
+	} while (snake_coincide(snake, size, x, y) || food_touch_obs(x,y)||final_food(x,y));
 	food.x = x;
 	food.y = y;
 
@@ -231,11 +310,11 @@ void create_food(int& x, int& y, int pointX[], int pointY[], int size,int &order
 	SetColor(7);
 }
 
-bool snake_coincide(int pointX[], int pointY[], int size, int x, int y)
+bool snake_coincide(toa_do snake[], int size, int x, int y)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if ((x == pointX[i]) && (y == pointY[i]))
+		if ((x == snake[i].x) && (y == snake[i].y))
 			return true;
 	}
 	return false;
@@ -249,13 +328,13 @@ bool snake_eat_food(int x, int y, int x_food, int y_food)
 	}
 	return false;
 }
-bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[], int size_nguoi_tuyet, int pointX[], int pointY[], int size)
+bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[], int size_nguoi_tuyet, toa_do snake[MAX], int size)
 {
 	for (int i = 0; i < size_nguoi_tuyet; i++)
 	{
 		for (int j = 0; j < size; j++)
 		{
-			if (pointX[j] == nguoi_tuyet[i].x && pointY[j] == nguoi_tuyet[i].y)
+			if (snake[j].x == nguoi_tuyet[i].x && snake[j].y == nguoi_tuyet[i].y)
 			{
 				
 				return true;
@@ -277,13 +356,13 @@ void init_duoi(char duoi[])
 	return;
 }
 
-bool snake_touch_obstacle(int size, int pointX[], int pointY[])
+bool snake_touch_obstacle(int size, toa_do snake[])
 {
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < cnt_obstacle; j++)
 		{
-			if (pointX[i] == obstacle[j].x && pointY[i] == obstacle[j].y)
+			if (snake[i].x == obstacle[j].x && snake[i].y == obstacle[j].y)
 				return true;
 		}
 	}	

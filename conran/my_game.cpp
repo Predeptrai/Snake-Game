@@ -100,39 +100,39 @@ void draw(int x, int y, int w, int h, int color)
 
 }
 
-void draw_snake(int pointX[], int pointY[], int& size, char duoi[])
+void draw_snake(toa_do snake[], int& size, char duoi[])
 {
 	for (int i = 0; i < size; i++)
 	{
 		if (i == 0)
 		{
-			gotoxy(pointX[i], pointY[i]);
+			gotoxy(snake[i].x, snake[i].y);
 			cout << duoi[i];
 		}
 		else
 		{
-			gotoxy(pointX[i], pointY[i]);
+			gotoxy(snake[i].x, snake[i].y);
 			cout << duoi[i];
 		}
 	}
 }
 
-void snake_position(int pointX[], int pointY[], int& size)
+void snake_position(toa_do snake[], int& size)
 {
 	int x = 50, y = 13;
 	for (int i = 0; i < size; i++)
 	{
-		pointX[i] = x;
-		pointY[i] = y;
+		snake[i].x = x;
+		snake[i].y = y;
 		x--;
 	}
 }
 
-void delete_position(int pointX[], int pointY[], int size)
+void delete_position(toa_do snake[], int size)
 {
 	for (int i = 0; i < size; i++)
 	{
-		gotoxy(pointX[i], pointY[i]);
+		gotoxy(snake[i].x, snake[i].y);
 		cout << " ";
 	}
 }
@@ -166,7 +166,7 @@ bool touch_gate()
 	{
 		for (int j = 0; j < cnt_gate; j++)
 		{
-			if (pointX[i] == gate[j].x && pointY[i] == gate[j].y)
+			if (snake[i].x == gate[j].x && snake[i].y == gate[j].y)
 			{
 				return true;
 			}

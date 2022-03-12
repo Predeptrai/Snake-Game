@@ -16,6 +16,8 @@ int cnt_obstacle = 0;
 bool check_eating = false;
 bool check_first = true;
 bool check_second = true;
+
+toa_do snake[MAX];
 char duoi[MAX];
 int x_snake = 50, y_snake = 13;
 int xfinish = 20, yfinish = 4;
@@ -24,6 +26,7 @@ int x = 10, y = 1, w = 100, h = 27;
 int pointX[MAX], pointY[MAX];
 int order_food = 5;
 int speed = 50;
+
 // Nguoi tuyet
 int size_nguoi_tuyet = 7;
 toa_do nguoi_tuyet[MAX];
@@ -36,6 +39,7 @@ int check = 2;
 int do_dai = 6;
 toa_do gate[MAX];
 int cnt_gate = 0;
+
 bool check1to2 = false;
 bool check2to3 = false;
 bool check_die = false;
