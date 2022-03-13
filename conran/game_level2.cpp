@@ -62,38 +62,14 @@ void game_level_2()
 	draw_obstacle();
 	init();
 	check2to3 = false;
-	while (gameover == false)
+	gameover_round_2 = false;
+	while (gameover_round_2 == false|| loop_thread_snake == true)
 	{
-	
-		delete_position(snake, do_dai);
-
-		move_snake();
-
-		check_eating = false;
-		set_snake(snake, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating,2);
-
-		gameover = snake_touch_obstacle(do_dai,snake);
-		bool check_1 = touch_gate();
-		gameover = max(gameover, check_1);
-		gameover = max(gameover, check_gameover(snake, do_dai, x, y, w, h));
-		Sleep(speed);
-
+		check1to2 = false;
 		if (check2to3)
 		{
-			break;
-		}
-
-		if (gameover)
-		{
-			check_die = true;
-			Sleep(1);
-			check_die = false;
-
-			//check_second = false;
-			gotoxy((x + w) / 2 - 9, (y + h) / 2);
-			cout << "Press Enter to return Menu" << endl;
-			cin.get();
-			system("cls");
+			gameover_round_2 = true;
+			game_level_3();
 			break;
 		}
 	}

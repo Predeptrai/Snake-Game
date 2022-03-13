@@ -54,4 +54,24 @@ extern bool check1to2;
 extern bool check2to3 ;
 extern bool check_die;
 extern toa_do snake[MAX];
+extern bool gameover_round_1;
+extern bool gameover_round_2;
+extern bool gameover_round_3;
+extern bool block;
+extern bool check_snake;
+extern bool check_nguoi_tuyet_thread_1 ;
+extern bool check_nguoi_tuyet_thread_2;
+extern bool loop_thread_snake;
+extern bool done_pre_snake;
+extern bool done_now_snake;
+extern toa_do pre_snake[MAX];
+
+extern toa_do pre_nguoi_tuyet[MAX];
+extern bool done_pre_nguoi_tuyet;
+extern bool done_now_nguoi_tuyet;
+
+extern int size_ao_nguoi_tuyet;
+extern bool loop_main_thread;
+
+
 

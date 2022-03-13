@@ -10,14 +10,51 @@
 using namespace std;
 
 
-void chuong_ngai_vat_nguoi_tuyet(int x, int y, int w, int h, toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size_nguoi_tuyet)
+void chuong_ngai_vat_nguoi_tuyet(int x, int y, int w, int h, toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int& size_nguoi_tuyet)
 {
 	y += h / 2-1;
+
+	gotoxy(x + 3, y);
+	cout << "*";
+	ve_nguoi_tuyet[7] = '*';
+	nguoi_tuyet[7].x = x + 3;
+	nguoi_tuyet[7].y = y ;
+
+	gotoxy(x + 2, y + 1);
+	cout << "*";
+	ve_nguoi_tuyet[8] = '*';
+	nguoi_tuyet[8].x = x + 2;
+	nguoi_tuyet[8].y = y+1;
+	
+	gotoxy(x + 4, y + 1);
+	cout << "*";
+	ve_nguoi_tuyet[9] = '*';
+	nguoi_tuyet[9].x = x + 4;
+	nguoi_tuyet[9].y = y + 1;
+
+
 	gotoxy(x + 3, y + 1);
 	cout << "A";
 	ve_nguoi_tuyet[0] = 'A';
 	nguoi_tuyet[0].x = x + 3;
 	nguoi_tuyet[0].y = y + 1;
+
+
+	gotoxy(x + 1, y + 2);
+	cout << "*";
+
+	ve_nguoi_tuyet[10] = '*';
+	nguoi_tuyet[10].x = x + 1;
+	nguoi_tuyet[10].y = y + 2;
+
+	gotoxy(x + 5, y + 2);
+	cout << "*";
+
+	ve_nguoi_tuyet[11] = '*';
+	nguoi_tuyet[11].x = x + 5;
+	nguoi_tuyet[11].y = y + 2;
+
+
 	gotoxy(x + 2, y + 2);
 	cout << "/";
 
@@ -39,6 +76,22 @@ void chuong_ngai_vat_nguoi_tuyet(int x, int y, int w, int h, toa_do nguoi_tuyet[
 	nguoi_tuyet[3].x = x + 4;
 	nguoi_tuyet[3].y = y + 2;
 
+
+
+	gotoxy(x + 1, y + 3);
+	cout << "*";
+
+	ve_nguoi_tuyet[12] = '*';
+	nguoi_tuyet[12].x = x + 1;
+	nguoi_tuyet[12].y = y + 3;
+
+	gotoxy(x + 5, y + 3);
+	cout << "*";
+
+	ve_nguoi_tuyet[13] = '*';
+	nguoi_tuyet[13].x = x + 5;
+	nguoi_tuyet[13].y = y + 3;
+
 	gotoxy(x + 2, y + 3);
 	cout << "@";
 
@@ -59,6 +112,47 @@ void chuong_ngai_vat_nguoi_tuyet(int x, int y, int w, int h, toa_do nguoi_tuyet[
 	ve_nguoi_tuyet[6] = '@';
 	nguoi_tuyet[6].x = x + 4;
 	nguoi_tuyet[6].y = y + 3;
+
+	gotoxy(x + 1, y + 4);
+	cout << "*";
+
+	ve_nguoi_tuyet[14] = '*';
+	nguoi_tuyet[14].x = x + 1;
+	nguoi_tuyet[14].y = y + 4;
+
+	gotoxy(x + 2, y + 4);
+	cout << "*";
+
+	ve_nguoi_tuyet[15] = '*';
+	nguoi_tuyet[15].x = x + 2;
+	nguoi_tuyet[15].y = y + 4;
+
+	size_nguoi_tuyet = 15;
+
+	gotoxy(x + 3, y + 4);
+	cout << "*";
+
+	ve_nguoi_tuyet[++size_nguoi_tuyet] = '*';
+	nguoi_tuyet[size_nguoi_tuyet].x = x + 3;
+	nguoi_tuyet[size_nguoi_tuyet].y = y + 4;
+
+	gotoxy(x + 4, y + 4);
+	cout << "*";
+
+	ve_nguoi_tuyet[++size_nguoi_tuyet] = '*';
+	nguoi_tuyet[size_nguoi_tuyet].x = x + 4;
+	nguoi_tuyet[size_nguoi_tuyet].y = y + 4;
+
+	gotoxy(x + 5, y + 4);
+	cout << "*";
+
+	ve_nguoi_tuyet[++size_nguoi_tuyet] = '*';
+	nguoi_tuyet[size_nguoi_tuyet].x = x + 5;
+	nguoi_tuyet[size_nguoi_tuyet].y = y + 4;
+
+	
+	size_nguoi_tuyet = 7;
+	return;
 }
 void chuong_ngai_vat_nguoi(int x, int y, int w, int h)
 {
@@ -97,7 +191,7 @@ void draw(int x, int y, int w, int h, int color)
 		gotoxy(x + w, iy);
 		cout << char(219);
 	}
-
+	return;
 }
 
 void draw_snake(toa_do snake[], int& size, char duoi[])

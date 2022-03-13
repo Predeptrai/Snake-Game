@@ -7,6 +7,23 @@
 
 using namespace std;
 
+
+void check_case_snake_dead(bool* ok, int round)
+{
+	bool check_1 = touch_gate();
+	*ok = max(*ok, check_gameover(snake, do_dai, x, y, w, h));
+	*ok = max(check_1, *ok);
+	if (round == 2|| round == 3)
+	{
+		*ok = max(*ok, snake_touch_obstacle(do_dai, snake));
+	}
+	if (round == 3)
+	{
+
+		*ok = max(*ok,check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, snake, do_dai));
+	}
+	return;
+}
 void move_snake()
 {
 	if (_kbhit())
@@ -78,8 +95,19 @@ void init()
 	srand(time(NULL));
 	create_food(x_food, y_food, snake, do_dai, order_food, duoi, food);
 }
+void save(toa_do a[MAX], toa_do b[MAX], int dodai)
+{
+	for (int i = 0; i < dodai; i++)
+	{
+		a[i] = b[i];
+	}
+	return;
+}
+
 void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check, toa_do& food, int order_food, char duoi[])
 {
+	gotoxy(23, 20);
+	cout << order_food << endl;
 	if (check == true)// Qua phai
 	{
 		//Xoa nhan vat
@@ -206,21 +234,16 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 		{
 			if (level == 1)
 			{
-				gameover = false;
+				gameover_round_1 = true;
 				system("cls");
-				
-				game_level_2();
 				check1to2 = true;
-				gameover = true;
 				return;
 			}
 			else if (level == 2)
 			{
-				gameover = false;
+				gameover_round_2 = true;
 				system("cls");
-				game_level_3();
 				check2to3 = true;
-				gameover = true;
 				return;
 			}
 			else
@@ -250,7 +273,6 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 
 bool snake_wall(int a, int b, int x, int y, int w, int h)
 {
-
 	if (a > x && a < x + w && b>y && b < y + h)
 		return false;
 	return true;
@@ -261,7 +283,9 @@ bool snake_bite_itsTail(toa_do snake[], int size)
 	for (int i = 1; i < size; i++)
 	{
 		if ((snake[0].x == snake[i].x) && (snake[0].y == snake[i].y))
+		{
 			return true;
+		}
 	}
 	return false;
 }
@@ -295,12 +319,15 @@ bool final_food(int x, int y)
 void create_food(int& x, int& y, toa_do snake[], int size,int &order_food,char duoi[], toa_do& food)
 {
 	order_food++;
+	int tam_x, tam_y;
 	do {
-		x = rand() % (99 - 11 + 1) + 11;
-		y = rand() % (26 - 2 + 1) + 2;
+		tam_x = rand() % (99 - 11 + 1) + 11;
+		tam_y = rand() % (26 - 2 + 1) + 2;
 	} while (snake_coincide(snake, size, x, y) || food_touch_obs(x,y)||final_food(x,y));
-	food.x = x;
-	food.y = y;
+	food.x = tam_x;
+	food.y = tam_y;
+	tam_x = x;
+	tam_y = y;
 
 	int i = rand() % (15 - 1 + 1) + 1;
 	SetColor(i);

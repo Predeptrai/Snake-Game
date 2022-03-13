@@ -17,7 +17,8 @@ bool check_eating = false;
 bool check_first = true;
 bool check_second = true;
 
-toa_do snake[MAX];
+toa_do snake[MAX],pre_snake[MAX];
+bool done_pre_snake = false, done_now_snake = false;
 char duoi[MAX];
 int x_snake = 50, y_snake = 13;
 int xfinish = 20, yfinish = 4;
@@ -28,13 +29,25 @@ int order_food = 5;
 int speed = 50;
 
 // Nguoi tuyet
-int size_nguoi_tuyet = 7;
-toa_do nguoi_tuyet[MAX];
+int size_nguoi_tuyet = 7,size_ao_nguoi_tuyet=19;
+toa_do nguoi_tuyet[MAX],pre_nguoi_tuyet[MAX];
+bool done_pre_nguoi_tuyet = false, done_now_nguoi_tuyet = false;
 toa_do food;
 char ve_nguoi_tuyet[MAX];
 bool check_nguoi_tuyet = true;
+bool check_nguoi_tuyet_thread_1 = true;
+bool check_nguoi_tuyet_thread_2 = false;
+bool loop_main_thread = true;
 int x_food, y_food;
+
 bool gameover = false;
+bool block = true;
+bool gameover_round_1 = true;
+bool gameover_round_2 = true;
+bool gameover_round_3 = true;
+bool check_snake = true;
+bool loop_thread_snake = false;
+
 int check = 2;
 int do_dai = 6;
 toa_do gate[MAX];
@@ -45,7 +58,7 @@ bool check2to3 = false;
 bool check_die = false;
 void sound_phat()
 {
-	while(check_first)
+	while(loop_main_thread)
 	{
 		if (check_eating)
 		{
@@ -57,7 +70,7 @@ void sound_phat()
 
 void sound_die()
 {
-	while (check_second)
+	while (loop_main_thread)
 	{
 		if (check_die)
 		{
@@ -66,12 +79,14 @@ void sound_die()
 			//gameover = false;
 	}
 }
-
+thread first(sound_phat);
+thread second(sound_die);
+thread snake_round(snake_thread);
+thread snow_man(nguoi_tuyet_thread);
 void main()
 {
 
-	thread first(sound_phat);
-	thread second(sound_die);
+
 	while (true)
 	{
 		graphicConsole();
@@ -123,9 +138,9 @@ void main()
 			{
 				if (option == 1)
 				{
-					gameover = false;
+
 					system("cls");
-					game_level_1();
+					game_level_3();
 					break;
 				}
 				else
@@ -148,11 +163,10 @@ void main()
 	*/
 	textcolor(7);
 	gotoxy(0, 37);
-	check_first = false;
-	check_second = false;
+	loop_main_thread = false;
+	check_nguoi_tuyet_thread_1 = false;
 	first.join();
 	second.join();
-
 	/*_getch();*/
 	return;
 }
