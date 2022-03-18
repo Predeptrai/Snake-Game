@@ -14,7 +14,7 @@ using namespace std;
 toa_do obstacle[MAX * MAX];
 int cnt_obstacle = 0;
 bool check_eating = false;
-bool check_first = false;
+bool check_first = true;
 bool check_second = true;
 
 toa_do snake[MAX],pre_snake[MAX];
