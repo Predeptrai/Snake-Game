@@ -14,7 +14,7 @@ using namespace std;
 toa_do obstacle[MAX * MAX];
 int cnt_obstacle = 0;
 bool check_eating = false;
-bool check_first = true;
+bool check_first = false;
 bool check_second = true;
 
 toa_do snake[MAX],pre_snake[MAX];
@@ -58,19 +58,21 @@ bool check2to3 = false;
 bool check_die = false;
 void sound_phat()
 {
-	while(loop_main_thread)
+	while(check_first)
 	{
 		if (check_eating)
 		{
 			PlaySound(TEXT("sound_eating"), NULL, SND_SYNC);
 		}
+		gotoxy(1, 1);
+		cout << "sdfvlkjndfvkjnd" << endl;
 	}
 	return;
 }
 
 void sound_die()
 {
-	while (loop_main_thread)
+	while (check_second)
 	{
 		if (check_die)
 		{
@@ -79,14 +81,14 @@ void sound_die()
 			//gameover = false;
 	}
 }
-thread first(sound_phat);
-thread second(sound_die);
-thread snake_round(snake_thread);
-thread snow_man(nguoi_tuyet_thread);
+
 void main()
 {
 
-
+	thread first(sound_phat);
+	thread second(sound_die);
+	thread snake_round(snake_thread);
+	thread snow_man(nguoi_tuyet_thread);
 	while (true)
 	{
 		graphicConsole();
@@ -140,7 +142,7 @@ void main()
 				{
 
 					system("cls");
-					game_level_3();
+					game_level_1();
 					break;
 				}
 				else
@@ -165,8 +167,12 @@ void main()
 	gotoxy(0, 37);
 	loop_main_thread = false;
 	check_nguoi_tuyet_thread_1 = false;
+	check_second = false;
+	check_first = false;
 	first.join();
 	second.join();
+	snake_round.join();
+	snow_man.join();
 	/*_getch();*/
 	return;
 }

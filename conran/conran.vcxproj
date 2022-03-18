@@ -163,6 +163,10 @@
     <Text Include="Snake_shape.txt" />
     <Text Include="Snake_shape2.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="deadth.wav" />
+    <Media Include="sound_eating.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

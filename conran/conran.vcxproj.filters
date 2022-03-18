@@ -68,4 +68,12 @@
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="deadth.wav">
+      <Filter>Sound</Filter>
+    </Media>
+    <Media Include="sound_eating.wav">
+      <Filter>Sound</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
