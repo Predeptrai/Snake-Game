@@ -19,7 +19,7 @@ void snake_thread()
 			
 			loop_thread_snake = true;
 			int round = 0;
-			bool* tam=new bool;
+			bool* tam = new bool;
 			if (gameover_round_1 == false)
 			{
 				tam = &gameover_round_1;

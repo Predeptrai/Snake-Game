@@ -48,14 +48,17 @@ bool gameover_round_3 = true;
 bool check_snake = true;
 bool loop_thread_snake = false;
 
+//check valid
 int check = 2;
 int do_dai = 6;
 toa_do gate[MAX];
 int cnt_gate = 0;
 
+// direction
 bool check1to2 = false;
 bool check2to3 = false;
 bool check_die = false;
+
 void sound_phat()
 {
 	while(check_first)
@@ -82,7 +85,7 @@ void sound_die()
 
 void main()
 {
-
+	ShowCur(0);
 	thread first(sound_phat);
 	thread second(sound_die);
 	thread snake_round(snake_thread);
@@ -90,31 +93,6 @@ void main()
 	while (true)
 	{
 		graphicConsole();
-		/*gotoxy(75, 10);
-		textcolor(13);
-		cout << "Menu game" << endl;*/ // fix after
-		gotoxy(75, 24);
-		textcolor(7);
-		cout << "   New game" << endl;
-		gotoxy(75, 26);
-		textcolor(11);
-		cout << " Continue game" << endl;
-		gotoxy(75, 28);
-		textcolor(14);
-		cout << "   Highscore" << endl;
-		gotoxy(75, 30);
-		textcolor(14);
-		cout << "  Instruction" << endl;
-		gotoxy(75, 32);
-		textcolor(4);
-		cout << "    Option" << endl;
-		gotoxy(75, 34);
-		textcolor(9);
-		cout << "     Quit" << endl;
-		SetColor(7);
-
-		/*gotoxy(0, 28);
-		cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";*/
 
 		int option = 0;
 		do

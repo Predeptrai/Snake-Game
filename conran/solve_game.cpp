@@ -94,6 +94,7 @@ void init()
 	draw_snake(snake, do_dai, duoi);
 	srand(time(NULL));
 	create_food(x_food, y_food, snake, do_dai, order_food, duoi, food);
+
 }
 void save(toa_do a[MAX], toa_do b[MAX], int dodai)
 {

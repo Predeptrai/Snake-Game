@@ -101,7 +101,26 @@ void menuBoard()
 	gotoxy(x + 7, y + 4);
 	textcolor(14);
 	cout << "|_|_|_|_____|_|___|_____|\n";
+
+	gotoxy(75, 24);
 	textcolor(7);
+	cout << "   New game" << endl;
+	gotoxy(75, 26);
+	textcolor(11);
+	cout << " Continue game" << endl;
+	gotoxy(75, 28);
+	textcolor(14);
+	cout << "   Highscore" << endl;
+	gotoxy(75, 30);
+	textcolor(14);
+	cout << "  Instruction" << endl;
+	gotoxy(75, 32);
+	textcolor(4);
+	cout << "     Speed" << endl;
+	gotoxy(75, 34);
+	textcolor(9);
+	cout << "     Exit" << endl;
+	SetColor(7);
 
 	cout << endl << endl;
 	return;
@@ -111,21 +130,26 @@ void highScoreBoard() {
 	bool direction = 1;
 	system("cls");
 	draw(30, 11, 110, 26, 7);
-	draw(30, 4, 110, 7, 7);
+	draw(30, 2, 110, 9, 7);
 	draw(100, 11, 40, 26, 7);
 	draw(100, 11, 20, 26, 7);
+
 	textcolor(12);
-	gotoxy(57, 5);
-	cout << " _____            _   _     _\n";
-	gotoxy(57, 6);
-	cout << "|_   _|___ ___   | |_|_|___| |_    ___ ___ ___ ___ ___\n";
-	gotoxy(57, 7);
-	cout << "  | | | . | . |  |   | | . |   |  |_ -|  _| . |  _| -_|\n";
-	gotoxy(57, 8);
-	cout << "  |_| |___|  _|  |_|_|_|_  |_|_|  |___|___|___|_| |___|\n";
-	gotoxy(57, 9);
-	cout << "          |_|          |___|\n";
+	gotoxy(55, 4);
+	cout << "  ______               __  ___       __   _____";
+	gotoxy(55, 5);
+	cout << " /_  __/___  ____     / / / (_)___ _/ /_ / ___/_________  ________";
+	gotoxy(55, 6);
+	cout << "  / / / __ \\/ __ \\   / /_/ / / __ `/ __ \\\\__ \\/ ___/ __ \\/ ___/ _ \\";
+	gotoxy(55, 7);
+	cout << " / / / /_/ / /_/ /  / __  / / /_/ / / / /__/ / /__/ /_/ / /  /  __/";
+	gotoxy(55, 8);
+	cout << "/_/  \\____/ .___/  /_/ /_/_/\\__, /_/ /_/____/\\___/\\____/_/   \\___/";
+	gotoxy(55, 9);
+	cout << "	        /_/               /____/";
 	textcolor(7);
+	
+
 	gotoxy(30, 39);
 	cout << "Press ESC to return Menu!!";
 
