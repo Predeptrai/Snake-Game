@@ -67,6 +67,9 @@
     <Text Include="SnakeText.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="MenuText.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="deadth.wav">

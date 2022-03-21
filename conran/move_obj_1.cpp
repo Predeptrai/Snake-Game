@@ -64,8 +64,6 @@ void sound_phat()
 		{
 			PlaySound(TEXT("sound_eating"), NULL, SND_SYNC);
 		}
-		gotoxy(1, 1);
-		cout << "sdfvlkjndfvkjnd" << endl;
 	}
 	return;
 }
@@ -97,22 +95,22 @@ void main()
 		cout << "Menu game" << endl;*/ // fix after
 		gotoxy(75, 24);
 		textcolor(7);
-		cout << " New game" << endl;
+		cout << "   New game" << endl;
 		gotoxy(75, 26);
 		textcolor(11);
 		cout << " Continue game" << endl;
 		gotoxy(75, 28);
 		textcolor(14);
-		cout << " Highscore" << endl;
+		cout << "   Highscore" << endl;
 		gotoxy(75, 30);
 		textcolor(14);
-		cout << " Instruction" << endl;
+		cout << "  Instruction" << endl;
 		gotoxy(75, 32);
 		textcolor(4);
-		cout << " Option" << endl;
+		cout << "    Option" << endl;
 		gotoxy(75, 34);
 		textcolor(9);
-		cout << " Quit" << endl;
+		cout << "     Quit" << endl;
 		SetColor(7);
 
 		/*gotoxy(0, 28);
@@ -140,13 +138,13 @@ void main()
 			{
 				if (option == 1)
 				{
-
 					system("cls");
 					game_level_1();
 					break;
 				}
-				else
+				else if(option == 3)
 				{
+					highScoreBoard();
 					break;
 				}
 			}

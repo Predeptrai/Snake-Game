@@ -85,26 +85,66 @@ void menuBoard()
 {
 	// x: toa do bat dau ve board menu
 	// y: toa do chieu cao
-	// w: toa do be rong cua board menu
-	// h: toa do chieu sau cua board menu
-	int x = X_CENTER - 3, y = 18, w = X_CENTER + 35, h = y + 17;
-	for (int i = x; i <= w; i++)
-	{
-		gotoxy(i, y);
-		cout << char(219);
-		gotoxy(i, 2 * y);
-		cout << char(219);
-	}
 
-	for (int i = y + 1; i <= h; i++)
-	{
-		gotoxy(x, i);
-		cout << char(219);
-		gotoxy(w, i);
-		cout << char(219);
-	}
+	int x = X_CENTER - 3, y = 18;
+	//draw_Box(x, y, 18, 37);
+	draw(x, y, 37, 18, 7);
+	gotoxy(x + 7, y + 1);
+	textcolor(11);
+	cout << " _____ _____ _____ _____\n";
+	gotoxy(x + 7, y + 2);
+	textcolor(12);
+	cout << "|     |   __|   | |  |  |\n";
+	gotoxy(x + 7, y + 3);
+	textcolor(13);
+	cout << "| | | |   __| | | |  |  |\n";
+	gotoxy(x + 7, y + 4);
+	textcolor(14);
+	cout << "|_|_|_|_____|_|___|_____|\n";
+	textcolor(7);
+
 	cout << endl << endl;
 	return;
+}
+
+void highScoreBoard() {
+	bool direction = 1;
+	system("cls");
+	draw(30, 11, 110, 26, 7);
+	draw(30, 4, 110, 7, 7);
+	draw(100, 11, 40, 26, 7);
+	draw(100, 11, 20, 26, 7);
+	textcolor(12);
+	gotoxy(57, 5);
+	cout << " _____            _   _     _\n";
+	gotoxy(57, 6);
+	cout << "|_   _|___ ___   | |_|_|___| |_    ___ ___ ___ ___ ___\n";
+	gotoxy(57, 7);
+	cout << "  | | | . | . |  |   | | . |   |  |_ -|  _| . |  _| -_|\n";
+	gotoxy(57, 8);
+	cout << "  |_| |___|  _|  |_|_|_|_  |_|_|  |___|___|___|_| |___|\n";
+	gotoxy(57, 9);
+	cout << "          |_|          |___|\n";
+	textcolor(7);
+	gotoxy(30, 39);
+	cout << "Press ESC to return Menu!!";
+
+	for (int i = 13; i <= 35; i++) {
+		gotoxy(32, i);
+		cout << "a";
+		Sleep(100);
+	}
+
+	while (direction) {
+		if (_kbhit()) {
+			char c = _getch();
+			if (c == 27) {
+				direction = 0;
+				system("cls");
+				return;
+			}
+		}
+	}
 }
 
 // Hàm thay đổi kích cỡ của khung cmd với tham số truyền vào là chiều cao, chiều rộng.

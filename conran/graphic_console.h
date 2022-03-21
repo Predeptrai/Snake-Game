@@ -22,3 +22,4 @@ void setConsole();
 void graphicConsole();
 void menuBoard();
 void draw_SnakeTxt();
+void highScoreBoard();
