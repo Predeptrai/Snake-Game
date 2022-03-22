@@ -18,6 +18,8 @@ void draw(int x, int y, int w, int h, int color);
 void drawBattery(int x, int y, int w, int h, int color);
 void drawLevelBar(int x, int y, int w, int h, int color);
 void drawSymbolSnake();
+void drawDirectionBox(int x, int y, int w, int h, int color);
+void drawContentBox(int x, int y, int w, int h, int color);
 
 void draw_snake(toa_do snake[MAX], int& size, char duoi[]);
 void snake_position(toa_do snake[MAX], int& size);

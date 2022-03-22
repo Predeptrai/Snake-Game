@@ -92,8 +92,10 @@ void init()
 	draw(x, y, w, h, 11);
 	drawBattery(x, y, w, h, 11);
 	drawLevelBar(x, y, w, h, 11);
+	drawDirectionBox(x, y, w, h, 11);
 	snake_position(snake, do_dai);
 	drawSymbolSnake();
+	drawContentBox(x, y, w, h, 11);
 	draw_snake(snake, do_dai, duoi);
 	srand(time(NULL));
 	create_food(x_food, y_food, snake, do_dai, order_food, duoi, food);

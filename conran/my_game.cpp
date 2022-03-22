@@ -195,6 +195,50 @@ void draw(int x, int y, int w, int h, int color)
 	return;
 }
 
+void drawDirectionBox(int x, int y, int w, int h, int color)
+{
+	textcolor(12);
+
+	for (int ix = x + w + 3; ix <= x + w + 66; ix++)
+	{
+		gotoxy(ix, y);
+		cout << char(219);
+		gotoxy(ix, y + h);
+		cout << char(219);
+	}
+
+	for (int iy = y; iy <= y + h; iy++)
+	{
+		gotoxy(x + w + 3, iy);
+		cout << char(219);
+		gotoxy(x + w + 66, iy);
+		cout << char(219);
+	}
+	return;
+}
+
+void drawContentBox(int x, int y, int w, int h, int color)
+{
+	textcolor(12);
+
+	for (int ix = x + w + 3; ix <= x + w + 66; ix++)
+	{
+		gotoxy(ix, y + h + 2);
+		cout << char(219);
+		gotoxy(ix, y + h + 12);
+		cout << char(219);
+	}
+
+	for (int iy = y + h + 3; iy <= y + h + 12; iy++)
+	{
+		gotoxy(x + w + 3, iy);
+		cout << char(219);
+		gotoxy(x + w + 66, iy);
+		cout << char(219);
+	}
+	return;
+}
+
 void drawBattery(int x, int y, int w, int h, int color)
 {
 	textcolor(56);
