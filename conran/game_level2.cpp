@@ -69,6 +69,7 @@ void game_level_2()
 		if (check2to3)
 		{
 			gameover_round_2 = true;
+			speed++;
 			game_level_3();
 			break;
 		}

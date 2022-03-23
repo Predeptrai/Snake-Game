@@ -61,7 +61,7 @@ void snake_thread()
 				break;
 			}
 
-			Sleep(speed);
+			Sleep(100 / speed);
 			if (*tam)
 			{
 				check_die = true;
@@ -76,6 +76,7 @@ void snake_thread()
 		}
 	
 		loop_thread_snake = false;
+		Sleep(1);
 	}
 
 }
@@ -108,6 +109,7 @@ void check_nguoi_tuyet_va_ran_thread()
 				gameover_round_3 = max(gameover_round_3, check_nguoi_tuyet_va_ran(pre_nguoi_tuyet, size_nguoi_tuyet, pre_snake, do_dai));
 			}
 		}
+		Sleep(1);
 	}
 }
 void nguoi_tuyet_thread()
@@ -127,5 +129,6 @@ void nguoi_tuyet_thread()
 
 			Sleep(10);
 		}
+		Sleep(1);
 	}
 }

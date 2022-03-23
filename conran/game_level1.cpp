@@ -23,6 +23,7 @@ void game_level_1()
 		if (check1to2 == true)
 		{
 			loop_thread_snake = false;
+			speed++;
 			game_level_2();
 		}
 	}

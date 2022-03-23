@@ -82,7 +82,6 @@ void sound_die()
 
 void main()
 {
-
 	thread first(sound_phat);
 	thread second(sound_die);
 	thread snake_round(snake_thread);
@@ -139,6 +138,7 @@ void main()
 				if (option == 1)
 				{
 					system("cls");
+					speed = 1;
 					game_level_1();
 					break;
 				}

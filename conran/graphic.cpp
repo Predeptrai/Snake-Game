@@ -191,6 +191,7 @@ void gotoxy(int x, int y)
 	COORD Cursor_an_Pos = { x , y };
 	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(hConsoleOutput, Cursor_an_Pos);
+	ShowCur(0);
 }
 
 // Hàm xóa màn hình.

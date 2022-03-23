@@ -262,7 +262,6 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 	else if (order_food <= 7)
 	{
 		check_eating = true;
-
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
 
 	}
