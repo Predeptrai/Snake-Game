@@ -233,8 +233,8 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 	if (snake_eat_food(snake[0].x, snake[0].y, food.x, food.y) == false)
 	{
 		tam = size;
-		remove_Val_from_1D(snake, tam - 1, tam,0);
-		remove_Val_from_1D(snake, size - 1, size,1);
+		remove_Val_from_1D(snake, tam - 1, tam, 0);
+		remove_Val_from_1D(snake, size - 1, size, 1);
 		if (snake[0].x == xfinish && snake[0].y == yfinish && finish)
 		{
 			if (level == 1)
@@ -259,7 +259,7 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 		}
 	}
 
-	else if (order_food <= 7)
+	else if (order_food <= 5 + level * 4)
 	{
 		check_eating = true;
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
