@@ -23,6 +23,11 @@ struct toa_do
 	int x, y;
 };
 
+struct player {
+	int lvl, score = 0;
+	char* name;
+};
+
 extern toa_do obstacle[MAX * MAX];
 extern int cnt_obstacle;
 

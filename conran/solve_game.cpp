@@ -259,7 +259,7 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 		}
 	}
 
-	else if (order_food <= 5 + level * 4)
+	else if (order_food < 5 + level * 4)
 	{
 		check_eating = true;
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
@@ -306,11 +306,11 @@ bool check_gameover(toa_do snake[], int size, int x, int y, int w, int h)
 }
 bool final_food(int x, int y)
 {
-	if (order_food < 8)
+	if (order_food != 10 || order_food != 14 || order_food != 18)
 	{
 		return false;
 	}
-	if (order_food == 8)
+	if (order_food == 10 || order_food == 14 || order_food == 18)
 	{
 		if (x >= 10 && x <= 30 && y >= 1 && y <= 9)
 		{
@@ -408,4 +408,51 @@ bool food_touch_obs(int x,int y)
 			return true;
 	}
 	return false;
+}
+
+bool isValidName(player* user, int soluong, int pos) {
+	if (pos < 1)
+		return false;
+	int len = strlen(user[pos].name);
+	bool flag = 0;
+	for (int i = 0; i < pos; i++) {
+		flag = 1;
+		for (int j = 0; j < len; j++) {
+			if (user[i].name[j] != user[pos].name[j]) {
+				flag = 0;
+				break;
+			}
+		}
+		if (flag)
+			break;
+	}
+	return flag;
+}
+
+void highscore(player* user, int soluong) {
+	for (int i = 0; i < soluong; i++) {
+		bool isSwap = false;
+		for (int j = 0; j < soluong - i - 1; j++)
+		{
+			if (user[i].score > user[j].score) {
+				int tmp = user[i].score;
+				user[i].score = user[j].score;
+				user[j].score = tmp;
+				isSwap = true;
+			}
+		}
+		if (isSwap)
+			break;
+	}
+
+	for (int i = 0; i < soluong; i++) {
+		gotoxy(32, 13 + i);
+		cout << user[i].name;
+		gotoxy(142, 13 + i);
+		cout << user[i].lvl;
+		gotoxy(102, 13 + i);
+		cout << user[i].score;
+		Sleep(50);
+	}
+	return;
 }

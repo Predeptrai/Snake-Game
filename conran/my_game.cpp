@@ -199,7 +199,7 @@ void drawDirectionBox(int x, int y, int w, int h, int color)
 {
 	textcolor(12);
 
-	for (int ix = x + w + 3; ix <= x + w + 66; ix++)
+	for (int ix = x + w + 3; ix <= x + w + 48; ix++)
 	{
 		gotoxy(ix, y);
 		cout << char(219);
@@ -211,7 +211,7 @@ void drawDirectionBox(int x, int y, int w, int h, int color)
 	{
 		gotoxy(x + w + 3, iy);
 		cout << char(219);
-		gotoxy(x + w + 66, iy);
+		gotoxy(x + w + 48, iy);
 		cout << char(219);
 	}
 	return;
@@ -221,7 +221,7 @@ void drawContentBox(int x, int y, int w, int h, int color)
 {
 	textcolor(12);
 
-	for (int ix = x + w + 3; ix <= x + w + 66; ix++)
+	for (int ix = x + w + 3; ix <= x + w + 48; ix++)
 	{
 		gotoxy(ix, y + h + 2);
 		cout << char(219);
@@ -233,7 +233,7 @@ void drawContentBox(int x, int y, int w, int h, int color)
 	{
 		gotoxy(x + w + 3, iy);
 		cout << char(219);
-		gotoxy(x + w + 66, iy);
+		gotoxy(x + w + 48, iy);
 		cout << char(219);
 	}
 	return;
@@ -364,29 +364,29 @@ void drawSymbolSnake()
        
 	gotoxy(1,22);
 	cout<<" _   __";
-	gotoxy(1,22);
-	cout<<"| | / /";
 	gotoxy(1,23);
-	cout<<"| |/ /";
+	cout<<"| | / /";
 	gotoxy(1,24);
-	cout<<"|    \\";
+	cout<<"| |/ /";
 	gotoxy(1,25);
-	cout<<"| |\\  \\";
+	cout<<"|    \\";
 	gotoxy(1,26);
+	cout<<"| |\\  \\";
+	gotoxy(1,27);
 	cout<<"\\_| \\_/";
        
        
-	gotoxy(1, 28);
-	cout<<" _____"; 
 	gotoxy(1, 29);
-	cout<<"|  ___|";
+	cout<<" _____"; 
 	gotoxy(1, 30);
-	cout<<"| |__";
+	cout<<"|  ___|";
 	gotoxy(1, 31);
-	cout<<"|  __|";
+	cout<<"| |__";
 	gotoxy(1, 32);
-	cout<<"| |___";
+	cout<<"|  __|";
 	gotoxy(1, 33);
+	cout<<"| |___";
+	gotoxy(1, 34);
 	cout<<"\\____/";
        
 }

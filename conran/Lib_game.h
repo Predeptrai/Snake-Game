@@ -43,4 +43,5 @@ void snake_thread();
 void check_case_snake_dead(bool* ok,int round);
 void save(toa_do a[MAX],toa_do b[MAX],int dodai);
 void nguoi_tuyet_thread();
+void highscore(player* user, int soluong);
 
