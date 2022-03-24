@@ -301,7 +301,6 @@ bool check_gameover(toa_do snake[], int size, int x, int y, int w, int h)
 	//cout<< snake_bite_itsTail(pointX, pointY, size) << endl;
 	if (snake_wall(snake[0].x, snake[0].y, x, y, w, h) || snake_bite_itsTail(snake, size))
 		return true;
-
 	return false;
 }
 bool final_food(int x, int y)

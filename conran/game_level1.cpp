@@ -16,18 +16,29 @@ void game_level_1()
 	init();
 	check1to2 = false;
 	bool dieu_huong = false;
-
+	loop_thread_snake = true;
 	gameover_round_1 = false;
 	while (gameover_round_1 == false || loop_thread_snake == true)
 	{
+
 		if (check1to2 == true)
 		{
-			loop_thread_snake = false;
 			speed++;
 			game_level_2();
 		}
 	}
-
+	cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
+	char key = _getch();
+	if (key != 'y')
+	{
+		system("cls");
+		return;
+	}
+	if (key == 'y')
+	{
+		system("cls");
+		game_level_1();
+	}
 	check_eating = false;
 	//snake_round_1.join();
 

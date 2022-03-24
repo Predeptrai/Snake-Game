@@ -68,17 +68,13 @@ void snake_thread()
 				Sleep(0.1);
 				check_die = false;
 				gotoxy((x + w) / 2 - 9, (y + h) / 2);
-				cout << "Press Enter to return Menu" << endl;
-				cin.get();
-				system("cls");
-				break;
 			}
 		}
 	
 		loop_thread_snake = false;
 		Sleep(1);
 	}
-
+	cout << "Exited";
 }
 void check_nguoi_tuyet_va_ran_thread()
 {
