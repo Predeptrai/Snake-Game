@@ -15,8 +15,7 @@ void snake_thread()
 		/*gotoxy(10, 10);
 		cout << gameover_round_1 << " " << gameover_round_2 << " " << gameover_round_3 << endl;*/
 		while (gameover_round_1 == false || gameover_round_2 == false || gameover_round_3 == false)
-		{
-			
+		{	
 			loop_thread_snake = true;
 			int round = 0;
 			bool* tam=new bool;
@@ -36,21 +35,17 @@ void snake_thread()
 				round = 3;
 			}
 
-			
 			delete_position(snake, do_dai);
 
 			move_snake();
-
 
 			done_now_snake = false;
 			set_snake(snake, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating, round);
 			done_now_snake = true;
 
-
 			done_pre_snake = false;
 			save(pre_snake, snake, do_dai);
 			done_pre_snake = true;
-
 
 			check_eating = false;
 			
@@ -73,6 +68,7 @@ void snake_thread()
 	
 		loop_thread_snake = false;
 		Sleep(1);
+
 	}
 	cout << "Exited";
 }
@@ -108,13 +104,13 @@ void check_nguoi_tuyet_va_ran_thread()
 		Sleep(1);
 	}
 }
+
 void nguoi_tuyet_thread()
 {
 	while (check_nguoi_tuyet_thread_1)
 	{
-		while (check_nguoi_tuyet_thread_2&& gameover_round_3==false)
+		while (check_nguoi_tuyet_thread_2 || gameover_round_3 == false)
 		{
-
 			done_now_nguoi_tuyet = false;
 			set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_ao_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);
 			done_now_nguoi_tuyet = true;
@@ -123,7 +119,7 @@ void nguoi_tuyet_thread()
 			save(pre_nguoi_tuyet, nguoi_tuyet, size_nguoi_tuyet);
 			done_pre_nguoi_tuyet = true;
 
-			Sleep(10);
+			Sleep(20);
 		}
 		Sleep(1);
 	}

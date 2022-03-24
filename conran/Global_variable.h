@@ -24,7 +24,7 @@ struct toa_do
 };
 
 struct player {
-	int lvl, score = 0;
+	int lvl = 1, score = 0;
 	char* name;
 };
 
@@ -70,6 +70,7 @@ extern bool loop_thread_snake;
 extern bool done_pre_snake;
 extern bool done_now_snake;
 extern toa_do pre_snake[MAX];
+extern bool done_createdFood;
 
 extern toa_do pre_nguoi_tuyet[MAX];
 extern bool done_pre_nguoi_tuyet;
@@ -77,6 +78,3 @@ extern bool done_now_nguoi_tuyet;
 
 extern int size_ao_nguoi_tuyet;
 extern bool loop_main_thread;
-
-
-

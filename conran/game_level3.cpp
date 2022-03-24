@@ -16,11 +16,24 @@ void game_level_3()
 	check_nguoi_tuyet_thread_2 = true;
 	while (gameover_round_3 == false || loop_thread_snake == true)
 	{
-		check2to3 = false;;
+		check2to3 = false;
+		
 		//set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);	
 		//if (gameover) break;
-
+		cout << "Press Y to continue or N to return to Main menu" << endl;
+		char key = _getch();
+		if (key == 'y')
+		{
+			system("cls");
+			game_level_3();
+		}
+		else
+		{
+			system("cls");
+			return;
+		}
 	}
 	check_eating = false;
+	system("cls");
 	return;
 }

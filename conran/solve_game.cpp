@@ -57,6 +57,20 @@ void move_snake()
 
 			else if (c == 'd' && check != 3)
 				check = 2;
+
+			else if (c == 'p') {
+				gotoxy(X_CENTER - 23, Y_CENTER - 6);
+				//system("pause");
+				cout << "Press ESC to exit game or press any key to continue ...";
+				char k = _getch();
+				gotoxy(X_CENTER - 23, Y_CENTER - 6);
+				cout << "                                                                 ";
+				if (k == 27) {
+					gameover_round_1 = true;
+					system("cls");
+					return;
+				}
+			}
 		}
 	}
 
@@ -100,6 +114,7 @@ void init()
 	srand(time(NULL));
 	create_food(x_food, y_food, snake, do_dai, order_food, duoi, food);
 }
+
 void save(toa_do a[MAX], toa_do b[MAX], int dodai)
 {
 	for (int i = 0; i < dodai; i++)
@@ -109,10 +124,21 @@ void save(toa_do a[MAX], toa_do b[MAX], int dodai)
 	return;
 }
 
+void saveData(player* user, toa_do snake[]) {
+	fstream out;
+	out.open(user->name, ios::ate);
+	out << user->lvl << " " << user->score << endl;
+	out << do_dai;
+	out << order_food;
+	for (int i = 0; i < do_dai; i++) {
+		out << snake[i].x << " " << snake[i].y;
+	}
+	out.close();
+	return;
+}
+
 void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check, toa_do& food, int order_food, char duoi[])
 {
-	gotoxy(23, 20);
-	cout << order_food << endl;
 	if (check == true)// Qua phai
 	{
 		//Xoa nhan vat
@@ -121,7 +147,7 @@ void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x
 		{
 			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
 			
-			if (nguoi_tuyet[i].x == food.x && nguoi_tuyet[i].y == food.y)
+			if (nguoi_tuyet[i].x == food.x && nguoi_tuyet[i].y == food.y && done_createdFood == true)
 			{
 				int K = rand() % (15 - 1 + 1) + 1;
 				SetColor(K);
@@ -152,7 +178,7 @@ void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x
 		for (int i = 0; i < size; i++)
 		{
 			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
-			if (nguoi_tuyet[i].x == food.x && nguoi_tuyet[i].y == food.y)
+			if (nguoi_tuyet[i].x == food.x && nguoi_tuyet[i].y == food.y && done_createdFood == true)
 			{
 				int K = rand() % (15 - 1 + 1) + 1;
 				SetColor(K);
@@ -321,12 +347,14 @@ bool final_food(int x, int y)
 
 void create_food(int& x, int& y, toa_do snake[], int size,int &order_food,char duoi[], toa_do& food)
 {
+	done_createdFood = false;
 	order_food++;
-	int tam_x, tam_y;
-	do {
+	int tam_x = 16, tam_y = 19;
+	/*do {
 		tam_x = rand() % (99 - 11 + 1) + 11;
 		tam_y = rand() % (26 - 2 + 1) + 2;
-	} while (snake_coincide(snake, size, x, y) || food_touch_obs(x,y)||final_food(x,y));
+	} while (snake_coincide(snake, size, x, y) || food_touch_obs(x,y) || final_food(x,y));*/
+	done_createdFood = true;
 	food.x = tam_x;
 	food.y = tam_y;
 	tam_x = x;

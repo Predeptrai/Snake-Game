@@ -73,6 +73,18 @@ void game_level_2()
 			game_level_3();
 			break;
 		}
+		cout << "Press Y to continue or N to return to Main menu" << endl;
+		char key = _getch();
+		if (key == 'y')
+		{
+			system("cls");
+			game_level_2();
+		}
+		else
+		{
+			system("cls");
+			return;
+		}
 	}
 	return;
 }

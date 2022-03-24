@@ -13,7 +13,6 @@ using  namespace std;
 // User Interface
 void graphicConsole()
 {
-	setConsole();
 	draw_SnakeTxt();
 	drawSnakeShape();
 	menuBoard();
@@ -85,6 +84,26 @@ void menuBoard()
 {
 	// x: toa do bat dau ve board menu
 	// y: toa do chieu cao
+
+	gotoxy(75, 24);
+	textcolor(7);
+	cout << "   New game" << endl;
+	gotoxy(75, 26);
+	textcolor(11);
+	cout << " Continue game" << endl;
+	gotoxy(75, 28);
+	textcolor(14);
+	cout << "   Highscore" << endl;
+	gotoxy(75, 30);
+	textcolor(14);
+	cout << "  Instruction" << endl;
+	gotoxy(75, 32);
+	textcolor(4);
+	cout << "    Option" << endl;
+	gotoxy(75, 34);
+	textcolor(9);
+	cout << "     Quit" << endl;
+	SetColor(7);
 
 	int x = X_CENTER - 3, y = 18;
 	//draw_Box(x, y, 18, 37);

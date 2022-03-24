@@ -20,24 +20,23 @@ void game_level_1()
 	gameover_round_1 = false;
 	while (gameover_round_1 == false || loop_thread_snake == true)
 	{
-
 		if (check1to2 == true)
 		{
 			speed++;
 			game_level_2();
 		}
 	}
-	cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
+	cout << "Press Y to continue or N to return to Main menu" << endl;
 	char key = _getch();
-	if (key != 'y')
-	{
-		system("cls");
-		return;
-	}
 	if (key == 'y')
 	{
 		system("cls");
 		game_level_1();
+	}
+	else
+	{
+		system("cls");
+		return;
 	}
 	check_eating = false;
 	//snake_round_1.join();

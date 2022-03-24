@@ -39,6 +39,7 @@ bool check_nguoi_tuyet_thread_1 = true;
 bool check_nguoi_tuyet_thread_2 = false;
 bool loop_main_thread = true;
 int x_food, y_food;
+bool done_createdFood = false;
 
 bool gameover = false;
 bool block = true;
@@ -86,31 +87,13 @@ void main()
 	thread second(sound_die);
 	thread snake_round(snake_thread);
 	thread snow_man(nguoi_tuyet_thread);
+	setConsole();
 	while (true)
 	{
 		graphicConsole();
 		/*gotoxy(75, 10);
 		textcolor(13);
 		cout << "Menu game" << endl;*/ // fix after
-		gotoxy(75, 24);
-		textcolor(7);
-		cout << "   New game" << endl;
-		gotoxy(75, 26);
-		textcolor(11);
-		cout << " Continue game" << endl;
-		gotoxy(75, 28);
-		textcolor(14);
-		cout << "   Highscore" << endl;
-		gotoxy(75, 30);
-		textcolor(14);
-		cout << "  Instruction" << endl;
-		gotoxy(75, 32);
-		textcolor(4);
-		cout << "    Option" << endl;
-		gotoxy(75, 34);
-		textcolor(9);
-		cout << "     Quit" << endl;
-		SetColor(7);
 
 		/*gotoxy(0, 28);
 		cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";*/
@@ -118,7 +101,7 @@ void main()
 		int option = 0;
 		do
 		{
-
+			
 			if (_kbhit())
 			{
 				char c = _getch();
@@ -139,7 +122,7 @@ void main()
 				{
 					system("cls");
 					speed = 1;
-					game_level_1();
+					game_level_3();
 					break;
 				}
 				else if(option == 3)
