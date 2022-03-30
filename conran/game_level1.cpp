@@ -18,7 +18,7 @@ void game_level_1()
 	bool dieu_huong = false;
 	loop_thread_snake = true;
 	gameover_round_1 = false;
-	while (gameover_round_1 == false || loop_thread_snake == true)
+	while (gameover_round_1 == false && loop_thread_snake == true)
 	{
 
 		if (check1to2 == true)
@@ -27,7 +27,7 @@ void game_level_1()
 			game_level_2();
 		}
 	}
-	cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
+	/*cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
 	char key = _getch();
 	if (key != 'y')
 	{
@@ -38,9 +38,9 @@ void game_level_1()
 	{
 		system("cls");
 		game_level_1();
-	}
+	}*/
 	check_eating = false;
 	//snake_round_1.join();
-
+	system("cls");
 	return;
 }

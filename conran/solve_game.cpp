@@ -24,7 +24,7 @@ void check_case_snake_dead(bool* ok, int round)
 	}
 	return;
 }
-void move_snake()
+int move_snake()
 {
 	if (_kbhit())
 	{
@@ -57,6 +57,8 @@ void move_snake()
 
 			else if (c == 'd' && check != 3)
 				check = 2;
+			else if (c == 'l')
+				check = 4;
 		}
 	}
 
@@ -78,7 +80,7 @@ void move_snake()
 		x_snake--;
 		break;
 	}
-	return;
+		return check;
 }
 void init()
 {
@@ -454,4 +456,12 @@ void highscore(player* user, int soluong) {
 		Sleep(50);
 	}
 	return;
+}
+void Savedata(int score, int lever)
+{
+	char* filename = "save.txt";
+	ofstream out(filename, ios::trunc);
+	out << lever << endl;
+	out << score;
+	out.close();
 }

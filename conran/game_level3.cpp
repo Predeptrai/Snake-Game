@@ -19,7 +19,21 @@ void game_level_3()
 		check2to3 = false;;
 		//set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);	
 		//if (gameover) break;
-
+		speed++;
+		game_level_3();
+		break;
+	}
+	cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
+	char key = _getch();
+	if (key != 'y')
+	{
+		system("cls");
+		return;
+	}
+	if (key == 'y')
+	{
+		system("cls");
+		game_level_1();
 	}
 	check_eating = false;
 	return;

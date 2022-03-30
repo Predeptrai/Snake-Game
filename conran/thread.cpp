@@ -16,7 +16,6 @@ void snake_thread()
 		cout << gameover_round_1 << " " << gameover_round_2 << " " << gameover_round_3 << endl;*/
 		while (gameover_round_1 == false || gameover_round_2 == false || gameover_round_3 == false)
 		{
-			
 			loop_thread_snake = true;
 			int round = 0;
 			bool* tam=new bool;
@@ -39,7 +38,12 @@ void snake_thread()
 			
 			delete_position(snake, do_dai);
 
-			move_snake();
+			if (move_snake() == 4)
+			{
+				savedata(score, lever);
+				loop_thread_snake = false;
+				break;
+			}
 
 
 			done_now_snake = false;

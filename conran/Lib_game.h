@@ -38,10 +38,10 @@ bool snake_touch_obstacle(int size, toa_do snake[MAX]);
 void draw_obstacle();
 bool food_touch_obs(int x,int  y);
 void draw_finish_gate(int level);
-void move_snake();
+int move_snake();
 void snake_thread();
 void check_case_snake_dead(bool* ok,int round);
 void save(toa_do a[MAX],toa_do b[MAX],int dodai);
 void nguoi_tuyet_thread();
 void highscore(player* user, int soluong);
-
+void savedata(int score, int lever);
