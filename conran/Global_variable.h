@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <stdio.h>
+#include <thread>
 #include <conio.h>
 #define MAX 100
 #define WIDTH 1320
@@ -33,7 +34,6 @@ extern int cnt_obstacle;
 
 extern int xfinish, yfinish;
 extern bool finish;;
-extern bool check_eating;
 extern bool check_first;
 extern bool check_second;
 extern char duoi[MAX];
@@ -57,7 +57,6 @@ extern toa_do gate[MAX];
 extern int cnt_gate;
 extern bool check1to2;
 extern bool check2to3 ;
-extern bool check_die;
 extern toa_do snake[MAX];
 extern bool gameover_round_1;
 extern bool gameover_round_2;
@@ -77,6 +76,8 @@ extern bool done_now_nguoi_tuyet;
 
 extern int size_ao_nguoi_tuyet;
 extern bool loop_main_thread;
-
-
-
+extern bool check3to1;
+extern thread snake_round();
+extern int check_eating;
+extern int check_die;
+extern bool first_time;

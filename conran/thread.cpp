@@ -3,7 +3,7 @@
 #include <conio.h>
 #include "Global_variable.h"
 #include "Lib_game.h"
-
+#include <thread>
 #include "graphic_console.h"
 
 using namespace std;
@@ -12,10 +12,12 @@ void sound_phat()
 {
 	while (check_first)
 	{
-		if (check_eating)
+		if (check_eating>0)
 		{
-			PlaySound(TEXT("sound_eating.wav"), 0, SND_FILENAME | SND_ASYNC);
+			PlaySound(TEXT("sound_eating.wav"), NULL, SND_SYNC);
+			check_eating--;
 		}
+
 	}
 	return;
 }
@@ -24,11 +26,11 @@ void sound_die()
 {
 	while (check_second)
 	{
-		if (check_die)
+		if (check_die>0)
 		{
-			PlaySound(TEXT("deadth.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			PlaySound(TEXT("deadth.wav"), NULL, SND_SYNC);
+			check_die--;
 		}
-		//gameover = false;
 	}
 }
 
@@ -41,9 +43,11 @@ void snake_thread()
 		cout << gameover_round_1 << " " << gameover_round_2 << " " << gameover_round_3 << endl;*/
 		while (gameover_round_1 == false || gameover_round_2 == false || gameover_round_3 == false)
 		{
+			
+
 			loop_thread_snake = true;
 			int round = 0;
-			bool* tam=new bool;
+			bool* tam = new bool;
 			if (gameover_round_1 == false)
 			{
 				tam = &gameover_round_1;
@@ -59,19 +63,22 @@ void snake_thread()
 				tam = &gameover_round_3;
 				round = 3;
 			}
+			if (gameover_round_3 == false)
+			{
+				nguoi_tuyet_thread();
+			}
 
-			
 			delete_position(snake, do_dai);
-			
+
 			if (move_snake() == 4)
 			{
-				loop_thread_snake = false;		
+				loop_thread_snake = false;
 				return;
 			}
-			
+
 			done_now_snake = false;
-			set_snake(snake, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating, round);
-			check_eating = false;
+			set_snake(snake, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, round);
+			//check_eating = false;
 			done_now_snake = true;
 
 
@@ -80,32 +87,32 @@ void snake_thread()
 			done_pre_snake = true;
 
 
-			
-			
+
+
 			check_case_snake_dead(tam, round);
 
-			if (check1to2 == true || check2to3 == true)
+			if (check1to2 == true || check2to3 == true||check3to1==true)
 			{
 				break;
 			}
 
-			Sleep(100 / speed);
-			
+
 			if (*tam)
-			{				
-				check_die = true;
-				Sleep(0.1);
-				check_die = false;
+			{
+				check_die++;
 				return;
 			}
+			Sleep(35);
+
 		}
+
 		Sleep(1);
 	}
 	loop_thread_snake = false;
 }
 void check_nguoi_tuyet_va_ran_thread()
 {
-	while (check_nguoi_tuyet_thread_1)
+	/*while (check_nguoi_tuyet_thread_1)
 	{
 		while (check_nguoi_tuyet_thread_2)
 		{
@@ -133,25 +140,16 @@ void check_nguoi_tuyet_va_ran_thread()
 			}
 		}
 		Sleep(1);
-	}
+	}*/
 }
 void nguoi_tuyet_thread()
 {
-	while (check_nguoi_tuyet_thread_1)
-	{
-		while (check_nguoi_tuyet_thread_2&& gameover_round_3==false)
-		{
+	done_now_nguoi_tuyet = false;
+	set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_ao_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);
+	done_now_nguoi_tuyet = true;
 
-			done_now_nguoi_tuyet = false;
-			set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_ao_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);
-			done_now_nguoi_tuyet = true;
-
-			done_pre_nguoi_tuyet = false;
-			save(pre_nguoi_tuyet, nguoi_tuyet, size_nguoi_tuyet);
-			done_pre_nguoi_tuyet = true;
-
-			Sleep(10);
-		}
-		Sleep(1);
-	}
+	done_pre_nguoi_tuyet = false;
+	save(pre_nguoi_tuyet, nguoi_tuyet, size_nguoi_tuyet);
+	done_pre_nguoi_tuyet = true;
+	return;
 }

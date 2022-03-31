@@ -114,8 +114,7 @@ void save(toa_do a[MAX], toa_do b[MAX], int dodai)
 
 void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check, toa_do& food, int order_food, char duoi[])
 {
-	gotoxy(23, 20);
-	cout << order_food << endl;
+
 	if (check == true)// Qua phai
 	{
 		//Xoa nhan vat
@@ -227,7 +226,7 @@ void remove_Val_from_1D(toa_do a[], int x, int& n, bool check)
 }
 
 
-void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food,bool &check_eating, int level)
+void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food, int level)
 {
 	int tam = size;
 	add_Val_to_1D(snake, x, tam,0);
@@ -252,21 +251,27 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 			}
 			else
 			{
-				gameover = true;
-				return;
+				if (level == 3)
+				{
+					check3to1 = true;
+					return;
+				}
+
 			}
 		}
 	}
 
 	else if (order_food < 5 + level * 4)
 	{
-		check_eating = true;
+		check_eating++;
+		Sleep(2);
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
 
 	}
 	else
 	{
-		check_eating = true;
+		check_eating++;
+		Sleep(2);
 		draw_finish_gate(level);
 	}
 

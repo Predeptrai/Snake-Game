@@ -16,22 +16,23 @@ void game_level_1()
 	//10 1 100 27
 	init();
 	/*savedata(score, lever);*/
-	thread snake_round(snake_thread);
-	check1to2 = false;
-	bool dieu_huong = false;
-	loop_thread_snake = true;
-	gameover_round_1 = false;
-	while (gameover_round_1 == false && loop_thread_snake == true)
-	{
-		if (check1to2 == true)
+	
+		first_time = false;
+		check1to2 = false;
+		bool dieu_huong = false;
+		loop_thread_snake = true;
+		gameover_round_1 = false;
+		while (gameover_round_1 == false && loop_thread_snake == true)
 		{
-			gameover_round_1 = true;
-			speed++;
-			game_level_2();
+			if (check1to2 == true)
+			{
+				gameover_round_1 = true;
+				speed++;
+				game_level_2();
+				break;
+			}
 		}
-	}
-	check_eating = false;
-	system("cls");
-	snake_round.join();
+		system("cls");
+		loop_thread_snake = false;
 	return;
 }

@@ -73,6 +73,8 @@ void game_level_2()
 			gameover_round_2 = true;
 			speed++;
 			game_level_3();
+			cout << "134" << endl;
+			break;
 		}
 	}
 	/*cout << "Press Y to continue or Enter to return to Mainmenu" << endl;

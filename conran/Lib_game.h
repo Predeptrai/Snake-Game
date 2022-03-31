@@ -3,11 +3,12 @@
 #include <stdio.h>
 #include "Global_variable.h"
 #include <conio.h>
+#include <thread>
 #define MAX 100
 
 using namespace std;
 
-
+thread snake_round(void* cmp);
 void sound_phat();
 void sound_die();
 bool touch_gate();
@@ -26,7 +27,7 @@ void drawContentBox(int x, int y, int w, int h, int color);
 
 void draw_snake(toa_do snake[MAX], int& size, char duoi[]);
 void snake_position(toa_do snake[MAX], int& size);
-void set_snake(toa_do snake[MAX], int& size, int x, int y, int& x_food, int& y_food, char duoi[], int& order_food, toa_do& food, bool& check_eating, int level);
+void set_snake(toa_do snake[MAX], int& size, int x, int y, int& x_food, int& y_food, char duoi[], int& order_food, toa_do& food, int level);
 void delete_position(toa_do snake[MAX], int size);
 bool snake_wall(int x, int y);
 bool snake_bite_itsTail(toa_do snake[MAX], int size);

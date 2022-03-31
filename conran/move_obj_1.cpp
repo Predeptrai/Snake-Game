@@ -13,7 +13,7 @@ using namespace std;
 
 toa_do obstacle[MAX * MAX];
 int cnt_obstacle = 0;
-bool check_eating = false;
+int check_eating = 0;
 bool check_first = true;
 bool check_second = true;
 
@@ -55,8 +55,9 @@ int cnt_gate = 0;
 
 bool check1to2 = false;
 bool check2to3 = false;
-bool check_die = false;
-
+bool check3to1 = false;
+int check_die = 0;
+bool first_time = true;
 
 void main()
 {
@@ -116,8 +117,9 @@ void main()
 				{
 					system("cls");
 					speed = 1;
-					
-					game_level_3();
+					thread snake_round(snake_thread);
+					game_level_1();
+					snake_round.join();
 					break;
 				}
 				else if(option == 3)
