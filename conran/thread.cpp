@@ -7,6 +7,31 @@
 using namespace std;
 
 
+
+void sound_phat()
+{
+	while (check_first)
+	{
+		if (check_eating)
+		{
+			PlaySound(TEXT("sound_eating.wav"), NULL, SND_FILENAME | SND_ASYNC);
+		}
+	}
+	return;
+}
+
+void sound_die()
+{
+	while (check_second)
+	{
+		if (check_die)
+		{
+			PlaySound(TEXT("deadth.wav"), NULL, SND_FILENAME | SND_ASYNC);
+		}
+		//gameover = false;
+	}
+}
+
 void snake_thread()
 {
 	int dem = 0;
@@ -46,6 +71,7 @@ void snake_thread()
 			
 			done_now_snake = false;
 			set_snake(snake, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating, round);
+			check_eating = false;
 			done_now_snake = true;
 
 
@@ -54,7 +80,7 @@ void snake_thread()
 			done_pre_snake = true;
 
 
-			check_eating = false;
+			
 			
 			check_case_snake_dead(tam, round);
 

@@ -9,10 +9,11 @@
 using namespace std;
 void game_level_3()
 {
+	thread conran(snake_thread);
 	thread snow_man(nguoi_tuyet_thread);
+	init();
 	draw_obstacle();
 	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
-	init();
 	gameover_round_3 = false;
 	check_nguoi_tuyet_thread_1 = true;
 	check_nguoi_tuyet_thread_2 = true;
@@ -21,9 +22,9 @@ void game_level_3()
 		check2to3 = false;;
 		//set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);	
 		//if (gameover) break;
-		speed++;
-		game_level_3();
-		break;
+		//speed++;
+		//game_level_1();
+		//break;
 	}
 	/*cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
 	char key = _getch();
@@ -38,8 +39,9 @@ void game_level_3()
 		game_level_1();
 	}*/
 	check_eating = false;
-	check_nguoi_tuyet_thread_1 = false;
+	check_nguoi_tuyet_thread_2 = false;
 	check_nguoi_tuyet_thread_1 = false;
 	snow_man.join();
+	conran.join();
 	return;
 }

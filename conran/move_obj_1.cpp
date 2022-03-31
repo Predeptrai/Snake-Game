@@ -56,29 +56,7 @@ int cnt_gate = 0;
 bool check1to2 = false;
 bool check2to3 = false;
 bool check_die = false;
-void sound_phat()
-{
-	while(check_first)
-	{
-		if (check_eating)
-		{
-			PlaySound(TEXT("sound_eating"), NULL, SND_SYNC);
-		}
-	}
-	return;
-}
 
-void sound_die()
-{
-	while (check_second)
-	{
-		if (check_die)
-		{
-			PlaySound(TEXT("deadth.wav"), NULL, SND_SYNC);
-		}
-			//gameover = false;
-	}
-}
 
 void main()
 {
@@ -138,7 +116,7 @@ void main()
 					system("cls");
 					speed = 1;
 					
-					game_level_1();
+					game_level_3();
 					break;
 				}
 				else if(option == 3)

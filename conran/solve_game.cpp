@@ -258,7 +258,7 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 		}
 	}
 
-	else if (order_food < 5 /*+ level * 4*/)
+	else if (order_food < 5 + level * 4)
 	{
 		check_eating = true;
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
@@ -325,11 +325,11 @@ void create_food(int& x, int& y, toa_do snake[], int size,int &order_food,char d
 	do {
 		tam_x = rand() % (99 - 11 + 1) + 11;
 		tam_y = rand() % (26 - 2 + 1) + 2;
-	} while (snake_coincide(snake, size, x, y) || food_touch_obs(x,y)||final_food(x,y));
+	} while (snake_coincide(snake, size, tam_x, tam_y) || food_touch_obs(tam_x, tam_y)||final_food(tam_x, tam_y));
 	food.x = tam_x;
 	food.y = tam_y;
-	tam_x = x;
-	tam_y = y;
+	x = tam_x;
+	y = tam_y;
 
 	int i = rand() % (15 - 1 + 1) + 1;
 	SetColor(i);

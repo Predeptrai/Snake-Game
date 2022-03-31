@@ -7,6 +7,9 @@
 
 using namespace std;
 
+
+void sound_phat();
+void sound_die();
 bool touch_gate();
 void init();
 bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[],int size_nguoi_tuyet,toa_do snake[MAX],int size);
