@@ -60,6 +60,7 @@ bool check_die = false;
 
 void main()
 {
+
 	thread first(sound_phat);
 	thread second(sound_die);
 	while (true)

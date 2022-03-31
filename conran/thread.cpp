@@ -1,12 +1,12 @@
+#pragma comment(lib, "winmm.lib")
 #include <iostream>
 #include <conio.h>
 #include "Global_variable.h"
 #include "Lib_game.h"
+
 #include "graphic_console.h"
 
 using namespace std;
-
-
 
 void sound_phat()
 {
@@ -14,7 +14,7 @@ void sound_phat()
 	{
 		if (check_eating)
 		{
-			PlaySound(TEXT("sound_eating.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			PlaySound(TEXT("sound_eating.wav"), 0, SND_FILENAME | SND_ASYNC);
 		}
 	}
 	return;

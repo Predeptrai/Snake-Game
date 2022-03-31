@@ -267,7 +267,6 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 	else
 	{
 		check_eating = true;
-
 		draw_finish_gate(level);
 	}
 
