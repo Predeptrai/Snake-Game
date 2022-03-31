@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
+#include <thread>
 #include "Global_variable.h"
 #include "graphic_console.h"
 #include "Lib_game.h"
@@ -8,6 +9,7 @@
 using namespace std;
 void game_level_3()
 {
+	thread snow_man(nguoi_tuyet_thread);
 	draw_obstacle();
 	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
 	init();
@@ -23,7 +25,7 @@ void game_level_3()
 		game_level_3();
 		break;
 	}
-	cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
+	/*cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
 	char key = _getch();
 	if (key != 'y')
 	{
@@ -34,7 +36,10 @@ void game_level_3()
 	{
 		system("cls");
 		game_level_1();
-	}
+	}*/
 	check_eating = false;
+	check_nguoi_tuyet_thread_1 = false;
+	check_nguoi_tuyet_thread_1 = false;
+	snow_man.join();
 	return;
 }

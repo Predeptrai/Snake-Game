@@ -13,7 +13,7 @@ void check_case_snake_dead(bool* ok, int round)
 	bool check_1 = touch_gate();
 	*ok = max(*ok, check_gameover(snake, do_dai, x, y, w, h));
 	*ok = max(check_1, *ok);
-	if (round == 2|| round == 3)
+	if (round == 2 || round == 3)
 	{
 		*ok = max(*ok, snake_touch_obstacle(do_dai, snake));
 	}
@@ -84,6 +84,7 @@ int move_snake()
 }
 void init()
 {
+	system("cls");
 	cnt_gate = 0;
 	check = 2;
 	finish = 0;
@@ -241,15 +242,11 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 		{
 			if (level == 1)
 			{
-				gameover_round_1 = true;
-				system("cls");
 				check1to2 = true;
 				return;
 			}
 			else if (level == 2)
 			{
-				gameover_round_2 = true;
-				system("cls");
 				check2to3 = true;
 				return;
 			}
@@ -261,7 +258,7 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 		}
 	}
 
-	else if (order_food < 5 + level * 4)
+	else if (order_food < 5 /*+ level * 4*/)
 	{
 		check_eating = true;
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
@@ -457,11 +454,11 @@ void highscore(player* user, int soluong) {
 	}
 	return;
 }
-void Savedata(int score, int lever)
-{
-	char* filename = "save.txt";
-	ofstream out(filename, ios::trunc);
-	out << lever << endl;
-	out << score;
-	out.close();
-}
+//void Savedata(int score, int lever)
+//{
+//	char* filename = "save.txt";
+//	ofstream out(filename, ios::trunc);
+//	out << lever << endl;
+//	out << score;
+//	out.close();
+//}

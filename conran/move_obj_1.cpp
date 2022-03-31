@@ -84,8 +84,6 @@ void main()
 {
 	thread first(sound_phat);
 	thread second(sound_die);
-	thread snake_round(snake_thread);
-	thread snow_man(nguoi_tuyet_thread);
 	while (true)
 	{
 		graphicConsole();
@@ -139,6 +137,7 @@ void main()
 				{
 					system("cls");
 					speed = 1;
+					
 					game_level_1();
 					break;
 				}
@@ -168,8 +167,8 @@ void main()
 	check_first = false;
 	first.join();
 	second.join();
-	snake_round.join();
-	snow_man.join();
+	
+
 	/*_getch();*/
 	return;
 }

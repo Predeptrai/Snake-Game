@@ -37,15 +37,13 @@ void snake_thread()
 
 			
 			delete_position(snake, do_dai);
-
+			
 			if (move_snake() == 4)
 			{
-				savedata(score, lever);
-				loop_thread_snake = false;
-				break;
+				loop_thread_snake = false;		
+				return;
 			}
-
-
+			
 			done_now_snake = false;
 			set_snake(snake, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, check_eating, round);
 			done_now_snake = true;
@@ -66,19 +64,18 @@ void snake_thread()
 			}
 
 			Sleep(100 / speed);
+			
 			if (*tam)
-			{
+			{				
 				check_die = true;
 				Sleep(0.1);
 				check_die = false;
-				gotoxy((x + w) / 2 - 9, (y + h) / 2);
+				return;
 			}
 		}
-	
-		loop_thread_snake = false;
 		Sleep(1);
 	}
-	cout << "Exited";
+	loop_thread_snake = false;
 }
 void check_nguoi_tuyet_va_ran_thread()
 {

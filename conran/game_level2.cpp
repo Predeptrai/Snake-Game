@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
+#include <thread>
 #include "Global_variable.h"
 #include "graphic_console.h"
 #include "Lib_game.h"
@@ -59,22 +60,22 @@ void draw_obstacle()
 
 void game_level_2()
 {
-	draw_obstacle();
 	init();
+	draw_obstacle();
+	check1to2 = false;
 	check2to3 = false;
+	bool dieu_huong = false;
 	gameover_round_2 = false;
-	while (gameover_round_2 == false|| loop_thread_snake == true)
+	while (gameover_round_2 == false && loop_thread_snake == true)
 	{
-		check1to2 = false;
-		if (check2to3)
+		if (check2to3 == true)
 		{
 			gameover_round_2 = true;
 			speed++;
 			game_level_3();
-			break;
 		}
 	}
-	cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
+	/*cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
 	char key = _getch();
 	if (key != 'y')
 	{
@@ -85,7 +86,6 @@ void game_level_2()
 	{
 		system("cls");
 		game_level_2();
-	}
-	check_eating = false;
+	}*/
 	return;
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <thread>
 #include "Global_variable.h"
 #include "Lib_game.h"
 #include "graphic_console.h"
@@ -14,33 +15,23 @@ void game_level_1()
 {
 	//10 1 100 27
 	init();
+	/*savedata(score, lever);*/
+	thread snake_round(snake_thread);
 	check1to2 = false;
 	bool dieu_huong = false;
 	loop_thread_snake = true;
 	gameover_round_1 = false;
 	while (gameover_round_1 == false && loop_thread_snake == true)
 	{
-
 		if (check1to2 == true)
 		{
+			gameover_round_1 = true;
 			speed++;
 			game_level_2();
 		}
 	}
-	/*cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
-	char key = _getch();
-	if (key != 'y')
-	{
-		system("cls");
-		return;
-	}
-	if (key == 'y')
-	{
-		system("cls");
-		game_level_1();
-	}*/
 	check_eating = false;
-	//snake_round_1.join();
 	system("cls");
+	snake_round.join();
 	return;
 }
