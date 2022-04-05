@@ -22,6 +22,7 @@ void game_level_1()
 		bool dieu_huong = false;
 		loop_thread_snake = true;
 		gameover_round_1 = false;
+		
 		while (gameover_round_1 == false && loop_thread_snake == true)
 		{
 			if (check1to2 == true)

@@ -42,6 +42,12 @@
     <ClCompile Include="thread.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="init_level_name.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphic_console.h">

@@ -5,6 +5,9 @@
 #include <Windows.h>
 
 using namespace std;
+#define MAUNEN 175
+#define MAUCHU 7 
+enum trangthai { UP, DOWN, LEFT, RIGHT, enter, BACK };
 void SetWindowSize(SHORT width, SHORT height);
 void FixConsoleWindow();
 void resizeConsole(int width, int height);
@@ -23,3 +26,5 @@ void graphicConsole();
 void menuBoard();
 void draw_SnakeTxt();
 void highScoreBoard();
+int menu(int n);
+trangthai key(int z);

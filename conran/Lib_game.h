@@ -49,3 +49,7 @@ void save(toa_do a[MAX],toa_do b[MAX],int dodai);
 void nguoi_tuyet_thread();
 void highscore(player* user, int soluong);
 void savedata(int score, int lever);
+void powerBattery();
+void drawIDStudent(int x, int y, int w, int h, int color);
+void drawIntro(int x, int y, int w, int h, int color);
+void drawRule(int x, int y, int w, int h, int color);

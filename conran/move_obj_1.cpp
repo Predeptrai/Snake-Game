@@ -61,7 +61,7 @@ bool first_time = true;
 
 void main()
 {
-
+	setConsole();
 	thread first(sound_phat);
 	thread second(sound_die);
 	while (true)
@@ -93,6 +93,7 @@ void main()
 		/*gotoxy(0, 28);
 		cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";*/
 
+		
 		int option = 0;
 		do
 		{
@@ -106,10 +107,12 @@ void main()
 					option = 2;
 				else if (c == 'h')
 					option = 3;
-				else if (c == 'o')
+				else if (c == 'i')
 					option = 4;
-				else if (c == 'q')
+				else if (c == 'o')
 					option = 5;
+				else if (c == 'q')
+					option = 6;
 			}
 			if (option != 0)
 			{
@@ -118,28 +121,36 @@ void main()
 					system("cls");
 					speed = 1;
 					thread snake_round(snake_thread);
-					game_level_1();
+					game_level_2();
 					snake_round.join();
 					break;
 				}
-				else if(option == 3)
+				else if (option == 3)
 				{
 					highScoreBoard();
 					break;
 				}
+				else if (option == 4) {
+					system("cls");
+					drawIntro(x, y, w, h, 11);
+					gotoxy(x + w / 2 + 10, y + h + 3);
+					system("cls");
+					break;
+				}
+				else if (option == 6)
+					break;
 			}
 
 		} while (option != 5);
-		if (option == 5)
+		if (option == 6)
 			break;
+
+	/*	int k = menu(5);
+		if (k == 4)
+			break;*/
 	}
 
 	
-
-	/*gotoxy(60, 30);
-	textcolor(13);
-	cout << "Thanks for playing this game <3.\n";
-	*/
 	textcolor(7);
 	gotoxy(0, 37);
 	loop_main_thread = false;
@@ -149,7 +160,5 @@ void main()
 	first.join();
 	second.join();
 	
-
-	/*_getch();*/
 	return;
 }

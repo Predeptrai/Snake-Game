@@ -101,6 +101,7 @@ void init()
 	drawContentBox(x, y, w, h, 11);
 	draw_snake(snake, do_dai, duoi);
 	srand(time(NULL));
+	//powerBattery();
 	create_food(x_food, y_food, snake, do_dai, order_food, duoi, food);
 }
 void save(toa_do a[MAX], toa_do b[MAX], int dodai)
@@ -466,3 +467,31 @@ void highscore(player* user, int soluong) {
 //	out << score;
 //	out.close();
 //}
+
+void powerBattery() {
+	if (check_eating == 1) {
+		for (int i = 12; i <= 35; i++) {
+			gotoxy(i, 30);
+			cout << char(219);
+		}
+	}
+	if (check_eating == 2) {
+		for (int i = 38; i <= 61; i++) {
+			gotoxy(i, 30);
+			cout << char(219);
+		}
+	}
+	if (check_eating == 3) {
+		for (int i = 63; i <= 86; i++) {
+			gotoxy(i, 30);
+			cout << char(219);
+		}
+	}
+	if (check_eating == 4) {
+		for (int i = 88; i <= 111; i++) {
+			gotoxy(i, 30);
+			cout << char(219);
+		}
+	}
+	return;
+}

@@ -13,7 +13,6 @@ using  namespace std;
 // User Interface
 void graphicConsole()
 {
-	setConsole();
 	draw_SnakeTxt();
 	drawSnakeShape();
 	menuBoard();
