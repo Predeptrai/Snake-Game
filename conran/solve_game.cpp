@@ -291,6 +291,7 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 	{
 		check_eating++;
 		Sleep(2);
+		score += 50;
 		order_food++;
 		draw_finish_gate(level);
 		if (!gameover_round_1)
