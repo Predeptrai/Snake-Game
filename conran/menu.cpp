@@ -73,20 +73,20 @@ int menu(int n) {
 			{
 				// vao game level 1
 				system("cls");
+				speed = 2;
+				thread snake_round(snake_thread);
 				game_level_1();
+				snake_round.join();
 				return 0;
 			}
 			if (tt == 1)
 			{
-				gotoxy(0, 0);
-				cout << "continue game";
+				
 				return 0;
 			}
 			if (tt == 2)
 			{
-				gotoxy(0, 0);
-				cout << "vao game";
-
+				highScoreBoard();
 				return 0;
 			}
 			if (tt == 3)

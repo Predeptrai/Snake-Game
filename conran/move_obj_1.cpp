@@ -67,87 +67,87 @@ void main()
 	while (true)
 	{
 		graphicConsole();
-		/*gotoxy(75, 10);
-		textcolor(13);
-		cout << "Menu game" << endl;*/ // fix after
-		gotoxy(75, 24);
-		textcolor(7);
-		cout << "   New game" << endl;
-		gotoxy(75, 26);
-		textcolor(11);
-		cout << " Continue game" << endl;
-		gotoxy(75, 28);
-		textcolor(14);
-		cout << "   Highscore" << endl;
-		gotoxy(75, 30);
-		textcolor(14);
-		cout << "  Instruction" << endl;
-		gotoxy(75, 32);
-		textcolor(4);
-		cout << "    Option" << endl;
-		gotoxy(75, 34);
-		textcolor(9);
-		cout << "     Quit" << endl;
-		SetColor(7);
+		///*gotoxy(75, 10);
+		//textcolor(13);
+		//cout << "Menu game" << endl;*/ // fix after
+		//gotoxy(75, 24);
+		//textcolor(7);
+		//cout << "   New game" << endl;
+		//gotoxy(75, 26);
+		//textcolor(11);
+		//cout << " Continue game" << endl;
+		//gotoxy(75, 28);
+		//textcolor(14);
+		//cout << "   Highscore" << endl;
+		//gotoxy(75, 30);
+		//textcolor(14);
+		//cout << "  Instruction" << endl;
+		//gotoxy(75, 32);
+		//textcolor(4);
+		//cout << "    Option" << endl;
+		//gotoxy(75, 34);
+		//textcolor(9);
+		//cout << "     Quit" << endl;
+		//SetColor(7);
 
-		/*gotoxy(0, 28);
-		cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";*/
+		///*gotoxy(0, 28);
+		//cout << "Press 'N' to start new game 'C' to continue playing 'H' to see the highest score 'O' to set game 'Q' to escape the game.\n";*/
 
-		
-		int option = 0;
-		do
-		{
+		//
+		//int option = 0;
+		//do
+		//{
 
-			if (_kbhit())
-			{
-				char c = _getch();
-				if (c == 'n')
-					option = 1;
-				else if (c == 'c')
-					option = 2;
-				else if (c == 'h')
-					option = 3;
-				else if (c == 'i')
-					option = 4;
-				else if (c == 'o')
-					option = 5;
-				else if (c == 'q')
-					option = 6;
-			}
-			if (option != 0)
-			{
-				if (option == 1)
-				{
-					system("cls");
-					speed = 1;
-					thread snake_round(snake_thread);
-					game_level_2();
-					snake_round.join();
-					break;
-				}
-				else if (option == 3)
-				{
-					highScoreBoard();
-					break;
-				}
-				else if (option == 4) {
-					system("cls");
-					drawIntro(x, y, w, h, 11);
-					gotoxy(x + w / 2 + 10, y + h + 3);
-					system("cls");
-					break;
-				}
-				else if (option == 6)
-					break;
-			}
+		//	if (_kbhit())
+		//	{
+		//		char c = _getch();
+		//		if (c == 'n')
+		//			option = 1;
+		//		else if (c == 'c')
+		//			option = 2;
+		//		else if (c == 'h')
+		//			option = 3;
+		//		else if (c == 'i')
+		//			option = 4;
+		//		else if (c == 'o')
+		//			option = 5;
+		//		else if (c == 'q')
+		//			option = 6;
+		//	}
+		//	if (option != 0)
+		//	{
+		//		if (option == 1)
+		//		{
+		//			system("cls");
+		//			speed = 1;
+		//			thread snake_round(snake_thread);
+		//			game_level_2();
+		//			snake_round.join();
+		//			break;
+		//		}
+		//		else if (option == 3)
+		//		{
+		//			highScoreBoard();
+		//			break;
+		//		}
+		//		else if (option == 4) {
+		//			system("cls");
+		//			drawIntro(x, y, w, h, 11);
+		//			gotoxy(x + w / 2 + 10, y + h + 3);
+		//			system("cls");
+		//			break;
+		//		}
+		//		else if (option == 6)
+		//			break;
+		//	}
 
-		} while (option != 5);
-		if (option == 6)
-			break;
+		//} while (option != 5);
+		//if (option == 6)
+		//	break;
 
-	/*	int k = menu(5);
+		int k = menu(5);
 		if (k == 4)
-			break;*/
+			break;
 	}
 
 	
