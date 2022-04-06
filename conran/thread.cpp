@@ -72,7 +72,9 @@ void snake_thread()
 
 			if (move_snake() == 4)
 			{
+				flag_save = true;
 				loop_thread_snake = false;
+				*tam = true;
 				return;
 			}
 

@@ -10,8 +10,8 @@ using namespace std;
 void game_level_3()
 {
 	//thread conran(snake_thread);
-	
 	init();
+	nameLevel3(x, y, h, w, 12);
 	draw_obstacle();
 	chuong_ngai_vat_nguoi_tuyet(x, y, w, h, nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet);
 	gameover_round_3 = false;

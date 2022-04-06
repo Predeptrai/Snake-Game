@@ -14,7 +14,9 @@ using namespace std;
 void game_level_1()
 {
 	//10 1 100 27
+	flag_save = false;
 	init();
+	nameLevel1(x, y, h, w, 12);
 	/*savedata(score, lever);*/
 	
 		first_time = false;
@@ -33,6 +35,20 @@ void game_level_1()
 				break;
 			}
 		}
+
+		if (!flag_save) {
+			gotoxy(50, 15);
+			cout << "Press Y to continue.";
+			char c = _getch();
+			if (c == 'y') {
+				system("cls");
+				speed = 2;
+				thread snake_round(snake_thread);
+				game_level_1();
+				snake_round.join();
+			}
+		}
+
 		system("cls");
 		loop_thread_snake = false;
 	return;

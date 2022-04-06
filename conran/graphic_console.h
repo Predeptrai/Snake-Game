@@ -28,3 +28,6 @@ void draw_SnakeTxt();
 void highScoreBoard();
 int menu(int n);
 trangthai key(int z);
+void nameLevel1(int x, int y, int h, int w, int color);
+void nameLevel2(int x, int y, int h, int w, int color);
+void nameLevel3(int x, int y, int h, int w, int color);

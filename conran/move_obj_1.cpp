@@ -47,6 +47,7 @@ bool gameover_round_2 = true;
 bool gameover_round_3 = true;
 bool check_snake = true;
 bool loop_thread_snake = false;
+bool flag_save = false;
 
 int check = 2;
 int do_dai = 6;

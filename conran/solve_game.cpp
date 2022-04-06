@@ -267,13 +267,49 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 		check_eating++;
 		Sleep(2);
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
-
+		if (!gameover_round_1) 
+		{
+			powerBattery_Level_1();
+		}
+		else
+		{
+			if (!gameover_round_2)
+			{
+				powerBattery_Level_2();
+			}
+			else 
+			{
+				if (!gameover_round_3)
+				{
+					powerBattery_Level_3();
+				}
+			}
+		}
 	}
 	else
 	{
 		check_eating++;
 		Sleep(2);
+		order_food++;
 		draw_finish_gate(level);
+		if (!gameover_round_1)
+		{
+			powerBattery_Level_1();
+		}
+		else
+		{
+			if (!gameover_round_2)
+			{
+				powerBattery_Level_2();
+			}
+			else
+			{
+				if (!gameover_round_3)
+				{
+					powerBattery_Level_3();
+				}
+			}
+		}
 	}
 
 	draw_snake(snake, size, duoi);
@@ -432,33 +468,6 @@ bool isValidName(player* user, int soluong, int pos) {
 	return flag;
 }
 
-void highscore(player* user, int soluong) {
-	for (int i = 0; i < soluong; i++) {
-		bool isSwap = false;
-		for (int j = 0; j < soluong - i - 1; j++)
-		{
-			if (user[i].score > user[j].score) {
-				int tmp = user[i].score;
-				user[i].score = user[j].score;
-				user[j].score = tmp;
-				isSwap = true;
-			}
-		}
-		if (isSwap)
-			break;
-	}
-
-	for (int i = 0; i < soluong; i++) {
-		gotoxy(32, 13 + i);
-		cout << user[i].name;
-		gotoxy(142, 13 + i);
-		cout << user[i].lvl;
-		gotoxy(102, 13 + i);
-		cout << user[i].score;
-		Sleep(50);
-	}
-	return;
-}
 //void Savedata(int score, int lever)
 //{
 //	char* filename = "save.txt";
@@ -468,28 +477,157 @@ void highscore(player* user, int soluong) {
 //	out.close();
 //}
 
-void powerBattery() {
-	if (check_eating == 1) {
-		for (int i = 12; i <= 35; i++) {
-			gotoxy(i, 30);
+void powerBattery_Level_1() {
+	if (order_food == 7) {
+		for (int i = 11; i <= 34; i++) {
+			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}
-	if (check_eating == 2) {
-		for (int i = 38; i <= 61; i++) {
-			gotoxy(i, 30);
+	if (order_food == 8) {
+		for (int i = 36; i <= 60; i++) {
+			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}
-	if (check_eating == 3) {
-		for (int i = 63; i <= 86; i++) {
-			gotoxy(i, 30);
+	if (order_food == 9) {
+		for (int i = 62; i <= 86; i++) {
+			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}
-	if (check_eating == 4) {
-		for (int i = 88; i <= 111; i++) {
-			gotoxy(i, 30);
+	if (order_food == 10) {
+		for (int i = 88; i <= 109; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+
+	return;
+}
+
+void powerBattery_Level_2() {
+	if (order_food == 7) {
+		for (int i = 11; i <= 23; i++) { //34
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 8) {
+		for (int i = 24; i <= 34; i++) { //34
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 9) {
+		for (int i = 36; i <= 48; i++) { //60
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 10) {
+		for (int i = 49; i <= 60; i++) { //60
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 11) {
+		for (int i = 62; i <= 74; i++) { // 86
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 12) {
+		for (int i = 75; i <= 86; i++) { // 86
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 13) {
+		for (int i = 88; i <= 100; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 14) {
+		for (int i = 101; i <= 109; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	return;
+}
+
+void powerBattery_Level_3() {
+	if (order_food == 7) {
+		for (int i = 11; i <= 19; i++) { //34
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 8) {
+		for (int i = 20; i <= 27; i++) { //34
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 9) {
+		for (int i = 28; i <= 34; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 10) {
+		for (int i = 36; i <= 44; i++) { //60
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 11) {
+		for (int i = 45; i <= 53; i++) { // 86
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 12) {
+		for (int i = 54; i <= 60; i++) { // 86
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 13) {
+		for (int i = 62; i <= 70; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 14) {
+		for (int i = 71; i <= 79; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 15) {
+		for (int i = 80; i <= 86; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 16) {
+		for (int i = 88; i <= 96; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 17) {
+		for (int i = 97; i <= 104; i++) {
+			gotoxy(i, 31);
+			cout << char(219);
+		}
+	}
+	if (order_food == 18) {
+		for (int i = 105; i <= 109; i++) {
+			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}

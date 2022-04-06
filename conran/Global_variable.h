@@ -81,3 +81,4 @@ extern thread snake_round();
 extern int check_eating;
 extern int check_die;
 extern bool first_time;
+extern bool flag_save;

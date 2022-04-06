@@ -61,6 +61,7 @@ void draw_obstacle()
 void game_level_2()
 {
 	init();
+	nameLevel2(x, y, h - 1, w, 12);
 	draw_obstacle();
 	check1to2 = false;
 	check2to3 = false;

@@ -243,7 +243,7 @@ void drawRule(int x, int y, int w, int h, int color) {
 	gotoxy(x + 90, y + 25);
 	cout << "Press \"P\" button to PAUSE THE GAME.";
 	gotoxy(x + 90, y + 27);
-	cout << "Press \"L\" button to LOAD THE GAME.";
+	cout << "Press \"L\" button to SAVE THE GAME.";
 	gotoxy(x + 110, y + 30);
 	cout << "ENJOY THE GAME!";
 }

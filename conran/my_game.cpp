@@ -304,17 +304,6 @@ void drawLevelBar(int x, int y, int w, int h, int color)
 		gotoxy(x + w, iy);
 		cout << char(219);
 	}
-
-	//textcolor();
-	gotoxy(x + 28,  y + h + 7);
-	cout<<" __                              _      ___";
-	gotoxy(x + 28, y + h + 8);
-	cout<<"|  |      ___      _ _    ___   | |    |_  |";
-	gotoxy(x + 28, y + h + 9);
-	cout<<"|  |__   | -_|    | | |  | -_|  | |     _| |_";
-	gotoxy(x + 28, y + h + 10);
-	cout<<"|_____|  |___|     \\_/   |___|  |_|    |_____|";
-
 	return;
 }
 
