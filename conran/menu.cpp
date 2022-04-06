@@ -235,13 +235,13 @@ void drawRule(int x, int y, int w, int h, int color) {
 	gotoxy(x + 90, y + 17);
 	cout << "Use the LEFT arrow, UP arrow, DOWN arrow and RIGHT ";
 	gotoxy(x + 90, y + 19);
-	cout << "arrow to control the snake.";
+	cout << "Or use A, W, S and D";
 	gotoxy(x + 90, y + 21);
-	cout << "Try to avoid hitting the obstacles and snake's body.";
+	cout << "arrow to control the snake.";
 	gotoxy(x + 90, y + 23);
-	cout << "Eat enough food to level up.";
+	cout << "Try to avoid hitting the obstacles and snake's body.";
 	gotoxy(x + 90, y + 25);
-	cout << "Press \"P\" button to PAUSE THE GAME.";
+	cout << "Eat enough food to level up.";
 	gotoxy(x + 90, y + 27);
 	cout << "Press \"L\" button to SAVE THE GAME.";
 	gotoxy(x + 110, y + 30);
