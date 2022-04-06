@@ -100,7 +100,7 @@ void snake_thread()
 				check_die++;
 				return;
 			}
-			Sleep(100 - (5 * speed));
+			Sleep(90 - (5 * speed));
 		}
 
 		Sleep(1);

@@ -214,6 +214,30 @@ void drawDirectionBox(int x, int y, int w, int h, int color)
 		gotoxy(x + w + 48, iy);
 		cout << char(219);
 	}
+	SetColor(9);
+
+	gotoxy(x + w + 11, y + 3);
+	cout<<" _____ _____ _____ _____ _____";
+	gotoxy(x + w + 11, y + 4);
+	cout<<"|   __| __  |     |  |  |  _  |";
+	gotoxy(x + w + 11, y + 5);
+	cout<<"|  |  |    -|  |  |  |  |   __|";
+	gotoxy(x + w + 11, y + 6);
+	cout<<"|_____|__|__|_____|_____|__|";
+	gotoxy(x + w + 21, y + 8);
+	cout<<" ___ ___";
+	gotoxy(x + w + 21, y + 9);
+	cout<<"|   |_  |";
+	gotoxy(x + w + 21, y + 10);
+	cout<<"| | |_  |";
+	gotoxy(x + w + 21, y + 11);
+	cout<<"|___|___|";
+	SetColor(15);
+
+	gotoxy(x + w + 10, y + 15);
+	cout << "PLAYER DATA";
+	gotoxy(x + w + 10, y + 17);
+	cout << "SCORE : ";
 	return;
 }
 
@@ -236,6 +260,16 @@ void drawContentBox(int x, int y, int w, int h, int color)
 		gotoxy(x + w + 48, iy);
 		cout << char(219);
 	}
+
+	gotoxy(x + w + 8, y + h + 5);
+	cout << "'UP' OR 'W'	:   MOVING UP";
+	gotoxy(x + w + 8, y + h + 6);
+	cout << "'DOWN' OR S	:   MOVING DOWN";
+	gotoxy(x + w + 8, y + h + 7);
+	cout << "'RIGHT' OR A	:   TURN RIGHT";
+	gotoxy(x + w + 8, y + h + 8);
+	cout << "'LEFT' OR 'D'	:   TURN LEFT";
+
 	return;
 }
 
@@ -309,73 +343,73 @@ void drawLevelBar(int x, int y, int w, int h, int color)
 
 void drawSymbolSnake()
 {
-	
-	gotoxy(1, 1);
-	cout<<" _____"; 
+	SetColor(10);
 	gotoxy(1, 2);
-	cout<<"/  ___|";
+	cout<<" _____"; 
 	gotoxy(1, 3);
-	cout<<"\\  `--."; 	
+	cout<<"/  ___|";
 	gotoxy(1, 4);
-	cout<<" `- - .\\";
+	cout<<"\\  `--."; 	
 	gotoxy(1, 5);
-	cout<<" /\\__/ /";
+	cout<<" `- - .\\";
 	gotoxy(1, 6);
+	cout<<" /\\__/ /";
+	gotoxy(1, 7);
 	cout<<" \\____/"; 
        
        
-	gotoxy(1, 8);
-	cout<<" _   _"; 
 	gotoxy(1, 9);
-	cout<<"| \\ | |";
+	cout<<" _   _"; 
 	gotoxy(1, 10);
-	cout<<"|  \\| |";
+	cout<<"| \\ | |";
 	gotoxy(1, 11);
-	cout<<"| . ` |";
+	cout<<"|  \\| |";
 	gotoxy(1, 12);
-	cout<<"| |\\  |";
+	cout<<"| . ` |";
 	gotoxy(1, 13);
+	cout<<"| |\\  |";
+	gotoxy(1, 14);
 	cout<<"\\_| \\_/";
        
        
-	gotoxy(1, 15);
-	cout<<"  ___";
 	gotoxy(1, 16);
-	cout<<" / _ \\";
+	cout<<"  ___";
 	gotoxy(1, 17);
-	cout<<"/ /_\\ \\";
+	cout<<" / _ \\";
 	gotoxy(1, 18);
-	cout<<"|  _  |";
+	cout<<"/ /_\\ \\";
 	gotoxy(1, 19);
-	cout<<"| | | |";
+	cout<<"|  _  |";
 	gotoxy(1, 20);
+	cout<<"| | | |";
+	gotoxy(1, 21);
 	cout<<"\\_| |_/";
        
-	gotoxy(1,22);
-	cout<<" _   __";
 	gotoxy(1,23);
-	cout<<"| | / /";
+	cout<<" _   __";
 	gotoxy(1,24);
-	cout<<"| |/ /";
+	cout<<"| | / /";
 	gotoxy(1,25);
-	cout<<"|    \\";
+	cout<<"| |/ /";
 	gotoxy(1,26);
-	cout<<"| |\\  \\";
+	cout<<"|    \\";
 	gotoxy(1,27);
+	cout<<"| |\\  \\";
+	gotoxy(1,28);
 	cout<<"\\_| \\_/";
        
        
-	gotoxy(1, 29);
-	cout<<" _____"; 
 	gotoxy(1, 30);
-	cout<<"|  ___|";
+	cout<<" _____"; 
 	gotoxy(1, 31);
-	cout<<"| |__";
+	cout<<"|  ___|";
 	gotoxy(1, 32);
-	cout<<"|  __|";
+	cout<<"| |__";
 	gotoxy(1, 33);
-	cout<<"| |___";
+	cout<<"|  __|";
 	gotoxy(1, 34);
+	cout<<"| |___";
+	gotoxy(1, 35);
 	cout<<"\\____/";
        
 }

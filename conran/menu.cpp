@@ -146,8 +146,10 @@ void drawIntro(int x, int y, int w, int h, int color) {
 		cout << "/___/_/ |_/ /_/ /_/ |_|\\____/_____/\\____/\\____/ /_/ /___/\\____/_/ |_/";
 		drawIDStudent(x, y, w, h, 12);
 
-		gotoxy(0, 0);
-		cout << "ESC to escaspe";
+		gotoxy(x + w / 2 + 20, y + h + 8);
+		//extcolor(76);
+		SetColor(76);
+		cout << "ESC TO RETURN THE MENU!";
 		if (_kbhit()) {
 			char c = _getch();
 			if (c == 27) {
@@ -175,8 +177,8 @@ void drawIDStudent(int x, int y, int w, int h, int color) {
 		gotoxy(x + 78, iy);
 		cout << char(219);
 	}
-	//textcolor(39);
-	textcolor(15);
+
+	SetColor(6);
 	gotoxy(x + 28, y + 13);
 	cout << " ____  ____    __    __  __    ___";
 	gotoxy(x + 28, y + 14);
@@ -186,7 +188,7 @@ void drawIDStudent(int x, int y, int w, int h, int color) {
 	gotoxy(x + 28, y + 16);
 	cout << " (__) (____)(__)(__)(_/\\/\\_)  (___/";
 
-	//textcolor(224);
+	SetColor(15);
 	gotoxy(x + 25, y + 19);
 	cout << "PHAM HONG GIA BAO";
 	gotoxy(x + 25, y + 22);
@@ -224,7 +226,7 @@ void drawRule(int x, int y, int w, int h, int color) {
 		gotoxy(x + 145, iy);
 		cout << char(219);
 	}
-	textcolor(15);
+	SetColor(226);
 	gotoxy(x + 105, y + 10);
 	cout << "  ___ _   _ _    ___";
 	gotoxy(x + 105, y + 11);
@@ -233,13 +235,13 @@ void drawRule(int x, int y, int w, int h, int color) {
 	cout << " |   / |_| | |__| _|";
 	gotoxy(x + 105, y + 13);
 	cout << " |_|_\\\\___/|____|___|";
-
+	SetColor(15);
 	gotoxy(x + 90, y + 17);
 	cout << "Use the LEFT arrow, UP arrow, DOWN arrow and RIGHT ";
 	gotoxy(x + 90, y + 19);
-	cout << "Or use A, W, S and D";
+	cout << "arrow OR use A, W, S and D";
 	gotoxy(x + 90, y + 21);
-	cout << "arrow to control the snake.";
+	cout << "to control the snake.";
 	gotoxy(x + 90, y + 23);
 	cout << "Try to avoid hitting the obstacles and snake's body.";
 	gotoxy(x + 90, y + 25);

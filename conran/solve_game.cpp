@@ -291,6 +291,7 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 	{
 		check_eating++;
 		Sleep(2);
+		score += 50;
 		order_food++;
 		draw_finish_gate(level);
 		if (!gameover_round_1)
@@ -510,6 +511,8 @@ void tieptuc(const char slot[10])
 }
 
 void powerBattery_Level_1() {
+	SetColor(10);
+
 	if (order_food == 7) {
 		for (int i = 11; i <= 34; i++) {
 			gotoxy(i, 31);
@@ -534,43 +537,50 @@ void powerBattery_Level_1() {
 			cout << char(219);
 		}
 	}
-
+	textcolor(7);
 	return;
 }
 
 void powerBattery_Level_2() {
+	SetColor(10);
 	if (order_food == 7) {
 		for (int i = 11; i <= 23; i++) { //34
+			SetColor(10);
 			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}
 	if (order_food == 8) {
 		for (int i = 24; i <= 34; i++) { //34
+			SetColor(10);
 			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}
 	if (order_food == 9) {
 		for (int i = 36; i <= 48; i++) { //60
+			SetColor(10);
 			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}
 	if (order_food == 10) {
 		for (int i = 49; i <= 60; i++) { //60
+			SetColor(10);
 			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}
 	if (order_food == 11) {
 		for (int i = 62; i <= 74; i++) { // 86
+			SetColor(10);
 			gotoxy(i, 31);
 			cout << char(219);
 		}
 	}
 	if (order_food == 12) {
 		for (int i = 75; i <= 86; i++) { // 86
+			SetColor(10);
 			gotoxy(i, 31);
 			cout << char(219);
 		}
@@ -583,6 +593,7 @@ void powerBattery_Level_2() {
 	}
 	if (order_food == 14) {
 		for (int i = 101; i <= 109; i++) {
+			SetColor(10);
 			gotoxy(i, 31);
 			cout << char(219);
 		}
@@ -591,6 +602,7 @@ void powerBattery_Level_2() {
 }
 
 void powerBattery_Level_3() {
+	SetColor(10);
 	if (order_food == 7) {
 		for (int i = 11; i <= 19; i++) { //34
 			gotoxy(i, 31);
