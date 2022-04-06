@@ -73,6 +73,7 @@ int menu(int n) {
 			{
 				// vao game level 1
 				system("cls");
+				score = 0;
 				speed = 2;
 				thread snake_round(snake_thread);
 				game_level_1();
@@ -81,7 +82,8 @@ int menu(int n) {
 			}
 			if (tt == 1)
 			{
-				
+				const char* filename = "slot1.txt";
+				tieptuc(filename);
 				return 0;
 			}
 			if (tt == 2)

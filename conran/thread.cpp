@@ -46,25 +46,21 @@ void snake_thread()
 			
 
 			loop_thread_snake = true;
-			int round = 0;
 			bool* tam = new bool;
 			if (gameover_round_1 == false)
 			{
 				tam = &gameover_round_1;
-				round = 1;
+				level = 1;
 			}
 			if (gameover_round_2 == false)
 			{
 				tam = &gameover_round_2;
-				round = 2;
+				level = 2;
 			}
 			if (gameover_round_3 == false)
 			{
 				tam = &gameover_round_3;
-				round = 3;
-			}
-			if (gameover_round_3 == false)
-			{
+				level = 3;
 				nguoi_tuyet_thread();
 			}
 
@@ -79,7 +75,7 @@ void snake_thread()
 			}
 
 			done_now_snake = false;
-			set_snake(snake, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, round);
+			set_snake(snake, do_dai, x_snake, y_snake, x_food, y_food, duoi, order_food, food, level);
 			//check_eating = false;
 			done_now_snake = true;
 
@@ -91,7 +87,7 @@ void snake_thread()
 
 
 
-			check_case_snake_dead(tam, round);
+			check_case_snake_dead(tam, level);
 
 			if (check1to2 == true || check2to3 == true||check3to1==true)
 			{
@@ -104,8 +100,7 @@ void snake_thread()
 				check_die++;
 				return;
 			}
-			/*Sleep(100 / speed);*/
-			Sleep(50);
+			Sleep(100 - (5 * speed));
 		}
 
 		Sleep(1);

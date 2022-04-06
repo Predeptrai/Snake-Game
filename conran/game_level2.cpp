@@ -60,6 +60,11 @@ void draw_obstacle()
 
 void game_level_2()
 {
+	if (pass == 0)
+	{
+		const char* filename = "slot1.txt";
+		savedata(filename);
+	}
 	init();
 	nameLevel2(x, y, h - 1, w, 12);
 	draw_obstacle();
@@ -69,12 +74,16 @@ void game_level_2()
 	gameover_round_2 = false;
 	while (gameover_round_2 == false && loop_thread_snake == true)
 	{
-		if (check2to3 == true)
+		if (check2to3 == true || pass > 0)
 		{
+			if (pass == 0)
+				speed++;
+			else
+				pass--;
+			check2to3 == true;
 			gameover_round_2 = true;
-			speed++;
+			level = 3;
 			game_level_3();
-			cout << "134" << endl;
 			break;
 		}
 	}

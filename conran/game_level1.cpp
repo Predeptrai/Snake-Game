@@ -14,42 +14,52 @@ using namespace std;
 void game_level_1()
 {
 	//10 1 100 27
+	if (pass == 0)
+	{
+		const char* filename = "slot1.txt";
+		savedata(filename);
+	}
 	flag_save = false;
 	init();
 	nameLevel1(x, y, h, w, 12);
-	/*savedata(score, lever);*/
-	
-		first_time = false;
-		check1to2 = false;
-		bool dieu_huong = false;
-		loop_thread_snake = true;
-		gameover_round_1 = false;
-		
-		while (gameover_round_1 == false && loop_thread_snake == true)
+
+	first_time = false;
+	check1to2 = false;
+	bool dieu_huong = false;
+	loop_thread_snake = true;
+	gameover_round_1 = false;
+
+	while (gameover_round_1 == false && loop_thread_snake == true)
+	{
+		if (check1to2 == true || pass > 0)
 		{
-			if (check1to2 == true)
-			{
-				gameover_round_1 = true;
+			if (pass == 0)
 				speed++;
-				game_level_2();
-				break;
-			}
+			else
+				pass--;
+			check1to2 == true;
+			gameover_round_1 = true;
+			level = 2;
+			game_level_2();
+			break;
 		}
+	}
 
-		if (!flag_save) {
-			gotoxy(50, 15);
-			cout << "Press Y to continue.";
-			char c = _getch();
-			if (c == 'y') {
-				system("cls");
-				speed = 2;
-				thread snake_round(snake_thread);
-				game_level_1();
-				snake_round.join();
-			}
+	if (!flag_save) {
+		gotoxy(50, 15);
+		cout << "Press Y to continue.";
+		char c = _getch();
+		if (c == 'y') {
+			system("cls");
+			speed = 2;
+			thread snake_round(snake_thread);
+			game_level_1();
+			snake_round.join();
+			system("cls");
 		}
-
-		system("cls");
-		loop_thread_snake = false;
+		flag_save = true;
+	}
+	system("cls");
+	loop_thread_snake = false;
 	return;
 }

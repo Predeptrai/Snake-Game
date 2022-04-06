@@ -10,6 +10,8 @@ using namespace std;
 void game_level_3()
 {
 	//thread conran(snake_thread);
+	const char* filename = "slot1.txt";
+	savedata(filename);
 	init();
 	nameLevel3(x, y, h, w, 12);
 	draw_obstacle();
@@ -25,7 +27,8 @@ void game_level_3()
 		if (check3to1)
 		{
 			gameover_round_3 = true;
-			
+			speed++;
+			level = 1;
 			game_level_1();
 		}
 		//set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);	

@@ -265,6 +265,7 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 	else if (order_food < 5 + level * 4)
 	{
 		check_eating++;
+		score += 10;
 		Sleep(2);
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
 		if (!gameover_round_1) 
@@ -468,14 +469,45 @@ bool isValidName(player* user, int soluong, int pos) {
 	return flag;
 }
 
-//void Savedata(int score, int lever)
-//{
-//	char* filename = "save.txt";
-//	ofstream out(filename, ios::trunc);
-//	out << lever << endl;
-//	out << score;
-//	out.close();
-//}
+void savedata(const char slot[10])
+{
+	ofstream out(slot, ios::trunc);
+	out << level << endl;
+	out << score << endl;
+	out << speed;
+	out.close();
+}
+void tieptuc(const char slot[10])
+{
+	ifstream in(slot, ios::in);
+	in >> level;
+	in >> score;
+	in >> speed;
+	if (level == 1)
+	{
+		system("cls");
+		thread snake_round(snake_thread);
+		game_level_1();
+		snake_round.join();
+	}
+	else if (level == 2)
+	{
+		system("cls");
+		pass = 1;
+		thread snake_round(snake_thread);
+		game_level_1();
+		snake_round.join();
+	}
+	else
+	{
+		system("cls");
+		pass = 2;
+		thread snake_round(snake_thread);
+		game_level_1();
+		snake_round.join();
+	}
+	in.close();
+}
 
 void powerBattery_Level_1() {
 	if (order_food == 7) {

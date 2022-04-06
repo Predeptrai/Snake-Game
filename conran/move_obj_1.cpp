@@ -27,6 +27,9 @@ int x = 10, y = 1, w = 100, h = 27;
 int pointX[MAX], pointY[MAX];
 int order_food = 5;
 int speed = 50;
+int score = 0;
+int level = 1;
+int pass = 0;
 
 // Nguoi tuyet
 int size_nguoi_tuyet = 7,size_ao_nguoi_tuyet=19;
