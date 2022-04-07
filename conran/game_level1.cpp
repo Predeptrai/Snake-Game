@@ -19,10 +19,10 @@ void game_level_1()
 		const char* filename = "slot1.txt";
 		savedata(filename);
 	}
-	flag_save = false;
+		flag_save = false;
 	init();
 	nameLevel1(x, y, h, w, 12);
-
+	int basescore = score;
 	first_time = false;
 	check1to2 = false;
 	bool dieu_huong = false;
@@ -47,19 +47,25 @@ void game_level_1()
 
 	if (!flag_save) {
 		gotoxy(50, 15);
-		cout << "Press Y to continue.";
-		char c = _getch();
-		if (c == 'y') {
-			system("cls");
-			speed = 2;
-			thread snake_round(snake_thread);
-			game_level_1();
-			snake_round.join();
-			system("cls");
-		}
+		cout << "Press Y to load from last checkpoint.";
+		char c;
+		do
+		{
+			c = _getch();
+			if (c == 'y') {
+				system("cls");
+				thread snake_round(snake_thread);
+				pass = level - 1;
+				score = basescore;
+				game_level_1();
+				snake_round.join();
+				system("cls");
+			}
+		} while (c != 27);
 		flag_save = true;
 	}
 	system("cls");
 	loop_thread_snake = false;
+	loop_main_thread = false;
 	return;
 }

@@ -19,8 +19,8 @@ void game_level_3()
 	gameover_round_3 = false;
 	check_nguoi_tuyet_thread_1 = true;
 	check_nguoi_tuyet_thread_2 = true;
+	check2to3 = false;
 	check3to1 = false;
-	speed = 2;
 	while (gameover_round_3 == false && loop_thread_snake == true)
 	{
 		check2to3 = false;
@@ -37,21 +37,7 @@ void game_level_3()
 		//game_level_1();
 		//break;
 	}
-	/*cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
-	char key = _getch();
-	if (key != 'y')
-	{
-		system("cls");
-		return;
-	}
-	if (key == 'y')
-	{
-		system("cls");
-		game_level_1();
-	}*/
-
 	check_nguoi_tuyet_thread_2 = false;
 	check_nguoi_tuyet_thread_1 = false;
-	//conran.join();
 	return;
 }

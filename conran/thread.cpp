@@ -36,7 +36,7 @@ void sound_die()
 
 void snake_thread()
 {
-	int dem = 0;
+	loop_main_thread = true;
 	while (loop_main_thread)
 	{
 		/*gotoxy(10, 10);
@@ -88,7 +88,7 @@ void snake_thread()
 
 
 			check_case_snake_dead(tam, level);
-
+			Sleep(100 - (5 * speed));
 			if (check1to2 == true || check2to3 == true||check3to1==true)
 			{
 				break;
@@ -100,7 +100,7 @@ void snake_thread()
 				check_die++;
 				return;
 			}
-			Sleep(90 - (5 * speed));
+			Sleep(100 - (5 * speed));
 		}
 
 		Sleep(1);
