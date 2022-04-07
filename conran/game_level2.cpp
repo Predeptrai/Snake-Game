@@ -87,17 +87,5 @@ void game_level_2()
 			break;
 		}
 	}
-	/*cout << "Press Y to continue or Enter to return to Mainmenu" << endl;
-	char key = _getch();
-	if (key != 'y')
-	{
-		system("cls");
-		return;
-	}
-	if (key == 'y')
-	{
-		system("cls");
-		game_level_2();
-	}*/
 	return;
 }

@@ -484,29 +484,11 @@ void tieptuc(const char slot[10])
 	in >> level;
 	in >> score;
 	in >> speed;
-	if (level == 1)
-	{
-		system("cls");
-		thread snake_round(snake_thread);
-		game_level_1();
-		snake_round.join();
-	}
-	else if (level == 2)
-	{
-		system("cls");
-		pass = 1;
-		thread snake_round(snake_thread);
-		game_level_1();
-		snake_round.join();
-	}
-	else
-	{
-		system("cls");
-		pass = 2;
-		thread snake_round(snake_thread);
-		game_level_1();
-		snake_round.join();
-	}
+	pass = level - 1;
+	system("cls");
+	thread snake_round(snake_thread);
+	game_level_1();
+	snake_round.join();
 	in.close();
 }
 
