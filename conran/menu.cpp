@@ -5,11 +5,10 @@ using namespace std;
 
 
 trangthai key(int z) {
-	char c;
-	c = _getch();
 
 	if (z == 224) {
-
+		char c;
+		c = _getch();
 		if (c == 72) return UP;
 		if (c == 80) return DOWN;
 		if (c == 75) return LEFT;
@@ -46,70 +45,70 @@ int menu(int n) {
 			cout << func[i] << endl;
 			gotoxy(0, 0);
 		}
-
-		int z = _getch();
-		trangthai state = key(z);
-		switch (state) {
-		case UP: {
-			if (tt == 0) {
-				tt = n - 1;
+		if (_kbhit())
+		{
+			int z = _getch();
+			trangthai state = key(z);
+			switch (state) {
+			case UP: {
+				if (tt == 0) {
+					tt = n - 1;
+				}
+				else {
+					tt--;
+				}
+				break;
 			}
-			else {
-				tt--;
+			case DOWN: {
+				if (tt == n - 1) {
+					tt = 0;
+				}
+				else {
+					tt++;
+				}
+				break;
 			}
-			break;
+			case enter: {
+				if (tt == 0)
+				{
+					// vao game level 1
+					system("cls");
+					score = 0;
+					speed = 2;
+					thread snake_round(snake_thread);
+					game_level_1();
+					snake_round.join();
+					return 0;
+				}
+				if (tt == 1)
+				{
+					tieptuc(filesave);
+					return 0;
+				}
+				if (tt == 2)
+				{
+					highScoreBoard();
+					return 0;
+				}
+				if (tt == 3)
+				{
+					// intro game
+					system("cls");
+					drawIntro(x, y, w, h, 11);
+					system("cls");
+					return 0;
+				}
+				if (tt == 4)
+				{
+					return 4;
+				}
+			}
+			}
+			for (int i = 0; i < n; i++) {
+				mau[i] = MAUCHU;
+			}
+			mau[tt] = MAUNEN;
 		}
-		case DOWN: {
-			if (tt == n - 1) {
-				tt = 0;
-			}
-			else {
-				tt++;
-			}
-			break;
-		}
-		case enter: {
-			if (tt == 0)
-			{
-				// vao game level 1
-				system("cls");
-				score = 0;
-				speed = 2;
-				thread snake_round(snake_thread);
-				game_level_1();
-				snake_round.join();
-				return 0;
-			}
-			if (tt == 1)
-			{
-				const char* filename = "slot1.txt";
-				tieptuc(filename);
-				return 0;
-			}
-			if (tt == 2)
-			{
-				highScoreBoard();
-				return 0;
-			}
-			if (tt == 3)
-			{
-				// intro game
-				system("cls");
-				drawIntro(x, y, w, h, 11);
-				gotoxy(x + w / 2 + 10, y + h + 3);
-				system("cls");
-				return 0;
-			}
-			if (tt == 4)
-			{
-				return 4;
-			}
-		}
-		}
-		for (int i = 0; i < n; i++) {
-			mau[i] = MAUCHU;
-		}
-		mau[tt] = MAUNEN;
 	}
 }
 
@@ -250,4 +249,114 @@ void drawRule(int x, int y, int w, int h, int color) {
 	cout << "Press \"L\" button to SAVE THE GAME.";
 	gotoxy(x + 110, y + 30);
 	cout << "ENJOY THE GAME!";
+}
+
+
+int menuSaveSlot(int n) {
+	system("cls");
+	bool direction = 1;
+	while (direction) {
+		textcolor(12);
+		for (int ix = x + 50; ix <= x + 110; ix++) {
+			gotoxy(ix, y + 8);
+			cout << char(219);
+			gotoxy(ix, y + 25);
+			cout << char(219);
+		}
+
+		for (int iy = y + 8; iy <= y + 25; iy++) {
+			gotoxy(x + 50, iy);
+			cout << char(219);
+			gotoxy(x + 110, iy);
+			cout << char(219);
+		}
+		SetColor(11);
+		gotoxy(x + 60, y + 10);
+		cout << "  _________   _________   _______________";
+		gotoxy(x + 60, y + 11);
+		cout << " /   _____/  /  _  \\   \\ /   /\\_   _____/";
+		gotoxy(x + 60, y + 12);
+		cout << "  \_____  \\  /  /_\\  \\   Y   /  |    __)_";
+		gotoxy(x + 60, y + 13);
+		cout << " /        \\/    |    \\     /   |        \\";
+		gotoxy(x + 60, y + 14);
+		cout << "/_______  /\\____|__  /\\___/   /_______  /";
+		gotoxy(x + 60, y + 15);
+		cout << "	      \\/         \\/                 \\/";
+
+
+		string func[] = { "FILE 1", "FILE 2", "FILE 3", "FILE 4" };
+		int tt = 0;
+		int* mau = new int[n];
+		for (int i = 0; i < n; i++) {
+			mau[i] = MAUCHU;
+		}
+		int direction = 1;
+		mau[0] = MAUNEN;
+		while (direction) {
+			for (int i = 0; i < n; i++) {
+				if (i == 0) gotoxy(x + 77, y + 17);
+				if (i == 1) gotoxy(x + 77, y + 19);
+				if (i == 2) gotoxy(x + 77, y + 21);
+				if (i == 3) gotoxy(x + 77, y + 23);
+				textcolor(mau[i]);
+				cout << func[i] << endl;
+				textcolor(7);
+				gotoxy(0, 0);
+			}
+			if (_kbhit()) {
+				int z = _getch();
+				trangthai state = key(z);
+				switch (state) {
+				case UP: {
+					if (tt == 0) {
+						tt = n - 1;
+					}
+					else {
+						tt--;
+					}
+					break;
+				}
+				case DOWN: {
+					if (tt == n - 1) {
+						tt = 0;
+					}
+					else {
+						tt++;
+					}
+					break;
+				}
+				case enter: {
+					if (tt == 0)
+					{
+						filesave = (char*)"slot1.txt";
+						return 0;
+					}
+					if (tt == 1)
+					{
+						filesave = (char*)"slot2.txt";
+						return 0;
+					}
+					if (tt == 2)
+					{
+						filesave = (char*)"slot3.txt";
+						return 0;
+					}
+					if (tt == 3)
+					{
+						filesave = (char*)"slot4.txt";
+						return 0;
+					}
+				}
+				}
+				for (int i = 0; i < n; i++) {
+					mau[i] = MAUCHU;
+				}
+				mau[tt] = MAUNEN;
+			}
+
+		}
+	}
+	return 0;
+
 }

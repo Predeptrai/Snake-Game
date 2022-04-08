@@ -20,7 +20,7 @@ void check_case_snake_dead(bool* ok, int round)
 	if (round == 3)
 	{
 
-		*ok = max(*ok,check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, snake, do_dai));
+		*ok = max(*ok, check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, snake, do_dai));
 	}
 	return;
 }
@@ -80,7 +80,7 @@ int move_snake()
 		x_snake--;
 		break;
 	}
-		return check;
+	return check;
 }
 void init()
 {
@@ -89,6 +89,7 @@ void init()
 	check = 2;
 	finish = 0;
 	do_dai = 6;
+	basescore = score;
 	init_duoi(duoi);
 	order_food = 5;
 	x_snake = 50, y_snake = 13;
@@ -113,7 +114,7 @@ void save(toa_do a[MAX], toa_do b[MAX], int dodai)
 	return;
 }
 
-void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x,int w,bool &check, toa_do& food, int order_food, char duoi[])
+void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size, int x, int w, bool& check, toa_do& food, int order_food, char duoi[])
 {
 
 	if (check == true)// Qua phai
@@ -123,7 +124,7 @@ void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x
 		for (int i = 0; i < size; i++)
 		{
 			gotoxy(nguoi_tuyet[i].x, nguoi_tuyet[i].y);
-			
+
 			if (nguoi_tuyet[i].x == food.x && nguoi_tuyet[i].y == food.y)
 			{
 				int K = rand() % (15 - 1 + 1) + 1;
@@ -184,7 +185,7 @@ void set_nguoi_tuyet(toa_do nguoi_tuyet[], char ve_nguoi_tuyet[], int size,int x
 }
 
 
-void add_Val_to_1D(toa_do a[], int x, int& n,bool check)
+void add_Val_to_1D(toa_do a[], int x, int& n, bool check)
 {
 	if (check == 0)
 	{
@@ -227,11 +228,11 @@ void remove_Val_from_1D(toa_do a[], int x, int& n, bool check)
 }
 
 
-void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food,char duoi[],int &order_food, toa_do& food, int level)
+void set_snake(toa_do snake[], int& size, int x, int y, int& x_food, int& y_food, char duoi[], int& order_food, toa_do& food, int level)
 {
 	int tam = size;
-	add_Val_to_1D(snake, x, tam,0);
-	add_Val_to_1D(snake, y, size,1);
+	add_Val_to_1D(snake, x, tam, 0);
+	add_Val_to_1D(snake, y, size, 1);
 
 	if (snake_eat_food(snake[0].x, snake[0].y, food.x, food.y) == false)
 	{
@@ -266,9 +267,11 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 	{
 		check_eating++;
 		score += 10;
+		gotoxy(120, 18);
+		cout << "SCORE : " << score;
 		Sleep(2);
 		create_food(x_food, y_food, snake, size, order_food, duoi, food);
-		if (!gameover_round_1) 
+		if (!gameover_round_1)
 		{
 			powerBattery_Level_1();
 		}
@@ -278,7 +281,7 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 			{
 				powerBattery_Level_2();
 			}
-			else 
+			else
 			{
 				if (!gameover_round_3)
 				{
@@ -291,7 +294,9 @@ void set_snake(toa_do snake[], int& size, int x, int y, int &x_food, int &y_food
 	{
 		check_eating++;
 		Sleep(2);
-		score += 50;
+		score += 10;
+		gotoxy(120, 18);
+		cout << "SCORE : " << score;
 		order_food++;
 		draw_finish_gate(level);
 		if (!gameover_round_1)
@@ -361,14 +366,14 @@ bool final_food(int x, int y)
 	return false;
 }
 
-void create_food(int& x, int& y, toa_do snake[], int size,int &order_food,char duoi[], toa_do& food)
+void create_food(int& x, int& y, toa_do snake[], int size, int& order_food, char duoi[], toa_do& food)
 {
 	order_food++;
 	int tam_x, tam_y;
 	do {
 		tam_x = rand() % (99 - 11 + 1) + 11;
 		tam_y = rand() % (26 - 2 + 1) + 2;
-	} while (snake_coincide(snake, size, tam_x, tam_y) || food_touch_obs(tam_x, tam_y)||final_food(tam_x, tam_y));
+	} while (snake_coincide(snake, size, tam_x, tam_y) || food_touch_obs(tam_x, tam_y) || final_food(tam_x, tam_y));
 	food.x = tam_x;
 	food.y = tam_y;
 	x = tam_x;
@@ -408,7 +413,7 @@ bool check_nguoi_tuyet_va_ran(toa_do nguoi_tuyet[], int size_nguoi_tuyet, toa_do
 		{
 			if (snake[j].x == nguoi_tuyet[i].x && snake[j].y == nguoi_tuyet[i].y)
 			{
-				
+
 				return true;
 			}
 		}
@@ -437,11 +442,11 @@ bool snake_touch_obstacle(int size, toa_do snake[])
 			if (snake[i].x == obstacle[j].x && snake[i].y == obstacle[j].y)
 				return true;
 		}
-	}	
+	}
 	return false;
 }
 
-bool food_touch_obs(int x,int y)
+bool food_touch_obs(int x, int y)
 {
 	for (int i = 0; i < cnt_obstacle; i++)
 	{
@@ -451,28 +456,11 @@ bool food_touch_obs(int x,int y)
 	return false;
 }
 
-bool isValidName(player* user, int soluong, int pos) {
-	if (pos < 1)
-		return false;
-	int len = strlen(user[pos].name);
-	bool flag = 0;
-	for (int i = 0; i < pos; i++) {
-		flag = 1;
-		for (int j = 0; j < len; j++) {
-			if (user[i].name[j] != user[pos].name[j]) {
-				flag = 0;
-				break;
-			}
-		}
-		if (flag)
-			break;
-	}
-	return flag;
-}
-
 void savedata(const char slot[10])
 {
-	ofstream out(slot, ios::trunc);
+	if (slot == NULL)
+		return;
+	ofstream out(slot, ios::ate);
 	out << level << endl;
 	out << score << endl;
 	out << speed;
@@ -494,7 +482,6 @@ void tieptuc(const char slot[10])
 
 void powerBattery_Level_1() {
 	SetColor(10);
-
 	if (order_food == 7) {
 		for (int i = 11; i <= 34; i++) {
 			gotoxy(i, 31);
@@ -580,11 +567,12 @@ void powerBattery_Level_2() {
 			cout << char(219);
 		}
 	}
+	SetColor(15);
 	return;
 }
 
 void powerBattery_Level_3() {
-	SetColor(10);
+	textcolor(10);
 	if (order_food == 7) {
 		for (int i = 11; i <= 19; i++) { //34
 			gotoxy(i, 31);
@@ -657,5 +645,6 @@ void powerBattery_Level_3() {
 			cout << char(219);
 		}
 	}
+	SetColor(15);
 	return;
 }

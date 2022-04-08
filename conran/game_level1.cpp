@@ -4,7 +4,10 @@
 #include "Global_variable.h"
 #include "Lib_game.h"
 #include "graphic_console.h"
-
+#include <string>
+#include <fstream>
+#include <string.h>
+#include <stdio.h>
 using namespace std;
 
 
@@ -16,13 +19,13 @@ void game_level_1()
 	//10 1 100 27
 	if (pass == 0)
 	{
-		const char* filename = "slot1.txt";
-		savedata(filename);
+		savedata(filesave);
 	}
-		flag_save = false;
+	flag_save = false;
 	init();
 	nameLevel1(x, y, h, w, 12);
-	int basescore = score;
+
+
 	first_time = false;
 	check1to2 = false;
 	bool dieu_huong = false;
@@ -34,7 +37,10 @@ void game_level_1()
 		if (check1to2 == true || pass > 0)
 		{
 			if (pass == 0)
+			{
 				speed++;
+				score += 50;
+			}
 			else
 				pass--;
 			check1to2 == true;
@@ -65,6 +71,14 @@ void game_level_1()
 		flag_save = true;
 	}
 	system("cls");
+	ofstream fout("highscore.txt", ios::app);
+	char* s = new char[6];
+	gotoxy(68, 18);
+	cout << "Enter your name (max 5 charaters): ";
+	cin.getline(s, 6);
+	fout << s << " " << score << endl;
+	fout.close();
+	delete[]s;
 	loop_thread_snake = false;
 	loop_main_thread = false;
 	return;

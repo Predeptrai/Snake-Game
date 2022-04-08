@@ -10,8 +10,7 @@ using namespace std;
 void game_level_3()
 {
 	//thread conran(snake_thread);
-	const char* filename = "slot1.txt";
-	savedata(filename);
+	savedata(filesave);
 	init();
 	nameLevel3(x, y, h, w, 12);
 	draw_obstacle();
@@ -28,6 +27,7 @@ void game_level_3()
 		{
 			gameover_round_3 = true;
 			speed++;
+			score += 50;
 			level = 1;
 			game_level_1();
 		}

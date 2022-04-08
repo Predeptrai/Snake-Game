@@ -82,11 +82,7 @@ void drawSnakeShape()
 
 void menuBoard()
 {
-	// x: toa do bat dau ve board menu
-	// y: toa do chieu cao
-
 	int x = X_CENTER - 3, y = 18;
-	//draw_Box(x, y, 18, 37);
 	draw(x, y, 37, 18, 7);
 	gotoxy(x + 7, y + 1);
 	textcolor(11);
@@ -101,7 +97,6 @@ void menuBoard()
 	textcolor(14);
 	cout << "|_|_|_|_____|_|___|_____|\n";
 	textcolor(7);
-
 	cout << endl << endl;
 	return;
 }
@@ -111,8 +106,6 @@ void highScoreBoard() {
 	system("cls");
 	draw(30, 11, 110, 26, 7);
 	draw(30, 4, 110, 7, 7);
-	draw(100, 11, 40, 26, 7);
-	draw(100, 11, 20, 26, 7);
 	textcolor(12);
 	gotoxy(57, 5);
 	cout << " _____            _   _     _\n";
@@ -128,12 +121,21 @@ void highScoreBoard() {
 	gotoxy(30, 39);
 	cout << "Press ESC to return Menu!!";
 
-	for (int i = 13; i <= 35; i++) {
-		gotoxy(32, i);
-		cout << "a";
-		Sleep(100);
+	fstream in("highscore.txt", ios::in);
+	int cnt = 0, n = 0;
+	while (true)
+	{
+		if (cnt == 10 || in.eof())
+			break;
+		string s[10];
+		getline(in, s[cnt], '\n');
+		gotoxy(32, 11 + n + 2);
+		cout << s[cnt];
+		n += 2;
+		cnt++;
+		Sleep(10);
 	}
-
+	in.close();
 	while (direction) {
 		if (_kbhit()) {
 			char c = _getch();
@@ -154,25 +156,14 @@ void FixConsoleWindow()
 	style = style & ~(WS_MAXIMIZEBOX) & ~(WS_THICKFRAME);
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
-void SetWindowSize(SHORT width, SHORT height)
-{
-	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	SMALL_RECT WindowSize;
-	WindowSize.Top = 0;
-	WindowSize.Left = 0;
-	WindowSize.Right = width;
-	WindowSize.Bottom = height;
-
-	SetConsoleWindowInfo(hStdout, 1, &WindowSize);
-}
 void resizeConsole(int width, int height)
 {
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r);
 	MoveWindow(console, r.left, r.top, width, height, TRUE);
-	
+
 }
 
 // Hàm tô màu.
@@ -193,26 +184,6 @@ void gotoxy(int x, int y)
 	ShowCur(0);
 }
 
-// Hàm xóa màn hình.
-void XoaManHinh()
-{
-	HANDLE hOut;
-	COORD Position;
-	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	Position.X = 0;
-	Position.Y = 0;
-	SetConsoleCursorPosition(hOut, Position);
-}
-
-// Hàm tự viết
-void ToMau(int x, int y, string& a, int color) // x, y là tọa độ con trỏ cần nhảy đến để viết, a là chuỗi cần truyền vào, color là màu truyền vào.
-{
-	gotoxy(x, y);
-	textcolor(color);
-	cout << a;
-	textcolor(7);
-}
-
 //============= đặt màu cho chữ =========
 void SetColor(WORD color)
 {
@@ -230,49 +201,10 @@ void SetColor(WORD color)
 	SetConsoleTextAttribute(hConsoleOutput, wAttributes);
 }
 
-#define KEY_NONE -1
-int whereX()
-{
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi))
-		return csbi.dwCursorPosition.X;
-	return -1;
-}
-
-//========= lấy tọa độ y của con trỏ hiện tại =======
-int whereY()
-{
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi))
-		return csbi.dwCursorPosition.Y;
-	return -1;;
-}
-
 //============== làm ẩn trỏ chuột ===========
 void ShowCur(bool CursorVisibility)
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO cursor = { 1, CursorVisibility };
 	SetConsoleCursorInfo(handle, &cursor);
-}
-
-int inputKey()
-{
-	if (_kbhit()) //true
-	{
-		int key = _getch();
-
-		if (key == 224)
-		{
-			key = _getch();
-			return key + 1000;
-		}
-
-		return key;
-	}
-	else
-	{
-		return KEY_NONE;
-	}
-	return KEY_NONE;
 }

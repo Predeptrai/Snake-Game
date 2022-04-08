@@ -56,14 +56,14 @@ void draw_obstacle()
 			cnt_obstacle++;
 		}
 	}
+	textcolor(15);
 }
 
 void game_level_2()
 {
 	if (pass == 0)
 	{
-		const char* filename = "slot1.txt";
-		savedata(filename);
+		savedata(filesave);
 	}
 	init();
 	nameLevel2(x, y, h - 1, w, 12);
@@ -77,7 +77,10 @@ void game_level_2()
 		if (check2to3 == true || pass > 0)
 		{
 			if (pass == 0)
+			{
 				speed++;
+				score += 50;
+			}
 			else
 				pass--;
 			check2to3 == true;

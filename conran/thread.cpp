@@ -12,7 +12,7 @@ void sound_phat()
 {
 	while (check_first)
 	{
-		if (check_eating>0)
+		if (check_eating > 0)
 		{
 			PlaySound(TEXT("sound_eating.wav"), NULL, SND_SYNC);
 			check_eating--;
@@ -26,7 +26,7 @@ void sound_die()
 {
 	while (check_second)
 	{
-		if (check_die>0)
+		if (check_die > 0)
 		{
 			PlaySound(TEXT("deadth.wav"), NULL, SND_SYNC);
 			check_die--;
@@ -43,7 +43,7 @@ void snake_thread()
 		cout << gameover_round_1 << " " << gameover_round_2 << " " << gameover_round_3 << endl;*/
 		while (gameover_round_1 == false || gameover_round_2 == false || gameover_round_3 == false)
 		{
-			
+
 
 			loop_thread_snake = true;
 			bool* tam = new bool;
@@ -89,7 +89,7 @@ void snake_thread()
 
 			check_case_snake_dead(tam, level);
 			Sleep(100 - (5 * speed));
-			if (check1to2 == true || check2to3 == true||check3to1==true)
+			if (check1to2 == true || check2to3 == true || check3to1 == true)
 			{
 				break;
 			}

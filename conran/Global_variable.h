@@ -45,6 +45,8 @@ extern int level;
 extern int pointX[MAX], pointY[MAX];
 extern int order_food;
 extern int speed;
+extern char* filesave;
+extern int basescore;
 
 // Nguoi tuyet
 extern int size_nguoi_tuyet;
@@ -59,14 +61,14 @@ extern int do_dai;
 extern toa_do gate[MAX];
 extern int cnt_gate;
 extern bool check1to2;
-extern bool check2to3 ;
+extern bool check2to3;
 extern toa_do snake[MAX];
 extern bool gameover_round_1;
 extern bool gameover_round_2;
 extern bool gameover_round_3;
 extern bool block;
 extern bool check_snake;
-extern bool check_nguoi_tuyet_thread_1 ;
+extern bool check_nguoi_tuyet_thread_1;
 extern bool check_nguoi_tuyet_thread_2;
 extern bool loop_thread_snake;
 extern bool done_pre_snake;
