@@ -22,6 +22,10 @@ void check_case_snake_dead(bool* ok, int round)
 
 		*ok = max(*ok, check_nguoi_tuyet_va_ran(nguoi_tuyet, size_nguoi_tuyet, snake, do_dai));
 	}
+	//if (*ok)
+	//{
+	//	check_die++;
+	//}
 	return;
 }
 int move_snake()

@@ -75,6 +75,8 @@ int menu(int n) {
 					system("cls");
 					score = 0;
 					speed = 2;
+					loop_thread_snake = true;
+					loop_main_thread = true;
 					thread snake_round(snake_thread);
 					game_level_1();
 					snake_round.join();

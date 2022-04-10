@@ -44,6 +44,9 @@ bool check_nguoi_tuyet_thread_1 = true;
 bool check_nguoi_tuyet_thread_2 = false;
 bool loop_main_thread = true;
 int x_food, y_food;
+int playagain = 1;
+bool check_esc = false;
+bool save_name = false;
 
 bool gameover = false;
 bool block = true;

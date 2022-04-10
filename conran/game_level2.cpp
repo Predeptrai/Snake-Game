@@ -68,8 +68,9 @@ void game_level_2()
 	init();
 	nameLevel2(x, y, h - 1, w, 12);
 	draw_obstacle();
-	check1to2 = false;
 	check2to3 = false;
+	check3to1 = false;
+	check1to2 = false;
 	bool dieu_huong = false;
 	gameover_round_2 = false;
 	while (gameover_round_2 == false && loop_thread_snake == true)
@@ -78,7 +79,7 @@ void game_level_2()
 		{
 			if (pass == 0)
 			{
-				speed++;
+				speed += 3;
 				score += 50;
 			}
 			else

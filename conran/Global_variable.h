@@ -31,6 +31,8 @@ struct player {
 
 extern toa_do obstacle[MAX * MAX];
 extern int cnt_obstacle;
+extern int playagain;
+
 
 extern int xfinish, yfinish;
 extern bool finish;;
@@ -78,6 +80,8 @@ extern toa_do pre_snake[MAX];
 extern toa_do pre_nguoi_tuyet[MAX];
 extern bool done_pre_nguoi_tuyet;
 extern bool done_now_nguoi_tuyet;
+extern bool save_name;
+
 
 extern int size_ao_nguoi_tuyet;
 extern bool loop_main_thread;
@@ -87,3 +91,4 @@ extern int check_eating;
 extern int check_die;
 extern bool first_time;
 extern bool flag_save;
+extern bool check_esc;
