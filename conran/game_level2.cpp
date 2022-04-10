@@ -83,7 +83,7 @@ void game_level_2()
 			}
 			else
 				pass--;
-			check2to3 == true;
+			check2to3 = true;
 			gameover_round_2 = true;
 			level = 3;
 			game_level_3();

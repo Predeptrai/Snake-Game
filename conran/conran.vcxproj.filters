@@ -76,6 +76,18 @@
     <Text Include="slot1.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="highscore.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="slot2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="slot3.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="slot4.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="deadth.wav">

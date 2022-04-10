@@ -133,7 +133,7 @@ void highScoreBoard() {
 		cout << s[cnt];
 		n += 2;
 		cnt++;
-		Sleep(10);
+		Sleep(80);
 	}
 	in.close();
 	while (direction) {

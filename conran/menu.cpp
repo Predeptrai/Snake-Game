@@ -272,28 +272,28 @@ int menuSaveSlot(int n) {
 		}
 		SetColor(11);
 		gotoxy(x + 60, y + 10);
-		cout << "  _________   _________   _______________";
+		cout << "________      _____________________";
 		gotoxy(x + 60, y + 11);
-		cout << " /   _____/  /  _  \\   \\ /   /\\_   _____/";
+		cout << "\\______ \\    /  _  \\__    ___/  _  \\";
 		gotoxy(x + 60, y + 12);
-		cout << "  \_____  \\  /  /_\\  \\   Y   /  |    __)_";
+		cout << " |    |  \\  /  /_\\  \\|    | /  /_\\  \\";
 		gotoxy(x + 60, y + 13);
-		cout << " /        \\/    |    \\     /   |        \\";
+		cout << " |    `   \\/    |    \\    |/    |    \\";
 		gotoxy(x + 60, y + 14);
-		cout << "/_______  /\\____|__  /\\___/   /_______  /";
+		cout << "/_______  /\\____|__  /____|\\____|__  /";
 		gotoxy(x + 60, y + 15);
-		cout << "	      \\/         \\/                 \\/";
+		cout << "        \\/         \\/              \\/";
+		SetColor(15);
 
-
-		string func[] = { "FILE 1", "FILE 2", "FILE 3", "FILE 4" };
+		string func[] = { "PLAYER 1", "PLAYER 2", "PLAYER 3", "PLAYER 4" };
 		int tt = 0;
 		int* mau = new int[n];
 		for (int i = 0; i < n; i++) {
 			mau[i] = MAUCHU;
 		}
-		int direction = 1;
+		int direction_1 = 1;
 		mau[0] = MAUNEN;
-		while (direction) {
+		while (direction_1) {
 			for (int i = 0; i < n; i++) {
 				if (i == 0) gotoxy(x + 77, y + 17);
 				if (i == 1) gotoxy(x + 77, y + 19);

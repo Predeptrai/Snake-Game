@@ -8,12 +8,40 @@
 #include <fstream>
 #include <string.h>
 #include <stdio.h>
+#include <algorithm>
 using namespace std;
 
+typedef pair <int, string> thong_tin;
+void sort_score()
+{
+	ifstream fin;
+	fin.open("highscore.txt", ios::beg);
+	thong_tin a[100];
+	int n = 0;
+	while (!fin.eof())
+	{
+		fin >> a[n].first;
+		fin >> a[n].second;	
+		a[n].first *= (-1);
+		fin.ignore();
+		n++;
+	}
+	sort(a, a + n);
 
+	fin.close();
+
+
+	ofstream fout;
+	fout.open("highscore.txt", ios::ate);
+	for (int i = 0; i < n; i++)
+	{
+		fout << -a[i].first << " " << a[i].second << endl;
+	}
+	fout.close();
+	return;
+}
 
 // tao thread cho nguoi tuyet va gan 2 bien check1 va check2 cho 2 luong snake va nguoi tuyet va check ben nguoi tuyet ( do snake cho 1 vong thi nguoi tuyet da chay duoc nhieu vong 
-// tao 
 void game_level_1()
 {
 	//10 1 100 27
@@ -43,7 +71,7 @@ void game_level_1()
 			}
 			else
 				pass--;
-			check1to2 == true;
+			check1to2 = true;
 			gameover_round_1 = true;
 			level = 2;
 			game_level_2();
@@ -76,8 +104,9 @@ void game_level_1()
 	gotoxy(68, 18);
 	cout << "Enter your name (max 5 charaters): ";
 	cin.getline(s, 6);
-	fout << s << " " << score << endl;
+	fout << score << " " << s << endl;
 	fout.close();
+	sort_score();
 	delete[]s;
 	loop_thread_snake = false;
 	loop_main_thread = false;
