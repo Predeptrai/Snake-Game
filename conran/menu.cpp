@@ -77,6 +77,8 @@ int menu(int n) {
 					speed = 2;
 					loop_thread_snake = true;
 					loop_main_thread = true;
+					check_esc = false;
+					save_name = false;
 					thread snake_round(snake_thread);
 					game_level_1();
 					snake_round.join();
