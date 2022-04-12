@@ -463,6 +463,7 @@ void delete_position(toa_do snake[], int size)
 		cout << " ";
 	}
 }
+
 void draw_finish_gate(int level)
 {
 	finish = 1;
@@ -487,6 +488,7 @@ void draw_finish_gate(int level)
 	cnt_gate++;
 	return;
 }
+
 bool touch_gate()
 {
 	for (int i = 0; i < do_dai; i++)

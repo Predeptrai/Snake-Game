@@ -31,10 +31,7 @@ void sort_score(string s)
 	a[n].second = s;
 	n++;
 	sort(a, a + n);
-
 	fin.close();
-
-
 	ofstream fout;
 	fout.open("highscore.txt", ios::out);
 	for (int i = 0; i < n; i++)
@@ -46,10 +43,32 @@ void sort_score(string s)
 	return;
 }
 
+void drawNameTable()
+{
+	int x = 60, y = 10;
+	textcolor(12);
+	for (int ix = x; ix <= x + 60; ix++)
+	{
+		gotoxy(ix, y + 6);
+		cout << char(219);
+		gotoxy(ix, y + 12);
+		cout << char(219);
+	}
+
+	for (int iy = y + 6; iy <= y + 11; iy++)
+	{
+		gotoxy(x, iy);
+		cout << char(219);
+		gotoxy(x + 60, iy);
+		cout << char(219);
+	}
+	textcolor(7);
+	return;
+}
+
 // tao thread cho nguoi tuyet va gan 2 bien check1 va check2 cho 2 luong snake va nguoi tuyet va check ben nguoi tuyet ( do snake cho 1 vong thi nguoi tuyet da chay duoc nhieu vong 
 void game_level_1()
 {
-	//10 1 100 27
 	if (pass == 0)
 	{
 		savedata(filesave);
@@ -57,8 +76,6 @@ void game_level_1()
 	flag_save = false;
 	init();
 	nameLevel1(x, y, h, w, 12);
-
-
 	first_time = false;
 	check2to3 = false;
 	check3to1 = false;
@@ -122,10 +139,10 @@ void game_level_1()
 	{
 		ofstream fout("highscore.txt", ios::app);
 		string s;
+		drawNameTable();
 		gotoxy(68, 18);
-		cout << "Enter your name (max 5 charaters): ";
+		cout << "ENTER YOUR NAME (max 5 charaters): ";
 		cin >> s;
-		//cout << s << endl;
 		fout.close();
 		sort_score(s);
 		save_name = true;

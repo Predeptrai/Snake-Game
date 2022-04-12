@@ -1,6 +1,7 @@
 330 adu
 330 adu
 240 thanh
+240 thanh
 230 adu
 220 adu
 170 nguye

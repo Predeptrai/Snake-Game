@@ -33,7 +33,6 @@ void draw_obstacle()
 			cnt_obstacle++;
 		}
 	}
-
 	for (int ix = 45; ix <= 90; ix += 30)
 	{
 		for (int iy = 27; iy >= 20; iy--)
@@ -44,7 +43,6 @@ void draw_obstacle()
 			cout << char(219);
 			gotoxy(ix + 2, iy);
 			cout << char(219);
-
 			obstacle[cnt_obstacle].x = ix;
 			obstacle[cnt_obstacle].y = iy;
 			cnt_obstacle++;

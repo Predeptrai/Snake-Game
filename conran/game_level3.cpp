@@ -9,7 +9,6 @@
 using namespace std;
 void game_level_3()
 {
-	//thread conran(snake_thread);
 	savedata(filesave);
 	init();
 	nameLevel3(x, y, h, w, 12);
@@ -33,11 +32,6 @@ void game_level_3()
 			playagain++;
 			game_level_1();
 		}
-		//set_nguoi_tuyet(nguoi_tuyet, ve_nguoi_tuyet, size_nguoi_tuyet, x, w, check_nguoi_tuyet, food, order_food, duoi);	
-		//if (gameover) break;
-		//speed++;
-		//game_level_1();
-		//break;
 	}
 	check_nguoi_tuyet_thread_2 = false;
 	check_nguoi_tuyet_thread_1 = false;
