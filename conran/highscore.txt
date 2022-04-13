@@ -12,9 +12,16 @@
 110 thai
 110 thanh
 110 thanh
+110 thanh
 110 thau
 100 tahnh
 100 thanh
+90 hjk
+90 huy
+90 kkk
+90 sdkf
+90 thai
+90 thai
 90 thanh
 40 kjah
 40 thai
@@ -38,6 +45,7 @@
 0 thai
 0 thai
 0 thai
+0 thanh
 0 thanh
 0 thanh
 0 thanh

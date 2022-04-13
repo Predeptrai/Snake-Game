@@ -86,6 +86,8 @@ int menu(int n) {
 				}
 				if (tt == 1)
 				{
+					check_esc = false;
+					save_name = false;
 					tieptuc(filesave);
 					return 0;
 				}
