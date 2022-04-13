@@ -14,13 +14,6 @@ trangthai key(int z) {
 		if (c == 75) return LEFT;
 		if (c == 77) return RIGHT;
 		if (c == 13) return enter;
-
-		//if (z == 72) return UP;
-		//if (z == 80) return DOWN;
-		//if (z == 75) return LEFT;
-		//if (z == 77) return RIGHT;
-		//if (z == 13) return enter;
-
 	}
 	if (z == 13) return enter;
 }
