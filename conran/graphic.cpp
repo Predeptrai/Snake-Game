@@ -104,8 +104,8 @@ void menuBoard()
 void highScoreBoard() {
 	bool direction = 1;
 	system("cls");
-	draw(30, 11, 110, 26, 7);
-	draw(30, 4, 110, 7, 7);
+	draw(50, 11, 70, 26, 7);
+	draw(50, 4, 70, 7, 7);
 	textcolor(12);
 	gotoxy(57, 5);
 	cout << " _____            _   _     _\n";
@@ -118,7 +118,7 @@ void highScoreBoard() {
 	gotoxy(57, 9);
 	cout << "          |_|          |___|\n";
 	textcolor(7);
-	gotoxy(30, 39);
+	gotoxy(65, 39);
 	cout << "Press ESC to return Menu!!";
 
 	fstream in("highscore.txt", ios::in);
@@ -129,7 +129,7 @@ void highScoreBoard() {
 			break;
 		string s[10];
 		getline(in, s[cnt], '\n');
-		gotoxy(32, 11 + n + 2);
+		gotoxy(78, 13 + n + 2);
 		cout << s[cnt];
 		n += 2;
 		cnt++;

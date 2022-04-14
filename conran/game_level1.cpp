@@ -120,7 +120,6 @@ void game_level_1()
 				game_level_1();
 				loop_main_thread = false;
 				snake_round.join();
-				system("cls");
 			}
 			if (c == 27)
 			{
@@ -134,14 +133,15 @@ void game_level_1()
 		} while (c != 27);
 		flag_save = true;
 	}
-	system("cls");
 	if (save_name == false)
 	{
+		system("cls");
 		ofstream fout("highscore.txt", ios::app);
 		string s;
 		drawNameTable();
-		gotoxy(68, 18);
-		cout << "ENTER YOUR NAME (max 5 charaters): ";
+		gotoxy(82, 18);
+		cout << "ENTER YOUR NAME";
+		gotoxy(87, 20);
 		cin >> s;
 		fout.close();
 		sort_score(s);
