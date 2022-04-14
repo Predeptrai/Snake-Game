@@ -41,9 +41,10 @@ int menu(int n) {
 		if (_kbhit())
 		{
 			int z = _getch();
-			trangthai state = key(z);
-			switch (state) {
-			case UP: {
+			//trangthai state = key(z);
+			switch (z) {
+				z = _getch();
+			case 72: {
 				if (tt == 0) {
 					tt = n - 1;
 				}
@@ -52,7 +53,7 @@ int menu(int n) {
 				}
 				break;
 			}
-			case DOWN: {
+			case 80: {
 				if (tt == n - 1) {
 					tt = 0;
 				}
@@ -61,7 +62,7 @@ int menu(int n) {
 				}
 				break;
 			}
-			case enter: {
+			case 13: {
 				if (tt == 0)
 				{
 					// vao game level 1
@@ -305,9 +306,9 @@ int menuSaveSlot(int n) {
 			}
 			if (_kbhit()) {
 				int z = _getch();
-				trangthai state = key(z);
-				switch (state) {
-				case UP: {
+			/*	trangthai state = key(z);*/
+				switch (z) {
+				case 72: {
 					if (tt == 0) {
 						tt = n - 1;
 					}
@@ -316,7 +317,7 @@ int menuSaveSlot(int n) {
 					}
 					break;
 				}
-				case DOWN: {
+				case 80: {
 					if (tt == n - 1) {
 						tt = 0;
 					}
@@ -325,7 +326,7 @@ int menuSaveSlot(int n) {
 					}
 					break;
 				}
-				case enter: {
+				case 13: {
 					if (tt == 0)
 					{
 						filesave = (char*)"slot1.txt";

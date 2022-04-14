@@ -1,3 +1,4 @@
+400 thanh
 330 adu
 330 adu
 240 thanh
@@ -8,6 +9,7 @@
 170 nguye
 170 thanh
 160 thai
+140 bao
 120 thai
 110 bao
 110 sadfn
@@ -22,6 +24,7 @@
 90 huy
 90 kkk
 90 sdkf
+90 thai
 90 thai
 90 thai
 90 thanh
@@ -40,6 +43,7 @@
 0 dfv
 0 hah
 0 haha
+0 huy
 0 kdd
 0 out
 0 svdfdf
