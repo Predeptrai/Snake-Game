@@ -148,7 +148,7 @@
     <ClCompile Include="game_level3.cpp" />
     <ClCompile Include="init_level_name.cpp" />
     <ClCompile Include="menu.cpp" />
-    <ClCompile Include="move_obj_1.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="my_game.cpp" />
     <ClCompile Include="solve_game.cpp" />
@@ -161,7 +161,11 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />
+    <Text Include="highscore.txt" />
     <Text Include="slot1.txt" />
+    <Text Include="slot2.txt" />
+    <Text Include="slot3.txt" />
+    <Text Include="slot4.txt" />
     <Text Include="SnakeText.txt" />
     <Text Include="Snake_shape.txt" />
     <Text Include="Snake_shape2.txt" />

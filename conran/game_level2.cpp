@@ -33,7 +33,6 @@ void draw_obstacle()
 			cnt_obstacle++;
 		}
 	}
-
 	for (int ix = 45; ix <= 90; ix += 30)
 	{
 		for (int iy = 27; iy >= 20; iy--)
@@ -44,7 +43,6 @@ void draw_obstacle()
 			cout << char(219);
 			gotoxy(ix + 2, iy);
 			cout << char(219);
-
 			obstacle[cnt_obstacle].x = ix;
 			obstacle[cnt_obstacle].y = iy;
 			cnt_obstacle++;
@@ -56,20 +54,21 @@ void draw_obstacle()
 			cnt_obstacle++;
 		}
 	}
+	textcolor(15);
 }
 
 void game_level_2()
 {
 	if (pass == 0)
 	{
-		const char* filename = "slot1.txt";
-		savedata(filename);
+		savedata(filesave);
 	}
 	init();
 	nameLevel2(x, y, h - 1, w, 12);
 	draw_obstacle();
-	check1to2 = false;
 	check2to3 = false;
+	check3to1 = false;
+	check1to2 = false;
 	bool dieu_huong = false;
 	gameover_round_2 = false;
 	while (gameover_round_2 == false && loop_thread_snake == true)
@@ -77,10 +76,13 @@ void game_level_2()
 		if (check2to3 == true || pass > 0)
 		{
 			if (pass == 0)
-				speed++;
+			{
+				speed += 3;
+				score += 50;
+			}
 			else
 				pass--;
-			check2to3 == true;
+			check2to3 = true;
 			gameover_round_2 = true;
 			level = 3;
 			game_level_3();

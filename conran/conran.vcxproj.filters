@@ -18,7 +18,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="move_obj_1.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="graphic.cpp">
@@ -74,6 +74,18 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="slot1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="highscore.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="slot2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="slot3.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="slot4.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
